@@ -42,7 +42,7 @@ Working notes and action items for the next iteration.
 - ~~Immutable reassignment example was missing `does_not_compile` annotation~~ — FIXED
 - ~~Outline specifies "Constants and statics" but `static` was missing~~ — FIXED: added Statics section with `static` vs `const` comparison table, when to use each, and mutable globals forward-reference
 - Introduced `if let` and `Result` just enough for let chains — explained self-contained, no forward references
-- `LazyLock` (Rust 1.80+) for runtime-initialized statics deliberately omitted — too advanced for this chapter, better covered in Part 5/6
+- ~~`LazyLock` (Rust 1.80+) for runtime-initialized statics deliberately omitted — too advanced for this chapter, better covered in Part 5/6~~ — RESOLVED: added "Lazy Initialization" B-head after mutable globals section; introduces `LazyLock` with `DEFAULT_PORTS` `Vec<u16>` example (computed once on first access); explains why `vec![]` cannot be used in plain `static`; briefly notes closure syntax with forward ref to 2.2; mentions thread-safety and replaces `lazy_static`/`once_cell` crates; code verified zero-warning Rust 1.93.1
 - **Review items:**
   - Verify the `if let` / `Result` mini-intro is sufficient for beginners who haven't seen enums yet — it needs to "just work" without deeper understanding
   - ~~The compound types section (tuples, arrays) is brief by design — consider if `Vec<T>` forward reference ("covered in a later part") is acceptable or needs rewording~~ — RESOLVED: replaced forward reference with inline `vec!` macro example showing `push`; explains enough to use NOW without deep dive; full Vec coverage remains in 5.2
@@ -160,7 +160,7 @@ Working notes and action items for the next iteration.
 - Introduced `filter_map` minimally in capstone — explained by context (filter + map on iterators)
 - Introduced `.parse::<T>()` turbofish syntax — used throughout, explained as "parse into type T"
 - Introduced range patterns in match (`90..=100`) — used in Score::grade, natural extension of match
-- Deliberately omitted: custom error types with From impl (Part 5), thiserror/anyhow (Part 5), try blocks (nightly-only), Result::flatten (too advanced for intro), inspect/inspect_err (better for Part 5 error handling chapter)
+- Deliberately omitted: custom error types with From impl (Part 5), thiserror/anyhow (Part 5), try blocks (nightly-only), `Result::flatten` (stabilized 1.89 — consider adding to 3.3 or 5.1 in future iteration), inspect/inspect_err (better for Part 5 error handling chapter)
 - **Updated E0369 error output** to Rust 1.93.1: fixed column 3:33→3:31, added `note: Option<i32> does not implement Add<{integer}>` help line
 - **Fixed dead_code warnings**: Connection enum example now uses both `Disconnected` and `Connected` variants (two connections shown); Percentage example now destructures `PercentageError::OutOfRange(n)` in match arms instead of using `{:?}` debug format; fragile boolean Connection struct marked `rust,ignore` (illustrative non-compilable snippet)
 - **Review items:**
