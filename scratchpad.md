@@ -197,10 +197,10 @@ Working notes and action items for the next iteration.
   - Consider whether the `AsRef` example using byte values is too low-level — ACCEPTED: demonstrates the concept well with concrete observable output; byte arrays are familiar enough after 2.1
   - The capstone uses `Copy` derive on newtypes — ACCEPTED: `Copy` was introduced in 2.3 and in the derive table earlier in this chapter
 
-### 4.2 Generics — DRAFT COMPLETE
-- Covers: generic functions (single/multiple params), trait bounds (`T: Trait`, `T: Trait1 + Trait2`), `impl Trait` (argument position as sugar, return position for unnameable types), `where` clauses (readability + advanced bounds), generic structs (Pair, KeyValue), generic enums (Tree with Box), `impl Trait` in return position, Rust 2024 RPIT lifetime capture rule, associated types vs type parameters (one-to-one vs one-to-many), trait objects (`dyn Trait`), dyn compatibility rules (with `where Self: Sized` escape hatch), monomorphization and zero-cost abstraction, capstone Measurable example with static + dynamic dispatch
+### 4.2 Generics — ITERATED
+- Covers: generic functions (single/multiple params), trait bounds (`T: Trait`, `T: Trait1 + Trait2`), `impl Trait` (argument position as sugar, return position for unnameable types, **same-type vs different-type code example**: `show_any`/`show_pair`), `where` clauses (readability + advanced bounds), generic structs (Pair, KeyValue), generic enums (Tree with Box), `impl Trait` in return position, Rust 2024 RPIT lifetime capture rule, associated types vs type parameters (one-to-one vs one-to-many), trait objects (`dyn Trait`), dyn compatibility rules (with `where Self: Sized` escape hatch), monomorphization and zero-cost abstraction, capstone Measurable example with static + dynamic dispatch
 - Philosophy: generics answer "how do you write reusable code without giving up performance and safety?"; Rust answers at compile time via monomorphization; zero-cost = abstraction vanishes in compiled binary
-- All 15 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0369) verified with exact error message
+- All 15 compilable code examples verified zero-warning (Rust 1.93.1, edition 2024); 1 does_not_compile example (E0369) verified with exact error message
 - Rust 2024 features: RPIT lifetime capture rules (all in-scope lifetimes captured by default); mentioned but not demonstrated: `use<>` precise capturing syntax (too advanced for intro; covered implicitly by the 2024 default behavior)
 - Builds on 4.1: `impl Trait` in parameter position from 4.1 now explained as syntactic sugar for generics; associated types (`type Output`, `type Error`) from 4.1 now contrasted with type parameters
 - Builds on 3.2: `Box<T>` for recursive types referenced again in generic Tree enum
@@ -208,13 +208,15 @@ Working notes and action items for the next iteration.
 - "dyn compatible" terminology used throughout (replaces "object safe" per Rust 1.86+)
 - Trait upcasting (1.86) deliberately omitted — too advanced for intro chapter, better for Part 7
 - `use<>` precise capturing syntax deliberately omitted from examples — the 2024 default behavior is the simpler and more common case; `use<>` is for edge cases better covered in advanced material
+- **Updated E0369 error output** to Rust 1.93.1: column 2:11→2:10
+- **Fixed `clone_self` dead_code warning**: added `#[derive(Clone)]` to Circle, added `clone_self()` call on concrete type in main; demonstrates that excluded methods work on concrete types but not through `dyn Describe`; zero warnings
 - **Review items:**
   - The `where (T, T): Debug` example is unusual but demonstrates non-parameter bounds; verify it does not confuse beginners
   - The RPIT 2024 lifetime rule section is brief — verify it adequately explains why it matters without overloading; consider if a contrasting "this wouldn't work in 2021" note would help or hurt
   - The associated types example uses `Summarize<Summary = String>` constraint — verify this notation is clear without prior exposure
   - The `Vec<Box<dyn Describe>>` pattern introduces heap allocation with `Box` before Part 5 — context from 3.2 (`Box<Expr>`) should be sufficient
   - The dyn compatibility rules are simplified — full rules include no associated constants, no GATs, etc.; current level of detail is appropriate for intro
-  - The `clone_self` example in dyn compatibility generates an unused method warning — acceptable for teaching snippet
+  - ~~The `clone_self` example in dyn compatibility generates an unused method warning — acceptable for teaching snippet~~ — RESOLVED: added `#[derive(Clone)]` to Circle and `clone_self()` call in main; demonstrates excluded methods work on concrete types; zero warnings
   - ~~Consider whether `impl Trait` same-type vs different-type distinction needs a code example showing the difference (currently prose-only)~~ — RESOLVED: added `show_any`/`show_pair` code example demonstrating independent type params (`impl Display, impl Display`) vs shared type param (`<T: Display>`); verified compiles with correct output; commented-out `show_pair(42, "hello")` produces `error[E0308]: expected integer, found &str`
 
 ### 4.3 Iterators and Functional Patterns — DRAFT COMPLETE
