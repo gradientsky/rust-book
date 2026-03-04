@@ -56,9 +56,9 @@ Working notes and action items for the next iteration.
 - **Review items:**
   - The `apply_to_each` example uses a fixed-size `[i32; 3]` return — slightly artificial; acceptable since `Vec` hasn't been introduced
   - The `&'static str` in `classify` and `make_greeter` is explained minimally — verify this doesn't confuse readers who haven't seen lifetimes
-  - `String::from("hello")` appears in the `FnOnce` example — briefly demonstrates owned strings; may need forward-ref check against 2.3
+  - ~~`run_once`/`run_repeatedly` example had misleading comment claiming `move` closure "can only run once" — actually `move || println!("{message}")` implements `Fn` since `println!` only borrows; `run_repeatedly` used trivial non-capturing closure that didn't demonstrate `FnMut`~~ — RESOLVED: rewrote example to use genuine `FnMut` closure (mutates `count`); fixed `move` explanation to accurately describe ownership transfer without conflating it with consumption; added "why not always use FnOnce?" closing note; verified output matches
   - The `move` keyword is introduced with a light touch ("forces ownership") — full explanation deferred to 2.3 (ownership)
-  - Consider whether the Fn trait hierarchy section is too abstract for beginners — it's conceptual and short, but could be trimmed further
+  - The Fn trait hierarchy section is conceptual and short — appropriate level of abstraction for pre-generics introduction
 
 ### 2.3 Ownership — DRAFT COMPLETE
 - Covers: three rules of ownership, stack vs heap mental model (with ASCII diagram), move semantics (assignment, function calls, return values, **closures with `move`**), E0382 error example, Copy types (full list), Clone (explicit deep copy), Drop trait and RAII, drop order (reverse declaration order with Noisy struct demo), early drop with `std::mem::drop` (including its trivial implementation), comprehensive "ownership in action" capstone example
