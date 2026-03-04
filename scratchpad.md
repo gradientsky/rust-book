@@ -287,14 +287,38 @@ Working notes and action items for the next iteration.
   - Consider whether `#[cfg(test)]` conditional compilation deserves more explanation (currently brief)
   - No mention of test organization best practices (naming conventions, test module structure) — kept simple for intro chapter
 
-### Part 6 — NEXT UP
-- 6.1 Concurrency Without Data Races: threads, Send/Sync, Arc/Mutex, channels, async taste
-- Bridge from 5.4: "you have everything to build reliable software; next, how ownership extends to concurrent programming"
+### 6.1 Concurrency Without Data Races — DRAFT COMPLETE
+- Covers: data race philosophy (ownership prevents races at compile time), `thread::spawn` (JoinHandle, join, move closures, `'static` requirement), `thread::scope` (scoped threads, non-`'static` borrowing, automatic joining), `Send` and `Sync` traits (auto traits, marker traits, `Rc` non-Send example, `Cell`/`RefCell` non-Sync), `Arc<T>` (atomic reference counting, `Arc::clone` convention), `Mutex<T>` (MutexGuard RAII, poisoning, lock scope best practices), `Arc<Mutex<T>>` pattern, channels (`mpsc::channel`, Sender/Receiver, iterator protocol, multiple producers, `drop(tx)` pattern), async taste (`async`/`await`, Future trait, runtime requirement, tokio, `tokio::spawn`, `#[tokio::main]`), async closures (Rust 2024: `async || {}`, `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` traits), capstone worker pool example (threads + channels + Arc<Mutex<T>>)
+- Philosophy: concurrency safe by default; ownership/borrowing rules ARE the data race prevention rules; same system prevents use-after-free and data races
+- All 9 compilable code examples verified (Rust 1.93+, edition 2024); 2 does_not_compile examples verified (E0373 borrow in thread, E0277 Rc not Send)
+- Rust 2024 features: async closures (`async || {}`) stabilized in Rust 1.85.0, `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` in prelude for all editions; `std::env::set_var`/`remove_var` now unsafe (concurrency safety); `Future`/`IntoFuture` in prelude
+- Builds on 5.4: bridge from "testing" to "concurrent programming"; closing paragraph connects to Part 7 (idiomatic patterns)
+- Builds on 5.2: `Arc<T>` revisited (introduced in 5.2 for thread-safe shared ownership), `Rc<T>` contrasted
+- Builds on 2.3/2.4: ownership and borrowing rules directly prevent data races; move semantics with `move` keyword
+- Builds on 2.2: closures, `move` keyword, `Fn`/`FnMut`/`FnOnce` hierarchy mirrored by `AsyncFn` traits
+- Async section uses `rust,ignore` for tokio examples (require external dependency)
+- **Review items:**
+  - Thread output ordering is non-deterministic — documented with "(order may vary)" notes
+  - The `thread::scope` example is brief — could demonstrate mutable borrowing across threads (only one mutable borrow allowed)
+  - Mutex poisoning explained briefly — consider whether more detail is needed for beginners
+  - The async section is deliberately shallow ("a taste") — verify it gives enough to recognize async code without overwhelming
+  - `AsyncFn` trait bound syntax shown as `async Fn()` — verify this compiles on current stable (the `rust,ignore` annotation means it's not auto-verified)
+  - No mention of `RwLock` — deliberate omission for simplicity; could add in review pass
+  - No mention of `Atomic*` types — mentioned implicitly through Arc's atomic refcount; explicit atomics better for Part 7
+  - The capstone wraps `Receiver` in `Arc<Mutex<Receiver>>` — this is a known anti-pattern (better to use crossbeam-channel MPMC), but acceptable for teaching since only std library is used
+  - `sync_channel` (bounded channel) deliberately omitted — simpler to teach unbounded first; bounded channels mentioned in the "when to use" section prose
+  - Consider whether `thread::Builder` (named threads, stack size) deserves mention
+
+### Part 7 — NEXT UP
+- 7.1 Patterns the Pros Use: builder, newtype, type-state, combinators, extension traits
+- 7.2 What Not to Do: anti-patterns, common mistakes
+- 7.3 Where to Go from Here: async in depth, unsafe, macros, ecosystem, resources
+- Bridge from 6.1: "you can build safe concurrent programs; next, the patterns that make code truly idiomatic"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
-- Async closures (`async || {}`) + `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` traits — stabilized Rust 1.85.0, all editions — cover in Part 6 (Concurrency)
 - `use<>` precise capturing syntax — stabilized Rust 1.82.0 (bare fns), Rust 1.88.0 (trait return position) — advanced usage, cover in Part 7 or appendix if needed
+- Async closures covered in 6.1 (taste); deeper treatment in 7.3 (Where to Go from Here)
 
 ## General Notes
 
