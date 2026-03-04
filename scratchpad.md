@@ -105,9 +105,29 @@ Working notes and action items for the next iteration.
   - Consider whether tuple struct section needs more motivation (newtype pattern is revisited in Part 7)
   - Unit structs are explained briefly — verify the "type-level markers" forward reference to Part 4 feels natural
 
+### 3.2 Enums and Pattern Matching — DRAFT COMPLETE
+- Covers: enum definition (simple variants, data-carrying variants, named-field variants), exhaustive `match` with E0004 error, match as expression, wildcard `_` catch-all, or patterns (`|`), `if let` / `if let else`, let chains (Rust 2024 with `&&`), destructuring (enums, structs, tuples, nested), match guards (`if condition`), `..` ignore pattern for structs, `Box<Expr>` for recursive types (brief), `matches!` macro, capstone `Ticket` system example with nested pattern matching and Display impl
+- Philosophy: enums model alternatives where strings/integers/booleans fail; exhaustive matching turns runtime bugs into compile-time errors; the type system guarantees every case is handled
+- All 16 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0004) verified with exact error message
+- Builds on 3.1: struct destructuring in match, `Display` impl on enums, `use std::fmt`
+- Builds on 2.1: let chains revisited with enum patterns (first introduced in 2.1 with `Result`)
+- Introduced `Box<T>` minimally for recursive `Expr` type — explained as "heap-allocated pointer" with forward reference to Part 5
+- Introduced `vec![]` for capstone example — used without deep explanation (appeared in 1.2, 2.4)
+- Introduced `matches!` macro briefly — explained as "returns true/false for pattern check"
+- Introduced `std::mem::discriminant` for catch-all variable binding example
+- Rust 2024 features used: let chains (`if let ... && condition`); match ergonomics 2024 changes exist but too advanced for this chapter
+- Deliberately omitted: `@` bindings (too advanced, better for Part 7), `ref`/`ref mut` patterns (match ergonomics handles this), range patterns in match (not enum-specific), `#[non_exhaustive]` (library design concept for Part 5), slice patterns (covered in Part 5 with collections)
+- **Review items:**
+  - The `std::mem::discriminant` example output shows `Discriminant(1)` — verify this is stable output format or consider simplifying to just a debug print
+  - The `Box<Expr>` example may be too advanced — it introduces heap allocation before Part 5; current approach: minimal explanation, forward reference
+  - Verify the `matches!` macro intro is sufficient — it appears in the capstone without prior dedicated explanation
+  - The capstone example uses `vec![]` which hasn't been formally introduced — acceptable given prior appearances
+  - Consider whether the `if let else` chain example (Discount) should note that `match` is preferred for exhaustiveness
+  - The or-pattern example (`Day::Saturday | Day::Sunday`) could note that `matches!` is even more concise for boolean returns
+
 ### Part 3 — NEXT UP
-- 3.2 Enums and Pattern Matching: build on structs; enums that carry data (ADTs), `match` exhaustive matching, `if let`, let chains (Rust 2024), destructuring structs and enums
-- Bridge from 3.1: "what about values that can be one of several things?"
+- 3.3 Null, Errors, and the Type System: `Option<T>` replaces null, `Result<T, E>` replaces exceptions, `?` operator, making illegal states unrepresentable
+- Bridge from 3.2: "you will meet two enums that are so fundamental they are built into Rust's standard library"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
