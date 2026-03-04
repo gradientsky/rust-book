@@ -110,9 +110,10 @@ Working notes and action items for the next iteration.
   - Unit structs are explained briefly — verify the "type-level markers" forward reference to Part 4 feels natural
 
 ### 3.2 Enums and Pattern Matching — DRAFT COMPLETE
-- Covers: enum definition (simple variants, data-carrying variants, named-field variants), exhaustive `match` with E0004 error, match as expression, wildcard `_` catch-all, or patterns (`|`), `if let` / `if let else`, let chains (Rust 2024 with `&&`), destructuring (enums, structs, tuples, nested), match guards (`if condition`), `..` ignore pattern for structs, `Box<Expr>` for recursive types (brief), `matches!` macro, capstone `Ticket` system example with nested pattern matching and Display impl
+- Covers: enum definition (simple variants, data-carrying variants, named-field variants), exhaustive `match` with E0004 error, match as expression, wildcard `_` catch-all, or patterns (`|`), `if let` / `if let else`, **`let`-`else` (guard clauses, divergent else block, happy-path-flat idiom, when-to-use-each guide: if let vs let-else vs match)**, let chains (Rust 2024 with `&&`), destructuring (enums, structs, tuples, nested), match guards (`if condition`), `..` ignore pattern for structs, `Box<Expr>` for recursive types (brief), `matches!` macro, capstone `Ticket` system example with nested pattern matching and Display impl
 - Philosophy: enums model alternatives where strings/integers/booleans fail; exhaustive matching turns runtime bugs into compile-time errors; the type system guarantees every case is handled
-- All 16 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0004) verified with exact error message
+- All 18 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0004) verified with exact error message; 2 `rust,ignore` comparison snippets
+- `let`-`else` stabilized in Rust 1.65.0 — not 2024-specific but essential production pattern; introduced between `if let` and let chains as the natural progression (if let → let-else → let chains)
 - Builds on 3.1: struct destructuring in match, `Display` impl on enums, `use std::fmt`
 - Builds on 2.1: let chains revisited with enum patterns (first introduced in 2.1 with `Result`)
 - Introduced `Box<T>` minimally for recursive `Expr` type — explained as "heap-allocated pointer" with forward reference to Part 5
