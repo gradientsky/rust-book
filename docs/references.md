@@ -293,6 +293,9 @@ Resources used to build book materials, organized by topic.
 - [HashMap::extract_if - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashMap.html#method.extract_if)
 - [Announcing Rust 1.87.0 (Vec::extract_if) - Rust Blog](https://blog.rust-lang.org/2025/05/15/Rust-1.87.0/)
 - [Announcing Rust 1.88.0 (HashMap::extract_if) - Rust Blog](https://blog.rust-lang.org/2025/06/26/Rust-1.88.0/)
+- [str::floor_char_boundary - Rust std docs](https://doc.rust-lang.org/std/primitive.str.html#method.floor_char_boundary)
+- [str::ceil_char_boundary - Rust std docs](https://doc.rust-lang.org/std/primitive.str.html#method.ceil_char_boundary)
+- [Announcing Rust 1.91.0 (floor/ceil_char_boundary) - Rust Blog](https://blog.rust-lang.org/2025/10/30/Rust-1.91.0/)
 
 ## Modules, Visibility, and Project Structure
 
