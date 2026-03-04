@@ -288,6 +288,9 @@ Resources used to build book materials, organized by topic.
 - [Error Handling - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
 - [Recoverable Errors with Result - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
 - [To panic! or Not to panic! - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html)
+- [Result::inspect_err - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html#method.inspect_err)
+- [Result::inspect - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html#method.inspect)
+- [Option::inspect - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.inspect)
 
 ## Collections, Strings, and Smart Pointers
 
