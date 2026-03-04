@@ -327,6 +327,7 @@ Working notes and action items for the next iteration.
   - Consider whether `pub(super)` deserves a code example or if the visibility table is sufficient — DEFERRED: the table is sufficient for a pocket book
   - The `mod.rs` vs named-file convention is explained — old convention mentioned briefly for codebase literacy
   - The capstone sorts HashMap keys for deterministic output — same pattern as 5.2
+  - **Added "Cargo Manages Its Own Cache" A-head section** (Rust 1.88): philosophy-first explanation of cache growth problem; how automatic GC works (1.78 timestamp tracking → 1.88 deletion); retention table (`.crate` archives 3 months, extracted sources 1 month); `[cache] auto-clean-frequency` config in _~/.cargo/config.toml_ with value table; CI caching caveat with `"never"` workaround; added to key points summary; no compilable code examples (TOML config only)
 
 ### 5.4 Testing as a First-Class Citizen — ITERATED
 - Covers: `#[test]` and `#[cfg(test)]`, assert family (`assert!`/`assert_eq!`/`assert_ne!` with custom messages, `PartialEq + Debug` requirement), `#[should_panic(expected = "...")]` with substring matching, `Result`-returning tests (`?` operator, `Box<dyn std::error::Error>`), `#[ignore = "reason"]`, integration tests (_tests/_ directory structure, separate crates, `use` imports, shared helpers in subdirectories), binary crate testing limitations (lib+bin pattern), doc tests (`///` comments as tests, hidden `#` lines, annotations: default/`no_run`/`compile_fail`/`should_panic`/`ignore`/`text`), combined doctests (Rust 2024 edition, `standalone_crate` annotation), `cargo test` workflows (name filtering, `--show-output`, `--test-threads=1`, `--ignored`, `--include-ignored`, `--doc`, `--lib`, `--test`, `--no-fail-fast`, `-p`), capstone stack-based Calculator example with unit tests, Result tests, should_panic tests, ignore tests, and doc tests
@@ -466,7 +467,7 @@ Features stabilized in recent Rust releases that could strengthen the book:
 - **2.1**: ~~`cast_signed()`/`cast_unsigned()` (1.87) — safe explicit sign conversion~~ DONE; ~~`is_multiple_of()` (1.87) — cleaner than `% == 0`~~ DONE; ~~`midpoint()` (1.85) — overflow-safe average~~ DONE
 - **3.3/5.1**: ~~`Result::flatten()` (1.89) — covered in 7.1 table; could add demonstration in 3.3 or 5.1~~ DONE (added to 3.3 in commit 12527c4)
 - **5.2**: ~~`Vec::pop_if()` (1.86) — conditional pop~~ DONE; ~~`[T]::as_array::<N>()` (1.93) — slice to fixed-size array~~ DONE; ~~`[T]::as_chunks::<N>()` (1.88) — compile-time-checked fixed-size slice splitting~~ DONE
-- **5.3**: Cargo automatic cache garbage collection (1.88) — `~/.cargo` self-cleans
+- **5.3**: ~~Cargo automatic cache garbage collection (1.88) — `~/.cargo` self-cleans~~ DONE
 - **6.1**: `std::io::pipe()` (1.87) — cross-platform anonymous pipes in std
 - **4.3**: ~~`slice::array_windows::<N>()` (1.94) — const-generic sliding window~~ DONE
 - **7.3**: `LazyLock::get()`/`force_mut()` (1.94) — inspect/mutate lazy values
