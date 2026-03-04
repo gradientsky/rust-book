@@ -17,16 +17,20 @@ Working notes and action items for the next iteration.
   - ~~The `version = 1.85` float example is slightly misleading~~ — RESOLVED: replaced with `mass_kg = 72.5`, a naturally floating-point value
   - ~~Style compliance: first-mention styling for rustup and Cargo~~ — RESOLVED: _rustup_ italic on first mention (line 30), _Cargo_ italic on first mention (line 31, moved from line 64), "crates" introduced with inline gloss ("projects (_crates_, in Rust terminology)") on first use
 
-### 1.2 The Compiler Is Your Ally — DRAFT COMPLETE
+### 1.2 The Compiler Is Your Ally — ITERATED
 - Covers: error anatomy (E0382, E0308, unused variable warning), `cargo check` as fast feedback, `cargo clippy` with needless_range_loop and bool_comparison examples, `cargo fmt` with before/after, quality baseline workflow
 - Philosophy: compiler as code reviewer, not gatekeeper; trust it instead of fighting it
 - Rust 2024 note: `cargo fmt` auto-applies 2024 style edition (17 formatting fixes) when edition = "2024"
 - Clippy and rustfmt are bundled in the default rustup profile — no extra install needed
+- All 7 code examples verified (Rust 1.93.1, edition 2024); 2 does_not_compile examples (E0382, E0308) verified with exact error output
 - **Review items:**
-  - Verify E0382 error output matches current compiler (Rust 1.93+) — minor formatting may differ
+  - ~~Verify E0382 error output matches current compiler (Rust 1.93+)~~ — RESOLVED: updated E0382 output (column 4:15→4:16, 10→8 carets, added `help: consider cloning` suggestion); added point 6 to error anatomy list explaining compiler fix suggestions; replaced vague forward-reference with inline explanation of move semantics ("ownership transfers from greeting to other, and greeting becomes invalid")
   - ~~The "version = 1.85" example from 1.1~~ — RESOLVED: 1.1 float example changed to `mass_kg = 72.5`; no cross-reference needed
-  - Consider whether the clippy `needless_range_loop` example is too advanced for Ch 1 (uses `vec!` macro not yet explained) — current approach: show it, trust the reader to follow the intent
-  - The chapter intentionally teases ownership ("you do not need to understand ownership yet") — verify this forward reference feels natural, not frustrating
+  - ~~Consider whether the clippy `needless_range_loop` example is too advanced for Ch 1 (uses `vec!` macro not yet explained)~~ — RESOLVED: changed `vec!["Alice", "Bob", "Charlie"]` to array literal `["Alice", "Bob", "Charlie"]`; eliminates unexplained `vec!` macro and avoids `useless_vec` clippy lint that would fire on Rust 1.93+; updated clippy output to match current format (diff-style suggestion, `is only used to` wording)
+  - ~~The chapter intentionally teases ownership ("you do not need to understand ownership yet") — verify this forward reference feels natural, not frustrating~~ — RESOLVED: replaced with inline explanation: "String is a piece of text that lives on the heap. When you write `let other = greeting`, the value moves — ownership transfers from greeting to other, and greeting becomes invalid"; defers full picture to ownership chapter but explains enough to understand the error NOW
+  - Updated E0308 output: column 6:27→6:25, added `note: function defined here` section showing function signature; updated prose to mention this feature
+  - Updated unused variable warning: note now shows `(part of #[warn(unused)])` matching Rust 1.93.1
+  - Updated clippy bool_comparison output: added `= note: #[warn(clippy::bool_comparison)]` line matching Rust 1.93.1
 
 ## Part 2: Thinking in Values
 
