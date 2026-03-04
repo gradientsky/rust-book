@@ -160,7 +160,8 @@ Working notes and action items for the next iteration.
 - Introduced `filter_map` minimally in capstone — explained by context (filter + map on iterators)
 - Introduced `.parse::<T>()` turbofish syntax — used throughout, explained as "parse into type T"
 - Introduced range patterns in match (`90..=100`) — used in Score::grade, natural extension of match
-- Deliberately omitted: custom error types with From impl (Part 5), thiserror/anyhow (Part 5), try blocks (nightly-only), `Result::flatten` (stabilized 1.89 — consider adding to 3.3 or 5.1 in future iteration), inspect/inspect_err (better for Part 5 error handling chapter)
+- **Added `Option::flatten`** section: "Flattening Nested Options" B-head after "Chaining with And Then"; demonstrates `HashMap<K, Option<V>>` lookup producing `Option<Option<T>>`, `.copied().flatten()` collapsing nesting, three cases (present, explicitly None, missing key); explains `and_then(f)` = `map(f).flatten()` relationship; zero-warning verified Rust 1.93.1
+- Deliberately omitted: custom error types with From impl (Part 5), thiserror/anyhow (Part 5), try blocks (nightly-only), `Result::flatten` (stabilized 1.89 — covered in 7.1 combinator table), inspect/inspect_err (better for Part 5 error handling chapter)
 - **Updated E0369 error output** to Rust 1.93.1: fixed column 3:33→3:31, added `note: Option<i32> does not implement Add<{integer}>` help line
 - **Fixed dead_code warnings**: Connection enum example now uses both `Disconnected` and `Connected` variants (two connections shown); Percentage example now destructures `PercentageError::OutOfRange(n)` in match arms instead of using `{:?}` debug format; fragile boolean Connection struct marked `rust,ignore` (illustrative non-compilable snippet)
 - **Review items:**
@@ -363,7 +364,8 @@ Working notes and action items for the next iteration.
   - **Added `RwLockWriteGuard::downgrade`** (Rust 1.92): atomic write-to-read lock conversion, cache population pattern, consumes write guard and returns read guard, no gap for other writers; updated chapter recap bullet
 
 ### 7.1 Patterns the Pros Use — ITERATED
-- Covers: builder pattern (consuming builders, method chaining, `builder()` convention, fallible `build()` with `Result`, when to use), newtype pattern (zero-cost type safety, `UserId`/`OrderId` example, behavior on newtypes, orphan rule workaround with `PrettyVec`), type-state pattern (`PhantomData<State>`, zero-sized state markers, compile-time state machine enforcement, `Document<Draft>`/`Document<Reviewed>`/`Document<Published>` lifecycle, **reject→revise→approve path**), combinators (`map`/`and_then`/`filter`/`unwrap_or`/`unwrap_or_else`/`or`/`or_else`, combinator quick reference table, pipeline composition vs nested `match`), extension traits (`StrExt` for `str`, blanket implementations with `DisplayExt`, `FooExt` naming convention, ecosystem examples), capstone document processing system combining all five patterns
+- Covers: builder pattern (consuming builders, method chaining, `builder()` convention, fallible `build()` with `Result`, when to use), newtype pattern (zero-cost type safety, `UserId`/`OrderId` example, behavior on newtypes, orphan rule workaround with `PrettyVec`), type-state pattern (`PhantomData<State>`, zero-sized state markers, compile-time state machine enforcement, `Document<Draft>`/`Document<Reviewed>`/`Document<Published>` lifecycle, **reject→revise→approve path**), combinators (`map`/`and_then`/`filter`/`unwrap_or`/`unwrap_or_else`/`or`/`or_else`/**`flatten`**, combinator quick reference table, pipeline composition vs nested `match`), extension traits (`StrExt` for `str`, blanket implementations with `DisplayExt`, `FooExt` naming convention, ecosystem examples), capstone document processing system combining all five patterns
+- **Added `flatten`** to both Option and Result combinator quick reference tables; `Option::flatten` collapses `Some(Some(x))` → `Some(x)`, `Result::flatten` collapses `Ok(Ok(x))` → `Ok(x)` / `Ok(Err(e))` or `Err(e)` → `Err(e)`
 - Philosophy: patterns make design intent explicit in the type system; the compiler enforces invariants so you spend less time testing impossible states; these are built from structs, traits, generics, and ownership — no new features needed
 - All 15 code examples verified to compile zero-warning and produce documented output (Rust 1.93.1, edition 2024); 2 `rust,ignore` examples (match comparison snippets, non-compilable)
 - No Rust 2024-specific features used in patterns themselves; patterns are edition-agnostic but taught with 2024 idioms throughout
@@ -445,6 +447,16 @@ Working notes and action items for the next iteration.
 - Newly unsafe functions (env::set_var, etc.) — covered in 6.1 and 7.3
 
 ## Book Status: ALL CHAPTERS DRAFTED (Parts 1-7)
+
+## Potential Future Improvements (from Rust 1.85–1.94 feature audit, March 2026)
+
+Features stabilized in recent Rust releases that could strengthen the book:
+- **2.1**: `cast_signed()`/`cast_unsigned()` (1.87) — safe explicit sign conversion; `is_multiple_of()` (1.87) — cleaner than `% == 0`; `midpoint()` (1.85) — overflow-safe average
+- **3.3/5.1**: `Result::flatten()` (1.89) — covered in 7.1 table; could add demonstration in 3.3 or 5.1
+- **5.2**: `Vec::pop_if()` (1.86) — conditional pop; `[T]::as_array::<N>()` (1.93) — slice to fixed-size array
+- **5.3**: Cargo automatic cache garbage collection (1.88) — `~/.cargo` self-cleans
+- **6.1**: `std::io::pipe()` (1.87) — cross-platform anonymous pipes in std
+- **7.3**: `slice::array_windows::<N>()` (1.94) — const-generic sliding window; `LazyLock::get()`/`force_mut()` (1.94) — inspect/mutate lazy values
 
 ## General Notes
 
