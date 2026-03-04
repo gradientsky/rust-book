@@ -53,6 +53,6 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
-| 7.1 Patterns the Pros Use | — | Planned | Builder, newtype, type-state, combinators |
+| 7.1 Patterns the Pros Use | [`src/part7/7.1 Patterns the Pros Use.md`](../src/part7/7.1%20Patterns%20the%20Pros%20Use.md) | **Draft** | Builder (consuming, fallible build), newtype (type safety, orphan rule workaround), type-state (PhantomData, compile-time state machines), combinators (map/and_then/filter/unwrap_or pipeline), extension traits (blanket impls, FooExt convention), capstone document processing system |
 | 7.2 What Not to Do | — | Planned | Anti-patterns, common mistakes |
 | 7.3 Where to Go from Here | — | Planned | Async, unsafe, macros, ecosystem, resources |

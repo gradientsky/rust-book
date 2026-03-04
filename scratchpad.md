@@ -309,11 +309,30 @@ Working notes and action items for the next iteration.
   - `sync_channel` (bounded channel) deliberately omitted — simpler to teach unbounded first; bounded channels mentioned in the "when to use" section prose
   - Consider whether `thread::Builder` (named threads, stack size) deserves mention
 
-### Part 7 — NEXT UP
-- 7.1 Patterns the Pros Use: builder, newtype, type-state, combinators, extension traits
+### 7.1 Patterns the Pros Use — DRAFT COMPLETE
+- Covers: builder pattern (consuming builders, method chaining, `builder()` convention, fallible `build()` with `Result`, when to use), newtype pattern (zero-cost type safety, `UserId`/`OrderId` example, behavior on newtypes, orphan rule workaround with `PrettyVec`), type-state pattern (`PhantomData<State>`, zero-sized state markers, compile-time state machine enforcement, `Document<Draft>`/`Document<Reviewed>`/`Document<Published>` lifecycle), combinators (`map`/`and_then`/`filter`/`unwrap_or`/`unwrap_or_else`/`or`/`or_else`, combinator quick reference table, pipeline composition vs nested `match`), extension traits (`StrExt` for `str`, blanket implementations with `DisplayExt`, `FooExt` naming convention, ecosystem examples), capstone document processing system combining all five patterns
+- Philosophy: patterns make design intent explicit in the type system; the compiler enforces invariants so you spend less time testing impossible states; these are built from structs, traits, generics, and ownership — no new features needed
+- All 15 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024); 2 `rust,ignore` examples (match comparison snippets, non-compilable)
+- No Rust 2024-specific features used in patterns themselves; patterns are edition-agnostic but taught with 2024 idioms throughout
+- Builds on 6.1: bridge from "safe concurrent programs" to "idiomatic patterns"; closing bridges to 7.2 (anti-patterns)
+- Builds on 4.1: traits, `Display` impl, derive macros, `From`/`Into`
+- Builds on 4.2: generics, `PhantomData`, type parameters
+- Builds on 3.3: `Option`/`Result` combinators, newtype for type safety
+- Builds on 3.1: struct definition, `impl` blocks, method receivers
+- Introduced `PhantomData<T>` for type-state — explained as "tells the compiler this struct is parameterized by T without adding runtime data"
+- Deliberately omitted: `bon`/`typed-builder`/`derive_builder` crates (too opinionated for intro; mentioned in ecosystem context only), `Deref`/`DerefMut` on newtypes (advanced, can lead to anti-patterns), sealed traits (advanced extension trait technique), `IntoFuture` async builder pattern (covered in 6.1 async taste), `@` bindings in match (too advanced)
+- **Review items:**
+  - The builder section does not mention `#[must_use]` annotation on builder types — consider adding as a best practice note
+  - The `PrettyVec` newtype example wraps `Vec<String>` — accessing inner `.0` field is slightly awkward; consider whether `Deref` should be mentioned (currently deliberately omitted)
+  - The type-state section uses `PhantomData` before Part 7 — it was not previously introduced; verify the inline explanation is sufficient
+  - The combinator quick reference table covers `Option` only — `Result` equivalents mentioned in prose but not tabled; consider expanding
+  - The extension trait section does not demonstrate the sealed trait pattern — deliberate omission for simplicity; could add in review pass
+  - The capstone uses `word_count()` via extension trait on both `str` and `String` separately — could use a blanket impl instead; current approach is simpler for beginners
+  - Consider whether the `impl Into<String>` pattern in builder setters needs more explanation (first introduced in 4.1 with `From`/`Into`)
+
+### Part 7 — REMAINING
 - 7.2 What Not to Do: anti-patterns, common mistakes
 - 7.3 Where to Go from Here: async in depth, unsafe, macros, ecosystem, resources
-- Bridge from 6.1: "you can build safe concurrent programs; next, the patterns that make code truly idiomatic"
 
 ## Rust 2024 Features Tracker (for future chapters)
 

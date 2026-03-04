@@ -312,6 +312,21 @@ Resources used to build book materials, organized by topic.
 - [Newly Unsafe Functions - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/newly-unsafe-functions.html)
 - [Unsafe extern blocks - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/unsafe-extern.html)
 
+## Idiomatic Patterns
+
+- [Builder Pattern - Rust Design Patterns (Unofficial)](https://rust-unofficial.github.io/patterns/patterns/creational/builder.html)
+- [Item 7: Use builders for complex types - Effective Rust](https://effective-rust.com/builders.html)
+- [The Typestate Pattern in Rust - Cliffle](https://cliffle.com/blog/rust-typestate/)
+- [Typestate Programming - The Embedded Rust Book](https://docs.rust-embedded.org/book/static-guarantees/typestate-programming.html)
+- [Type-Driven API Design in Rust: Typestate - Will Crichton](https://willcrichton.net/rust-api-type-patterns/typestate.html)
+- [PhantomData - Rust std docs](https://doc.rust-lang.org/std/marker/struct.PhantomData.html)
+- [RFC 0445 - Extension Trait Conventions](https://rust-lang.github.io/rfcs/0445-extension-trait-conventions.html)
+- [Extension Traits, Greppability and IDEs - Eli Bendersky](https://eli.thegreenplace.net/2022/rust-extension-traits-greppability-and-ides/)
+- [Rust API Guidelines: Future Proofing (C-SEALED)](https://rust-lang.github.io/api-guidelines/future-proofing.html)
+- [Newtype Pattern - Rust Design Patterns](https://rust-unofficial.github.io/patterns/patterns/behavioural/newtype.html)
+- [std::process::Command (borrowing builder example) - Rust std docs](https://doc.rust-lang.org/std/process/struct.Command.html)
+- [Itertools trait - docs.rs](https://docs.rs/itertools/latest/itertools/trait.Itertools.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
