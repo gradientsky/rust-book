@@ -272,7 +272,10 @@ Resources used to build book materials, organized by topic.
 - [Iterator::is_sorted - Rust std docs](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.is_sorted)
 - [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
 - [Announcing Rust 1.82.0 (is_sorted, repeat_n) - Rust Blog](https://blog.rust-lang.org/2024/10/17/Rust-1.82.0/)
+- [slice::array_windows - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.array_windows)
 - [slice::windows - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.windows)
+- [Stabilize array_windows - PR #148814](https://github.com/rust-lang/rust/pull/148814)
+- [Tracking Issue for slice::array_windows - Issue #75027](https://github.com/rust-lang/rust/issues/75027)
 
 ## Error Handling in Practice
 
