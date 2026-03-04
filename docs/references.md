@@ -283,6 +283,35 @@ Resources used to build book materials, organized by topic.
 - [assert_ne! macro - Rust std docs](https://doc.rust-lang.org/std/macro.assert_ne.html)
 - [Announcing Rust 1.89.0 (doctest cross-compilation) - Rust Blog](https://blog.rust-lang.org/2025/08/07/Rust-1.89.0/)
 
+## Concurrency, Threads, and Synchronization
+
+- [std::thread module - Rust std docs](https://doc.rust-lang.org/std/thread/)
+- [thread::spawn - Rust std docs](https://doc.rust-lang.org/std/thread/fn.spawn.html)
+- [thread::scope - Rust std docs](https://doc.rust-lang.org/std/thread/fn.scope.html)
+- [JoinHandle - Rust std docs](https://doc.rust-lang.org/std/thread/struct.JoinHandle.html)
+- [Send trait - Rust std docs](https://doc.rust-lang.org/std/marker/trait.Send.html)
+- [Sync trait - Rust std docs](https://doc.rust-lang.org/std/marker/trait.Sync.html)
+- [Send and Sync - The Rustonomicon](https://doc.rust-lang.org/nomicon/send-and-sync.html)
+- [Mutex - Rust std docs](https://doc.rust-lang.org/std/sync/struct.Mutex.html)
+- [Arc - Rust std docs](https://doc.rust-lang.org/std/sync/struct.Arc.html)
+- [std::sync::mpsc - Rust std docs](https://doc.rust-lang.org/std/sync/mpsc/index.html)
+- [Fearless Concurrency - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
+- [Using Threads to Run Code Simultaneously - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-01-threads.html)
+- [Using Message Passing to Transfer Data Between Threads - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-02-message-passing.html)
+- [Shared-State Concurrency - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-03-shared-state.html)
+- [Extensible Concurrency with Send and Sync - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html)
+- [Why Rust mutexes look like they do - Cliffle](https://cliffle.com/blog/rust-mutexes/)
+
+## Async, Futures, and Runtimes
+
+- [Future trait - Rust std docs](https://doc.rust-lang.org/std/future/trait.Future.html)
+- [The Future Trait - Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/02_execution/02_future.html)
+- [Async in depth - Tokio Tutorial](https://tokio.rs/tokio/tutorial/async)
+- [Spawning - Tokio Tutorial](https://tokio.rs/tokio/tutorial/spawning)
+- [RFC 3668 - Async Closures](https://rust-lang.github.io/rfcs/3668-async-closures.html)
+- [Newly Unsafe Functions - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/newly-unsafe-functions.html)
+- [Unsafe extern blocks - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/unsafe-extern.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
