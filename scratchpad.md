@@ -183,9 +183,30 @@ Working notes and action items for the next iteration.
   - The `clone_self` example in dyn compatibility generates an unused method warning — acceptable for teaching snippet
   - Consider whether `impl Trait` same-type vs different-type distinction needs a code example showing the difference (currently prose-only)
 
-### Part 4 — NEXT UP
-- 4.3 Iterators and Functional Patterns: iterator trait, `map`/`filter`/`fold`/`collect`, chaining, lazy evaluation, `enumerate`/`zip`/`take`/`skip`/`flatten`, collecting into different types, implementing Iterator for custom types
-- Bridge from 4.2: "you have worked with individual elements; iterators let you process sequences with the same zero-cost guarantee"
+### 4.3 Iterators and Functional Patterns — DRAFT COMPLETE
+- Covers: Iterator trait (`next`, `Item`), three iteration modes (iter/iter_mut/into_iter), for-loop desugaring, lazy evaluation, adaptors (map, filter, filter_map, enumerate, zip, take, skip, flatten, flat_map, chain, inspect), consumers (collect, fold, sum, product, count, any, all, find, position, min, max, min_by_key, max_by_key), collecting into Vec/String/HashMap/HashSet/Result, ranges as iterators, std::iter constructors (repeat_n, once, from_fn, successors), implementing Iterator for custom types (Countdown), IntoIterator for custom collections (Playlist), `is_sorted_by_key` (stable 1.82)
+- Philosophy: iterators eliminate the trade-off between readable high-level code and fast execution; lazy evaluation enables compiler to fuse pipeline into single loop; zero-cost abstraction applied to data processing
+- All 27 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- No Rust 2024-specific changes to core iterator trait; `IntoIterator for Box<[T]>` is edition-gated but not demonstrated (too niche for intro); `gen` keyword reserved in 2024 for future gen blocks (nightly-only); `is_sorted`/`is_sorted_by_key` stable since 1.82; `repeat_n` stable since 1.82
+- Builds on 4.2: closing paragraph bridges from generics to iterators; `impl Iterator` return type pattern from 4.2 revisited
+- Builds on 4.1: `Iterator` is the key trait; `IntoIterator` and `FromIterator` are standard library traits
+- Builds on 3.3: `Option` and `Result` used in `next()`, `find()`, `collect::<Result<Vec<_>,_>>()`; `filter_map` with `.ok()`
+- Builds on 2.3/2.4: three iteration modes mirror ownership model (borrow, mutable borrow, owned)
+- Introduced `HashMap` minimally for collect examples — used without deep explanation (covered in Part 5)
+- Introduced `HashSet` minimally for collect examples — same
+- Deliberately omitted: `Iterator::array_chunks` (nightly-only), `Iterator::map_windows` (nightly-only), `gen` blocks (nightly-only), `IntoIterator for Box<[T]>` 2024 behavior change (too niche), `try_fold`/`ControlFlow` (advanced), `Extend` trait (Part 5), `ExactSizeIterator`/`DoubleEndedIterator` (advanced traits better for Part 7), `iter::chain` free function (1.91, not needed when method form exists)
+- **Review items:**
+  - The `&&n` pattern in `filter` examples may confuse beginners — explained inline but could use more emphasis
+  - The `HashMap` output ordering is non-deterministic; capstone sorts keys for deterministic output — verify this doesn't add confusion
+  - The `collect::<Result<Vec<_>,_>>` pattern is powerful but dense — verify the explanation is sufficient for readers who haven't seen advanced generics
+  - `repeat_n` (1.82) used instead of `repeat().take()` — modern idiom but less commonly seen in older tutorials
+  - The `IntoIterator` custom impl delegates to `Vec::into_iter` — simple approach; more complex custom IntoIter structs deferred
+  - Consider whether the `inspect` stderr example output is confusing (interleaved output from lazy evaluation)
+  - The capstone uses `partial_cmp(&b).unwrap()` for f64 comparison — could note that f64 is `PartialOrd` not `Ord`
+
+### Part 5 — NEXT UP
+- 5.1 Error Handling in Practice: custom error types with enums, thiserror for library crates, anyhow for application crates, composing fallible operations, unwrap/expect/proper handling guidance
+- Bridge from Part 4: "you have built the abstraction toolkit; now let's use it to build real things"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
