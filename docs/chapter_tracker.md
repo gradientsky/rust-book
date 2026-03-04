@@ -6,7 +6,7 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
-| 1.1 Your First Rust Program | `src/part1/1.1 Your First Rust Program.md` | **Draft** | Philosophy-first intro, install, Cargo, printing/formatting |
+| 1.1 Your First Rust Program | [`src/part1/1.1 Your First Rust Program.md`](../src/part1/1.1%20Your%20First%20Rust%20Program.md) | **Review** | Philosophy-first intro (beginner-accessible opening, no jargon), install, Cargo, printing/formatting; first-mention styling for rustup/Cargo/crate |
 | 1.2 The Compiler Is Your Ally | `src/part1/1.2 The Compiler Is Your Ally.md` | **Draft** | Error anatomy (E0382, E0308), warnings, `cargo check`, `cargo clippy`, `cargo fmt`, quality baseline workflow |
 
 ## Part 2: Thinking in Values
