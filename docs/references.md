@@ -176,6 +176,23 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.86.0 (trait upcasting) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
 - [RFC 3324: dyn Upcasting Coercion - The Rust RFC Book](https://rust-lang.github.io/rfcs/3324-dyn-upcasting.html)
 
+## Generics, Monomorphization, and Trait Objects
+
+- [Generic Data Types - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-01-syntax.html)
+- [Traits as Parameters / Trait Bound Syntax - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-02-traits.html#trait-bound-syntax)
+- [Advanced Traits (associated types, operator overloading) - The Rust Programming Language](https://doc.rust-lang.org/book/ch20-02-advanced-traits.html)
+- [Impl Trait Type - The Rust Reference](https://doc.rust-lang.org/reference/types/impl-trait.html)
+- [Trait Objects - The Rust Reference](https://doc.rust-lang.org/reference/types/trait-object.html)
+- [Where clauses - Rust By Example](https://doc.rust-lang.org/rust-by-example/generics/where.html)
+- [Monomorphization - Rust Compiler Development Guide](https://rustc-dev-guide.rust-lang.org/backend/monomorph.html)
+- [RPIT Lifetime Capture Rules 2024 - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/rpit-lifetime-capture.html)
+- [Changes to impl Trait in Rust 2024 - Rust Blog](https://blog.rust-lang.org/2024/09/05/impl-trait-capture-rules/)
+- [RFC 3498 - Lifetime Capture Rules 2024](https://rust-lang.github.io/rfcs/3498-lifetime-capture-rules-2024.html)
+- [RFC 3617 - Precise Capturing (use<> syntax)](https://rust-lang.github.io/rfcs/3617-precise-capturing.html)
+- [Dyn compatibility rename (lang-team #286)](https://github.com/rust-lang/lang-team/issues/286)
+- [Announcing Rust 1.86.0 (trait upcasting, dyn compatible) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
+- [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)

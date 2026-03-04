@@ -163,15 +163,34 @@ Working notes and action items for the next iteration.
   - Consider whether the `AsRef` example using byte values is too low-level — it demonstrates the concept well but byte arrays may be unfamiliar to beginners
   - The capstone uses `Copy` derive on newtypes — verify readers understand this from 2.3
 
+### 4.2 Generics — DRAFT COMPLETE
+- Covers: generic functions (single/multiple params), trait bounds (`T: Trait`, `T: Trait1 + Trait2`), `impl Trait` (argument position as sugar, return position for unnameable types), `where` clauses (readability + advanced bounds), generic structs (Pair, KeyValue), generic enums (Tree with Box), `impl Trait` in return position, Rust 2024 RPIT lifetime capture rule, associated types vs type parameters (one-to-one vs one-to-many), trait objects (`dyn Trait`), dyn compatibility rules (with `where Self: Sized` escape hatch), monomorphization and zero-cost abstraction, capstone Measurable example with static + dynamic dispatch
+- Philosophy: generics answer "how do you write reusable code without giving up performance and safety?"; Rust answers at compile time via monomorphization; zero-cost = abstraction vanishes in compiled binary
+- All 15 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0369) verified with exact error message
+- Rust 2024 features: RPIT lifetime capture rules (all in-scope lifetimes captured by default); mentioned but not demonstrated: `use<>` precise capturing syntax (too advanced for intro; covered implicitly by the 2024 default behavior)
+- Builds on 4.1: `impl Trait` in parameter position from 4.1 now explained as syntactic sugar for generics; associated types (`type Output`, `type Error`) from 4.1 now contrasted with type parameters
+- Builds on 3.2: `Box<T>` for recursive types referenced again in generic Tree enum
+- Builds on 2.4: borrowing/references used in method signatures; lifetime concept underlies RPIT 2024 rule
+- "dyn compatible" terminology used throughout (replaces "object safe" per Rust 1.86+)
+- Trait upcasting (1.86) deliberately omitted — too advanced for intro chapter, better for Part 7
+- `use<>` precise capturing syntax deliberately omitted from examples — the 2024 default behavior is the simpler and more common case; `use<>` is for edge cases better covered in advanced material
+- **Review items:**
+  - The `where (T, T): Debug` example is unusual but demonstrates non-parameter bounds; verify it does not confuse beginners
+  - The RPIT 2024 lifetime rule section is brief — verify it adequately explains why it matters without overloading; consider if a contrasting "this wouldn't work in 2021" note would help or hurt
+  - The associated types example uses `Summarize<Summary = String>` constraint — verify this notation is clear without prior exposure
+  - The `Vec<Box<dyn Describe>>` pattern introduces heap allocation with `Box` before Part 5 — context from 3.2 (`Box<Expr>`) should be sufficient
+  - The dyn compatibility rules are simplified — full rules include no associated constants, no GATs, etc.; current level of detail is appropriate for intro
+  - The `clone_self` example in dyn compatibility generates an unused method warning — acceptable for teaching snippet
+  - Consider whether `impl Trait` same-type vs different-type distinction needs a code example showing the difference (currently prose-only)
+
 ### Part 4 — NEXT UP
-- 4.2 Generics: generic functions/structs, trait bounds (`T: Display`), `impl Trait` (argument + return position), `where` clauses, associated types vs generics, trait objects (`dyn Trait`), "dyn compatible" concept, zero-cost abstraction (monomorphization)
-- Bridge from 4.1: "What if you want a data structure that holds _any_ type?"
+- 4.3 Iterators and Functional Patterns: iterator trait, `map`/`filter`/`fold`/`collect`, chaining, lazy evaluation, `enumerate`/`zip`/`take`/`skip`/`flatten`, collecting into different types, implementing Iterator for custom types
+- Bridge from 4.2: "you have worked with individual elements; iterators let you process sequences with the same zero-cost guarantee"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
 - Async closures (`async || {}`) + `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` traits — stabilized Rust 1.85.0, all editions — cover in Part 6 (Concurrency)
-- RPIT lifetime capture rules changed in 2024 edition (all lifetimes captured by default) — cover in Part 4 (Generics)
-- `use<>` precise capturing syntax — stabilized Rust 1.82.0 (bare fns), Rust 1.88.0 (trait return position) — cover in Part 4 (Generics)
+- `use<>` precise capturing syntax — stabilized Rust 1.82.0 (bare fns), Rust 1.88.0 (trait return position) — advanced usage, cover in Part 7 or appendix if needed
 
 ## General Notes
 
