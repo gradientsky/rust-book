@@ -216,23 +216,26 @@ Working notes and action items for the next iteration.
   - The `IntoIterator` custom impl delegates to `Vec::into_iter` — simple approach; more complex custom IntoIter structs deferred
   - Consider whether the `inspect` stderr example output is confusing (interleaved output from lazy evaluation)
 
-### 5.1 Error Handling in Practice — DRAFT COMPLETE
+### 5.1 Error Handling in Practice — ITERATED
 - Covers: `Error` trait (Debug+Display, `source()` for error chains), manual error chain walking, thiserror 2.x (`#[error("...")]` for Display, `#[from]` for From+source, `#[source]` for source-only, `#[error(transparent)]` for delegation), anyhow 1.x (`anyhow::Result<T>`, `.context()`/`.with_context()`, `bail!`/`ensure!`/`anyhow!` macros, `.chain()` for walking), `?` operator `From::from()` conversion mechanism, library vs application error strategy (thiserror for libs, anyhow for apps), unwrap spectrum (`?` > `unwrap_or` > `expect` > `unwrap`), capstone Inventory example with typed errors and `Box<dyn Error>`
 - Philosophy: error handling is about communicating what went wrong clearly enough to fix it; typed errors for programmatic consumers, context chains for human readers; two-crate pattern respects both audiences
 - All 11 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
-- thiserror 2.0.18 (latest as of Feb 2026): breaking changes from 1.x include raw identifier format string removal, direct dependency requirement, no_std support; `#[from]` implies `#[source]`
-- anyhow 1.0.102 (latest as of Feb 2026): stable 1.x series, no breaking changes; `Context` trait for `.context()`/`.with_context()`
+- thiserror 2.0.18 (latest as of Mar 2026): breaking changes from 1.x include raw identifier format string removal, direct dependency requirement, no_std support; `#[from]` implies `#[source]`; `#[error(fmt = path)]` for external formatting logic (not covered — too advanced for intro)
+- anyhow 1.0.102 (latest as of Mar 2026): stable 1.x series, no breaking changes; `Context` trait for `.context()`/`.with_context()`
 - `core::error::Error` stabilized in Rust 1.81 (Sep 2024) — mentioned conceptually but not demonstrated (no_std is out of scope for this chapter)
+- `Error::sources()` iterator still nightly-only as of Rust 1.93.1
 - Builds on 3.3: `Result`, `Option`, `?` operator, custom error enums with Display
 - Builds on 4.1: `From` trait for error conversion, trait implementation patterns
-- Deliberately omitted: `try` blocks (nightly-only), `Error::provide()` (nightly-only), `Error::sources()` iterator (nightly-only), snafu crate (thiserror is the community standard), backtrace capture (nightly `provide()` required), `#[diagnostic::do_not_recommend]` (too advanced)
+- Deliberately omitted: `try` blocks (nightly-only), `Error::provide()` (nightly-only), `Error::sources()` iterator (nightly-only), snafu crate (thiserror is the community standard), backtrace capture (nightly `provide()` required), `#[diagnostic::do_not_recommend]` (too advanced), `#[error(fmt = ...)]` (thiserror 2.x feature, too advanced)
 - **Review items:**
-  - The capstone uses `Box<dyn std::error::Error>` instead of `anyhow::Result` to avoid requiring anyhow dependency — verify this substitution is clear enough; noted in prose that anyhow has the same effect
-  - thiserror and anyhow are shown with `Cargo.toml` snippets but examples are self-contained (no actual file I/O beyond `read_config` which hits a missing file) — verify all examples work in a single-file context
-  - The `#[error(transparent)]` example uses `Box<dyn Error + Send + Sync>` — verify readers understand `Send + Sync` or if this needs a forward reference note to Part 6
-  - The "How the Question Mark Converts Errors" section shows `rust,ignore` pseudo-code — verify this is acceptable for non-compilable expansion examples
+  - ~~The "Choosing Variant Shapes" example had `Io(#[from] std::io::Error)` with misleading `#[error("JSON error")]` label and two variants wrapping `std::io::Error`~~ — RESOLVED: replaced `Io` variant with `Parse(#[from] std::num::ParseIntError)` to use distinct error types; added `.into()` demonstration showing `#[from]` auto-conversion; clearer distinction between `#[source]` (context-carrying) and `#[from]` (simple wrapping)
+  - ~~The `#[error(transparent)]` example uses `Box<dyn Error + Send + Sync>` without explaining `Send + Sync`~~ — RESOLVED: added inline note explaining `Send + Sync` as thread-safety bounds with forward reference to Part 6; treats `Box<dyn std::error::Error + Send + Sync>` as standard "any error, anywhere" type
+  - ~~Heading style: crate names capitalized in headings (Thiserror, Anyhow)~~ — RESOLVED: lowercased all crate names in headings per style guide ("Technical terms that are conventionally lowercase stay lowercase")
+  - ~~Sentence-initial crate names capitalized~~ — RESOLVED: restructured sentences to avoid starting with bare crate name ("The thiserror crate is..." instead of "Thiserror is...")
+  - The capstone uses `Box<dyn std::error::Error>` instead of `anyhow::Result` to avoid requiring anyhow dependency — noted in prose that anyhow has the same effect; acceptable
+  - The "How the Question Mark Converts Errors" section shows `rust,ignore` pseudo-code — acceptable for non-compilable expansion examples
   - Error message convention (lowercase, no trailing punctuation) is stated but not heavily enforced in all examples — consistent enough for teaching purposes
-  - The `HOME` env var in expect example is platform-specific (macOS/Linux) — same caveat as 3.3
+  - The `HOME` env var in expect example is platform-specific (macOS/Linux) — same caveat as 3.3 and other chapters
 
 ### 5.2 Collections, Strings, and Smart Pointers — DRAFT COMPLETE
 - Covers: Vec (creation with vec!/Vec::new/with_capacity/collect, access with []/get/last, modify with push/pop/insert/remove/retain, slices &[T], three iteration modes), HashMap (new/from/collect, get/indexing/contains_key, entry API with or_insert/or_insert_with), HashSet (insert/contains, intersection/union/difference), String vs &str (owned vs borrowed, deref coercion, when to use each, creation/conversion/concatenation/format!, common operations, UTF-8 guarantees), Box (recursive types Expr tree, trait objects Vec<Box<dyn Shape>>), Rc (reference counting, Rc::clone convention, shared ownership in graph-like structures, limitations: not thread-safe, immutable), Arc (thread-safe shared ownership, thread::spawn example), choosing the right pointer (decision table), capstone Library/Document tag system with Vec/HashMap/HashSet/Rc/String/Display
