@@ -395,6 +395,10 @@ Resources used to build book materials, organized by topic.
 - [RwLockWriteGuard::downgrade - Rust std docs](https://doc.rust-lang.org/std/sync/struct.RwLockWriteGuard.html#method.downgrade)
 - [Announcing Rust 1.92.0 - Rust Blog](https://blog.rust-lang.org/2025/12/11/Rust-1.92.0/)
 - [Why Rust mutexes look like they do - Cliffle](https://cliffle.com/blog/rust-mutexes/)
+- [std::io::pipe - Rust std docs](https://doc.rust-lang.org/std/io/fn.pipe.html)
+- [PipeReader - Rust std docs](https://doc.rust-lang.org/std/io/struct.PipeReader.html)
+- [PipeWriter - Rust std docs](https://doc.rust-lang.org/std/io/struct.PipeWriter.html)
+- [Announcing Rust 1.87.0 - Rust Blog](https://blog.rust-lang.org/2025/05/15/Rust-1.87.0/)
 
 ## Async, Futures, and Runtimes
 
