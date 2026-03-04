@@ -287,6 +287,8 @@ Resources used to build book materials, organized by topic.
 - [Clone to satisfy the borrow checker (anti-pattern) - Rust Design Patterns](https://rust-unofficial.github.io/patterns/anti_patterns/borrow_clone.html)
 - [The Rust Performance Book: Heap Allocations](https://nnethercote.github.io/perf-book/heap-allocations.html)
 - [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
+- [slice::get_disjoint_mut - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.get_disjoint_mut)
+- [Announcing Rust 1.86.0 (get_disjoint_mut) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
 
 ## Modules, Visibility, and Project Structure
 

@@ -265,14 +265,15 @@ Working notes and action items for the next iteration.
 ### 5.2 Collections, Strings, and Smart Pointers — ITERATED
 - Covers: Vec (creation with vec!/Vec::new/with_capacity/collect, access with []/get/last, modify with push/pop/insert/remove/retain, slices &[T], three iteration modes), HashMap (new/from/collect, get/indexing/contains_key, entry API with or_insert/or_insert_with), HashSet (insert/contains, intersection/union/difference), String vs &str (owned vs borrowed, deref coercion, when to use each, creation/conversion/concatenation/format!, common operations, UTF-8 guarantees), Box (recursive types Expr tree, trait objects Vec<Box<dyn Shape>>), Rc (reference counting, Rc::clone convention, shared ownership in graph-like structures, limitations: not thread-safe, immutable), Arc (thread-safe shared ownership, thread::spawn example), choosing the right pointer (decision table), capstone Library/Document tag system with Vec/HashMap/HashSet/Rc/String/Display
 - Philosophy: ownership extends into data structures; collections own their elements; smart pointers extend the ownership model when simple ownership doesn't fit
-- All 20 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- All 21 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- **Added `get_disjoint_mut` C-head** under Modifying Vectors: safe simultaneous mutable access to multiple elements by index (stabilized Rust 1.86); philosophy-first explanation of why borrow checker prevents naive `&mut v[i]` + `&mut v[j]`, `split_at_mut` as prior workaround, `get_disjoint_mut` as modern solution
 - No Rust 2024-specific changes to core collection/string/smart pointer types; `IntoIterator for Box<[T]>` is 2024 edition-gated but not demonstrated (too niche); `HashMap::from([...])` stable since 1.56 but modern idiomatic pattern
 - Builds on 5.1: bridge from error handling to data structures
 - Builds on 4.3: iteration modes (iter/iter_mut/into_iter), collect patterns
 - Builds on 4.2: trait objects (dyn Trait), Box<dyn Trait>
 - Builds on 2.3/2.4: ownership, borrowing, slices (&[T], &str)
 - Introduced `thread::spawn` minimally in Arc example — just enough to demonstrate thread-safe sharing; full concurrency in Part 6
-- Deliberately omitted: BTreeMap/BTreeSet (mentioned as alternative), VecDeque/LinkedList (too niche), Cow<str> (advanced), RefCell/Cell (interior mutability pattern, too advanced for intro), Weak<T> (Rc cycles, advanced), LazyCell/LazyLock (better for Part 6/7), slice patterns, Extend trait, drain/retain_mut, Vec::from_raw_parts
+- Deliberately omitted: BTreeMap/BTreeSet (mentioned as alternative), VecDeque/LinkedList (too niche), Cow<str> (advanced), RefCell/Cell (interior mutability pattern, too advanced for intro), Weak<T> (Rc cycles, advanced), LazyCell/LazyLock (better for Part 6/7), slice patterns, Extend trait, drain/retain_mut, Vec::from_raw_parts, HashMap::get_disjoint_mut (available but Vec example is sufficient to teach the concept), extract_if (1.87+, too niche for intro)
 - **Review items:**
   - HashMap/HashSet output order is non-deterministic; documented with "(key order may vary)" and sorted outputs where needed
   - ~~The `&&str` type in `indexed: HashMap<usize, &&str>` may confuse beginners~~ — RESOLVED: changed `words.iter().enumerate().collect()` to `words.into_iter().enumerate().collect()` on an array literal; type is now `HashMap<usize, &str>` (no double reference); `into_iter()` on arrays yields owned elements directly
