@@ -150,10 +150,10 @@ Working notes and action items for the next iteration.
   - ~~Consider whether the `if let else` chain example (Discount) should note that `match` is preferred for exhaustiveness~~ — RESOLVED: renamed section to "When to Prefer Match Over If Let"; added explicit note about exhaustiveness checking vs silent fall-through
   - ~~The or-pattern example (`Day::Saturday | Day::Sunday`) could note that `matches!` is even more concise for boolean returns~~ — RESOLVED: added `matches!` subsection immediately following or-patterns
 
-### 3.3 Null, Errors, and the Type System — DRAFT COMPLETE
+### 3.3 Null, Errors, and the Type System — ITERATED
 - Covers: `Option<T>` (Some/None, unwrap_or, unwrap_or_else, map, and_then, is_some_and, is_none_or), `Result<T, E>` (Ok/Err, unwrap_or, map, map_err), `?` operator (with Result and Option), Option↔Result conversion (ok_or, ok), unwrap/expect guidance, making illegal states unrepresentable (enum replacing boolean flags, newtype wrappers for type safety, validated construction with Result, **module privacy for invariant enforcement**), capstone Score/grade example combining all concepts
 - Philosophy: invisible trapdoors (null, exceptions) vs explicit types; if a function can fail its signature must say so; billion-dollar mistake; type system as map of where things can go wrong
-- All 20 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0369) verified with exact error message
+- All 20 compilable code examples verified zero-warning (Rust 1.93.1, edition 2024); 1 does_not_compile example (E0369) verified with exact error message; 1 `rust,ignore` snippet (fragile boolean Connection, illustrative only); 1 `rust,ignore` module privacy example (compilable but marked ignore for consistency with module pattern)
 - No Rust 2024-specific changes to Option/Result/`?` operator semantics; `is_none_or` stabilized 1.82, `is_some_and`/`is_ok_and` stabilized 1.70 — all pre-2024 but modern idioms
 - Builds on 3.2: bridges from "two enums built into the standard library" closing; uses pattern matching, exhaustive match, if let
 - Builds on 3.1: uses struct definition, impl blocks, Display trait, use std::fmt
@@ -161,6 +161,8 @@ Working notes and action items for the next iteration.
 - Introduced `.parse::<T>()` turbofish syntax — used throughout, explained as "parse into type T"
 - Introduced range patterns in match (`90..=100`) — used in Score::grade, natural extension of match
 - Deliberately omitted: custom error types with From impl (Part 5), thiserror/anyhow (Part 5), try blocks (nightly-only), Result::flatten (too advanced for intro), inspect/inspect_err (better for Part 5 error handling chapter)
+- **Updated E0369 error output** to Rust 1.93.1: fixed column 3:33→3:31, added `note: Option<i32> does not implement Add<{integer}>` help line
+- **Fixed dead_code warnings**: Connection enum example now uses both `Disconnected` and `Connected` variants (two connections shown); Percentage example now destructures `PercentageError::OutOfRange(n)` in match arms instead of using `{:?}` debug format; fragile boolean Connection struct marked `rust,ignore` (illustrative non-compilable snippet)
 - **Review items:**
   - The `HOME` env var example in expect section is platform-specific — works on macOS/Linux, not Windows; acceptable for pocket book target audience
   - The `ParseIntError { kind: InvalidDigit }` debug output format may change in future Rust versions — consider whether to use Display format instead
