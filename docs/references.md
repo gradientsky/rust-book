@@ -425,6 +425,13 @@ Resources used to build book materials, organized by topic.
 - [Exercism Rust Track](https://exercism.org/tracks/rust)
 - [This Week in Rust](https://this-week-in-rust.org/)
 
+## The must_use Attribute
+
+- [Diagnostics: must_use - The Rust Reference](https://doc.rust-lang.org/reference/attributes/diagnostics.html#the-must_use-attribute)
+- [RFC 1940: must-use functions](https://rust-lang.github.io/rfcs/1940-must-use-functions.html)
+- [When to add #[must_use] - Standard Library Developer Guide](https://std-dev-guide.rust-lang.org/policy/must-use.html)
+- [unused_must_use - Warn-by-default Lints (rustc book)](https://doc.rust-lang.org/rustc/lints/listing/warn-by-default.html#unused-must-use)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
