@@ -265,9 +265,10 @@ Working notes and action items for the next iteration.
 ### 5.2 Collections, Strings, and Smart Pointers — ITERATED
 - Covers: Vec (creation with vec!/Vec::new/with_capacity/collect, access with []/get/last, modify with push/pop/insert/remove/retain, slices &[T], three iteration modes), HashMap (new/from/collect, get/indexing/contains_key, entry API with or_insert/or_insert_with), HashSet (insert/contains, intersection/union/difference), String vs &str (owned vs borrowed, deref coercion, when to use each, creation/conversion/concatenation/format!, common operations, UTF-8 guarantees), Box (recursive types Expr tree, trait objects Vec<Box<dyn Shape>>), Rc (reference counting, Rc::clone convention, shared ownership in graph-like structures, limitations: not thread-safe, immutable), Arc (thread-safe shared ownership, thread::spawn example), choosing the right pointer (decision table), capstone Library/Document tag system with Vec/HashMap/HashSet/Rc/String/Display
 - Philosophy: ownership extends into data structures; collections own their elements; smart pointers extend the ownership model when simple ownership doesn't fit
-- All 23 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- All 24 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
 - **Added `get_disjoint_mut` C-head** under Modifying Vectors: safe simultaneous mutable access to multiple elements by index (stabilized Rust 1.86); philosophy-first explanation of why borrow checker prevents naive `&mut v[i]` + `&mut v[j]`, `split_at_mut` as prior workaround, `get_disjoint_mut` as modern solution
 - **Added `extract_if` C-head** under Modifying Vectors: conditional removal that returns extracted elements as iterator (Vec stabilized Rust 1.87, HashMap/HashSet stabilized 1.88); philosophy-first explanation of retain's limitation (discards removed elements), range parameter for Vec, lazy iterator semantics, HashMap example for cross-collection demonstration
+- **Added safe string truncation C-head** under Strings Are UTF-8: `floor_char_boundary`/`ceil_char_boundary` (Rust 1.91); philosophy-first explanation of byte-budget truncation problem, café ☕ example showing byte 7 inside emoji, rounds down to 6 / up to 9; production-grade safe truncation pattern
 - No Rust 2024-specific changes to core collection/string/smart pointer types; `IntoIterator for Box<[T]>` is 2024 edition-gated but not demonstrated (too niche); `HashMap::from([...])` stable since 1.56 but modern idiomatic pattern
 - Builds on 5.1: bridge from error handling to data structures
 - Builds on 4.3: iteration modes (iter/iter_mut/into_iter), collect patterns
@@ -280,7 +281,7 @@ Working notes and action items for the next iteration.
   - ~~The `&&str` type in `indexed: HashMap<usize, &&str>` may confuse beginners~~ — RESOLVED: changed `words.iter().enumerate().collect()` to `words.into_iter().enumerate().collect()` on an array literal; type is now `HashMap<usize, &str>` (no double reference); `into_iter()` on arrays yields owned elements directly
   - The capstone uses `Rc` for shared document references in a tag index — verify this feels motivated rather than contrived
   - The `+` operator on strings (moves left, borrows right) asymmetry is mentioned — verify explanation is clear enough
-  - UTF-8 byte slicing panic behavior is warned about but no does_not_compile example is shown — deliberate choice to avoid panic output
+  - ~~UTF-8 byte slicing panic behavior is warned about but no does_not_compile example is shown~~ — RESOLVED: added `floor_char_boundary`/`ceil_char_boundary` C-head subsection (Rust 1.91) showing safe truncation; deliberate choice to show the safe solution rather than the panic
   - `RefCell` is mentioned as "advanced pattern" but not demonstrated — verify this forward reference feels natural
   - Consider whether `BTreeMap` deserves more than a one-sentence mention
   - The `has_tag` method was removed from capstone to avoid unused warning — verify the HashSet::contains mention in the recap is sufficient
