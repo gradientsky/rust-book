@@ -327,6 +327,25 @@ Resources used to build book materials, organized by topic.
 - [std::process::Command (borrowing builder example) - Rust std docs](https://doc.rust-lang.org/std/process/struct.Command.html)
 - [Itertools trait - docs.rs](https://docs.rs/itertools/latest/itertools/trait.Itertools.html)
 
+## Anti-Patterns and Common Mistakes
+
+- [Anti-Patterns Catalogue - Rust Design Patterns](https://rust-unofficial.github.io/patterns/anti_patterns/)
+- [Clone to Satisfy the Borrow Checker - Rust Design Patterns](https://rust-unofficial.github.io/patterns/anti_patterns/borrow_clone.html)
+- [Deref Polymorphism Anti-Pattern - Rust Design Patterns](https://rust-unofficial.github.io/patterns/anti_patterns/deref.html)
+- [#[deny(warnings)] Anti-Pattern - Rust Design Patterns](https://rust-unofficial.github.io/patterns/anti_patterns/deny-warnings.html)
+- [Using unwrap() in Rust is Okay - Andrew Gallant (BurntSushi)](https://burntsushi.net/unwrap/)
+- [Rust API Guidelines: Naming](https://rust-lang.github.io/api-guidelines/naming.html)
+- [Rust API Guidelines: Type Safety](https://rust-lang.github.io/api-guidelines/type-safety.html)
+- [Item 6: Embrace the Newtype Pattern - Effective Rust](https://www.lurklurk.org/effective-rust/newtype.html)
+- [Item 9: Iterator Transforms Instead of Explicit Loops - Effective Rust](https://effective-rust.com/iterators.html)
+- [Pitfalls of Safe Rust - corrode.dev](https://corrode.dev/blog/pitfalls-of-safe-rust/)
+- [Patterns for Defensive Programming in Rust - corrode.dev](https://corrode.dev/blog/defensive-programming/)
+- [Unsafe Rust in the Wild - Rust Foundation (2024)](https://rustfoundation.org/media/unsafe-rust-in-the-wild-notes-on-the-current-state-of-unsafe-rust/)
+- [safety-dance: Auditing Crates for Replaceable Unsafe Code](https://github.com/rust-secure-code/safety-dance)
+- [unsafe_op_in_unsafe_fn - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html)
+- [Comparing Performance: Loops vs. Iterators - The Rust Programming Language](https://doc.rust-lang.org/book/ch13-04-performance.html)
+- [Use Borrowed Types for Arguments - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/coercion-arguments.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)

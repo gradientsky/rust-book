@@ -54,5 +54,5 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
 | 7.1 Patterns the Pros Use | [`src/part7/7.1 Patterns the Pros Use.md`](../src/part7/7.1%20Patterns%20the%20Pros%20Use.md) | **Draft** | Builder (consuming, fallible build), newtype (type safety, orphan rule workaround), type-state (PhantomData, compile-time state machines), combinators (map/and_then/filter/unwrap_or pipeline), extension traits (blanket impls, FooExt convention), capstone document processing system |
-| 7.2 What Not to Do | — | Planned | Anti-patterns, common mistakes |
+| 7.2 What Not to Do | [`src/part7/7.2 What Not to Do.md`](../src/part7/7.2%20What%20Not%20to%20Do.md) | **Draft** | Cloning to silence borrow checker (narrowing scopes, borrowed types), unwrap in production (Result/? propagation, unwrap spectrum), Java-in-Rust (getter/setter boilerplate, overusing dyn Trait, Deref inheritance, composition), fighting the type system (stringly-typed code, boolean blindness, invalid states), reaching for unsafe (split_at_mut, 2024 unsafe_op_in_unsafe_fn), overusing Rc/Arc (move/borrow first, decision table), index loops vs iterators (translations table), capstone Score/Grade report |
 | 7.3 Where to Go from Here | — | Planned | Async, unsafe, macros, ecosystem, resources |

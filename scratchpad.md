@@ -330,8 +330,30 @@ Working notes and action items for the next iteration.
   - The capstone uses `word_count()` via extension trait on both `str` and `String` separately — could use a blanket impl instead; current approach is simpler for beginners
   - Consider whether the `impl Into<String>` pattern in builder setters needs more explanation (first introduced in 4.1 with `From`/`Into`)
 
+### 7.2 What Not to Do — DRAFT COMPLETE
+- Covers: cloning to silence borrow checker (performance + correctness costs, narrowing borrow scope, index-based mutation, `iter_mut`, borrowed types in signatures `&str`/`&[T]`, when cloning is correct), unwrap in production code (library vs application, Result propagation with `?`, unwrap spectrum table: `?` > `unwrap_or` > `expect` > `unwrap`), Java-in-Rust syntax (getter/setter boilerplate with `get_` prefix anti-pattern, Rust API Guidelines naming, pub fields vs invariant-enforcing accessors, overusing `dyn Trait` vs `impl Trait`/generics, Deref inheritance anti-pattern, composition with explicit delegation), fighting the type system (stringly-typed code vs enums, boolean blindness vs named enums, making invalid states representable with struct booleans+Options vs enum modeling), reaching for unsafe (split_at_mut safe alternative, checklist before unsafe, Rust 2024 `unsafe_op_in_unsafe_fn` warn-by-default, explicit `unsafe {}` blocks inside `unsafe fn`), overusing Rc/Arc (overhead explanation, move/borrow as default, smart pointer decision table), preferring indices over iterators (bounds check elimination, common translations table, when indices are appropriate), capstone Score/Grade report combining all lessons
+- Philosophy: anti-patterns come from fighting the compiler instead of listening to it; the borrow checker is a code reviewer, not an obstacle; the type system is a proof system; unsafe is a scalpel, not a hammer
+- All 25 compilable code examples verified (Rust 1.93+, edition 2024); no does_not_compile or rust,ignore examples
+- Rust 2024 features: `unsafe_op_in_unsafe_fn` lint warn-by-default (explicit `unsafe {}` blocks in `unsafe fn`)
+- Builds on 7.1: bridge from "patterns to use" to "patterns to avoid"; closing bridges to 7.3 (where to go from here)
+- Builds on 3.3: `Option`/`Result`, `?` operator, making illegal states unrepresentable
+- Builds on 4.1: traits, `Display` impl, derive macros
+- Builds on 4.2: generics vs `dyn Trait`, static vs dynamic dispatch
+- Builds on 4.3: iterators vs indexed loops
+- Builds on 2.3/2.4: ownership, borrowing, borrow checker, NLL
+- Builds on 5.1: error handling practices, unwrap spectrum
+- `#[allow(dead_code)]` used in 5 examples to suppress warnings on unused variants/functions in teaching snippets
+- Deliberately omitted: `#[deny(warnings)]` anti-pattern (too niche for intro), `Deref` code example (described in prose, not demonstrated to avoid teaching the anti-pattern), `RefCell`/interior mutability anti-patterns (too advanced), async-specific anti-patterns (blocking in async, covered in 7.3), `mem::take`/`mem::replace` patterns (too advanced for this chapter)
+- **Review items:**
+  - The `expect` example uses `HOME` env var — platform-specific (macOS/Linux), same caveat as 3.3 and 5.1
+  - The `Deref` inheritance section describes the anti-pattern in prose but does not show the wrong code — deliberate to avoid teaching readers how to misuse Deref; consider whether a brief does_not_compile example would be more instructive
+  - The `unsafe` section's `process_raw` example is contrived — raw pointer iteration when slice already works; acceptable as it demonstrates the 2024 edition change
+  - The smart pointers section is brief — could expand with `Rc` cycle example using `Weak`, but that's covered in 5.2
+  - The capstone uses `partial_cmp(&b).unwrap()` for f64 — same caveat as 4.3 capstone (PartialOrd not Ord)
+  - Consider whether the "when cloning is correct" section needs a code example
+  - No mention of `Cow<str>` as an alternative to cloning — too advanced for this chapter
+
 ### Part 7 — REMAINING
-- 7.2 What Not to Do: anti-patterns, common mistakes
 - 7.3 Where to Go from Here: async in depth, unsafe, macros, ecosystem, resources
 
 ## Rust 2024 Features Tracker (for future chapters)
