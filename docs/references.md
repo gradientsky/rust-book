@@ -330,6 +330,7 @@ Resources used to build book materials, organized by topic.
 - [Using Message Passing to Transfer Data Between Threads - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-02-message-passing.html)
 - [Shared-State Concurrency - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-03-shared-state.html)
 - [Extensible Concurrency with Send and Sync - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html)
+- [RwLock - Rust std docs](https://doc.rust-lang.org/std/sync/struct.RwLock.html)
 - [Why Rust mutexes look like they do - Cliffle](https://cliffle.com/blog/rust-mutexes/)
 
 ## Async, Futures, and Runtimes
