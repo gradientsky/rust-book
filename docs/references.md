@@ -203,6 +203,12 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.86.0 (trait upcasting) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
 - [RFC 3324: dyn Upcasting Coercion - The Rust RFC Book](https://rust-lang.github.io/rfcs/3324-dyn-upcasting.html)
 
+## Supertraits
+
+- [Supertraits - The Rust Programming Language](https://doc.rust-lang.org/book/ch20-02-advanced-traits.html#using-supertraits-to-require-one-traits-functionality-within-another-trait)
+- [Supertraits - Rust By Example](https://doc.rust-lang.org/rust-by-example/trait/supertraits.html)
+- [Supertraits - The Rust Reference](https://doc.rust-lang.org/reference/items/traits.html#supertraits)
+
 ## Generics, Monomorphization, and Trait Objects
 
 - [Generic Data Types - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-01-syntax.html)
