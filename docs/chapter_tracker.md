@@ -22,7 +22,7 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
-| 3.1 Structs and Methods | — | Planned | Structs, impl blocks, derive Debug, Display |
+| 3.1 Structs and Methods | [`src/part3/3.1 Structs and Methods.md`](../src/part3/3.1%20Structs%20and%20Methods.md) | **Draft** | Struct definition, field init shorthand, mutation, struct update syntax, tuple structs, unit structs, methods (`&self`/`&mut self`/`self`), associated functions, `new` convention, `#[derive(Debug)]`, `Display` impl, ownership with structs, capstone example |
 | 3.2 Enums and Pattern Matching | — | Planned | ADTs, match, if let, let chains (2024), destructuring |
 | 3.3 Null, Errors, and the Type System | — | Planned | Option, Result, `?` operator, making illegal states unrepresentable |
 

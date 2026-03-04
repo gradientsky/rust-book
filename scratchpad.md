@@ -88,9 +88,26 @@ Working notes and action items for the next iteration.
   - No mention of `Deref` coercion beyond the `&String` → `&str` auto-conversion — details deferred to Part 4 (Traits)
   - Consider whether the "Working With the Borrow Checker" section should come before or after the dangling references section
 
+### 3.1 Structs and Methods — DRAFT COMPLETE
+- Covers: struct definition (named fields), field init shorthand, mutation (whole-struct mutability), struct update syntax with move semantics, tuple structs (newtype pattern intro), unit structs, methods with `impl` blocks, three method receivers (`&self`/`&mut self`/`self`), methods with extra parameters, associated functions (no `self`), `new` convention, `#[derive(Debug)]` for `{:?}` and `{:#?}`, `Display` trait manual implementation for `{}`, structs and ownership (move vs borrow), capstone `Task` example demonstrating all concepts
+- Philosophy: structs are not just data containers — combined with `impl` blocks they form types with clear interfaces; method receiver declares the contract; self-documenting APIs
+- All 18 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024); 1 does_not_compile example (E0277) verified with exact error message
+- Builds on 2.3 (ownership) and 2.4 (borrowing): method receivers directly map to `&T`, `&mut T`, and owned `T`; struct update syntax demonstrates move semantics; `into_` prefix convention introduced
+- `std::fmt` imported for Display — first `use` statement in the book; explained minimally as "bring the formatting module into scope"
+- `derive` concept introduced with Debug — explained as "compiler generates the implementation based on your fields"; mentioned other derivable traits (Clone, PartialEq, Default) as preview
+- No Rust 2024-specific changes to struct/impl syntax; match ergonomics changes affect destructuring but deferred to 3.2
+- `std::fmt::from_fn` (stabilized 1.93) deliberately omitted — too advanced for intro chapter, better suited for Part 4 or Part 7
+- **Review items:**
+  - Verify the `use std::fmt` introduction doesn't confuse readers — modules/`use` are formally covered in 5.3
+  - The `Formatter<'_>` lifetime syntax in Display impl uses `'_` (anonymous lifetime) — verify this is approachable before lifetimes are fully covered; context from 2.4 should be sufficient
+  - Struct update syntax example produces a warning about unused `name` field — acceptable for single-file snippet
+  - The `into_` prefix naming convention is introduced here — verify it feels natural or needs more explanation
+  - Consider whether tuple struct section needs more motivation (newtype pattern is revisited in Part 7)
+  - Unit structs are explained briefly — verify the "type-level markers" forward reference to Part 4 feels natural
+
 ### Part 3 — NEXT UP
-- 3.1 Structs and Methods: build on ownership + borrowing; `&self`, `&mut self`, `self` method receivers map directly to the borrowing concepts from 2.4
-- The chapter closer in 2.4 bridges to structs: "choosing when methods should read, modify, or consume the values they operate on"
+- 3.2 Enums and Pattern Matching: build on structs; enums that carry data (ADTs), `match` exhaustive matching, `if let`, let chains (Rust 2024), destructuring structs and enums
+- Bridge from 3.1: "what about values that can be one of several things?"
 
 ## Rust 2024 Features Tracker (for future chapters)
 

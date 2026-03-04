@@ -105,6 +105,18 @@ Resources used to build book materials, organized by topic.
 - [Match ergonomics reservations - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/match-ergonomics.html)
 - [Disallow references to static mut - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/static-mut-references.html)
 
+## Structs, Methods, and Formatting
+
+- [Using Structs to Structure Related Data - The Rust Programming Language](https://doc.rust-lang.org/book/ch05-00-structs.html)
+- [Defining and Instantiating Structs - The Rust Programming Language](https://doc.rust-lang.org/book/ch05-01-defining-structs.html)
+- [An Example Program Using Structs - The Rust Programming Language](https://doc.rust-lang.org/book/ch05-02-example-structs.html)
+- [Method Syntax - The Rust Programming Language](https://doc.rust-lang.org/book/ch05-03-method-syntax.html)
+- [Debug trait - Rust std docs](https://doc.rust-lang.org/std/fmt/trait.Debug.html)
+- [Display trait - Rust std docs](https://doc.rust-lang.org/std/fmt/trait.Display.html)
+- [Derive - Rust By Example](https://doc.rust-lang.org/rust-by-example/trait/derive.html)
+- [Constructor - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/ctor.html)
+- [Match Ergonomics Reservations - Rust Edition Guide](https://doc.rust-lang.org/nightly/edition-guide/rust-2024/match-ergonomics.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
