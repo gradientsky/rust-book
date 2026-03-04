@@ -219,10 +219,11 @@ Working notes and action items for the next iteration.
 - `use<>` precise capturing syntax deliberately omitted from examples — the 2024 default behavior is the simpler and more common case; `use<>` is for edge cases better covered in advanced material
 - **Updated E0369 error output** to Rust 1.93.1: column 2:11→2:10
 - **Fixed `clone_self` dead_code warning**: added `#[derive(Clone)]` to Circle, added `clone_self()` call on concrete type in main; demonstrates that excluded methods work on concrete types but not through `dyn Describe`; zero warnings
+- **Added associated type bounds C-head** ("Constraining associated types") under "Associated Types vs Type Parameters": shows `Item: Display` inline syntax as alternative to verbose `where I::Item: Display` clauses; multiple bounds with `Item: Display + Debug` (Rust 1.92); `= Type` (pin to concrete) vs `: Trait` (constrain capabilities) distinction; `rust,ignore` snippet for where-clause approach, 2 compilable examples (print_items, inspect); all verified zero-warning Rust 1.93.1; bridges naturally to iterator work in 4.3
 - **Review items:**
   - The `where (T, T): Debug` example is unusual but demonstrates non-parameter bounds; verify it does not confuse beginners
   - The RPIT 2024 lifetime rule section is brief — verify it adequately explains why it matters without overloading; consider if a contrasting "this wouldn't work in 2021" note would help or hurt
-  - The associated types example uses `Summarize<Summary = String>` constraint — verify this notation is clear without prior exposure
+  - ~~The associated types example uses `Summarize<Summary = String>` constraint — verify this notation is clear without prior exposure~~ — RESOLVED: added "Constraining associated types" C-head subsection that explicitly contrasts `= Type` (pinning) with `: Trait` (constraining capabilities); the `Summary = String` notation now has a natural complement
   - The `Vec<Box<dyn Describe>>` pattern introduces heap allocation with `Box` before Part 5 — context from 3.2 (`Box<Expr>`) should be sufficient
   - The dyn compatibility rules are simplified — full rules include no associated constants, no GATs, etc.; current level of detail is appropriate for intro
   - ~~The `clone_self` example in dyn compatibility generates an unused method warning — acceptable for teaching snippet~~ — RESOLVED: added `#[derive(Clone)]` to Circle and `clone_self()` call in main; demonstrates excluded methods work on concrete types; zero warnings
