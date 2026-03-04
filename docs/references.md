@@ -50,6 +50,18 @@ Resources used to build book materials, organized by topic.
 - [Disallow references to static mut - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/static-mut-references.html)
 - [LazyLock in std::sync - Rust std docs](https://doc.rust-lang.org/std/sync/struct.LazyLock.html)
 
+## Integer Overflow
+
+- [RFC 0560 - Integer Overflow](https://rust-lang.github.io/rfcs/0560-integer-overflow.html)
+- [Data Types: Integer Overflow - The Rust Programming Language](https://doc.rust-lang.org/book/ch03-02-data-types.html#integer-overflow)
+- [i32::checked_add - Rust std docs](https://doc.rust-lang.org/std/primitive.i32.html#method.checked_add)
+- [i32::saturating_add - Rust std docs](https://doc.rust-lang.org/std/primitive.i32.html#method.saturating_add)
+- [i32::wrapping_add - Rust std docs](https://doc.rust-lang.org/std/primitive.i32.html#method.wrapping_add)
+- [i32::strict_add - Rust std docs](https://doc.rust-lang.org/std/primitive.i32.html#method.strict_add)
+- [Stabilize strict_overflow_ops (PR #144682)](https://github.com/rust-lang/rust/pull/144682)
+- [Announcing Rust 1.91.0 (strict_overflow_ops) - Rust Blog](https://releases.rs/docs/1.91.0/)
+- [Cargo Profiles: overflow-checks - The Cargo Book](https://doc.rust-lang.org/cargo/reference/profiles.html)
+
 ## Variables, Types, and Expressions
 
 - [Variables and Mutability - The Rust Programming Language](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html)
