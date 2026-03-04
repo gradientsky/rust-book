@@ -99,22 +99,27 @@ Working notes and action items for the next iteration.
   - No mention of `Deref` coercion beyond the `&String` → `&str` auto-conversion — details deferred to Part 4 (Traits)
   - Consider whether the "Working With the Borrow Checker" section should come before or after the dangling references section
 
-### 3.1 Structs and Methods — DRAFT COMPLETE
+### 3.1 Structs and Methods — ITERATED
 - Covers: struct definition (named fields), field init shorthand, mutation (whole-struct mutability), struct update syntax with move semantics, tuple structs (newtype pattern intro), unit structs, methods with `impl` blocks, three method receivers (`&self`/`&mut self`/`self`), methods with extra parameters, associated functions (no `self`), `new` convention, `#[derive(Debug)]` for `{:?}` and `{:#?}`, `Display` trait manual implementation for `{}`, structs and ownership (move vs borrow), capstone `Task` example demonstrating all concepts
 - Philosophy: structs are not just data containers — combined with `impl` blocks they form types with clear interfaces; method receiver declares the contract; self-documenting APIs
-- All 18 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024); 1 does_not_compile example (E0277) verified with exact error message
+- All 18 code examples verified zero-warning (Rust 1.93.1, edition 2024); 1 does_not_compile example (E0277) verified with exact error output matching Rust 1.93.1
 - Builds on 2.3 (ownership) and 2.4 (borrowing): method receivers directly map to `&T`, `&mut T`, and owned `T`; struct update syntax demonstrates move semantics; `into_` prefix convention introduced
 - `std::fmt` imported for Display — first `use` statement in the book; explained minimally as "bring the formatting module into scope"
 - `derive` concept introduced with Debug — explained as "compiler generates the implementation based on your fields"; mentioned other derivable traits (Clone, PartialEq, Default) as preview
 - No Rust 2024-specific changes to struct/impl syntax; match ergonomics changes affect destructuring but deferred to 3.2
 - `std::fmt::from_fn` (stabilized 1.93) deliberately omitted — too advanced for intro chapter, better suited for Part 4 or Part 7
 - **Review items:**
-  - Verify the `use std::fmt` introduction doesn't confuse readers — modules/`use` are formally covered in 5.3
-  - The `Formatter<'_>` lifetime syntax in Display impl uses `'_` (anonymous lifetime) — verify this is approachable before lifetimes are fully covered; context from 2.4 should be sufficient
-  - Struct update syntax example produces a warning about unused `name` field — acceptable for single-file snippet
-  - The `into_` prefix naming convention is introduced here — verify it feels natural or needs more explanation
-  - Consider whether tuple struct section needs more motivation (newtype pattern is revisited in Part 7)
-  - Unit structs are explained briefly — verify the "type-level markers" forward reference to Part 4 feels natural
+  - ~~Verify the `use std::fmt` introduction doesn't confuse readers — modules/`use` are formally covered in 5.3~~ — ACCEPTED: the `use std::fmt;` line is explained as "bring the formatting module into scope"; formal module system in 5.3 adds depth but this is sufficient for use NOW
+  - ~~The `Formatter<'_>` lifetime syntax in Display impl uses `'_` (anonymous lifetime) — verify this is approachable before lifetimes are fully covered~~ — ACCEPTED: `'_` is an anonymous lifetime readers don't need to understand; context from 2.4 (lifetime annotations) is sufficient; the Display signature is treated as a recipe pattern
+  - ~~Struct update syntax example produces a warning about unused `name` field~~ — RESOLVED: changed println to display `user2.name`, showing the move landed correctly (Alice's name now appears in user2); zero warnings
+  - ~~The `into_` prefix naming convention is introduced here — verify it feels natural or needs more explanation~~ — ACCEPTED: introduced naturally in capstone Task example; explained as "a Rust convention for methods that take ownership"; fuller treatment in Part 7
+  - ~~Consider whether tuple struct section needs more motivation (newtype pattern is revisited in Part 7)~~ — ACCEPTED: the Meters/Color examples are self-motivating; "you cannot accidentally add meters to seconds" is clear motivation; Part 7 adds depth
+  - ~~Unit structs are explained briefly — verify the "type-level markers" forward reference to Part 4 feels natural~~ — ACCEPTED: the sentence "you will see them used with traits" is a natural bridge; the concept is self-contained enough to understand without traits
+  - **Fixed unused variable warnings** in opening example (user_active/user2_active): added active field to println output
+  - **Fixed unused `active` field warning** in mutation example: added active to println output
+  - **Fixed dead_code warnings** in Debug example: added direct `coordinates` println using `p.x`/`p.y` alongside Debug output; contrasts derived Debug with manual field access
+  - **Fixed dead_code warnings** in ownership move example: replaced `#[derive(Debug)]` with direct field access in `apply_config`; more instructive for ownership section
+  - **Updated E0277 error output** to match Rust 1.93.1 format (added `---- required by this formatting parameter` annotation)
 
 ### 3.2 Enums and Pattern Matching — DRAFT COMPLETE
 - Covers: enum definition (simple variants, data-carrying variants, named-field variants), exhaustive `match` with E0004 error, match as expression, wildcard `_` catch-all, or patterns (`|`), `if let` / `if let else`, **`let`-`else` (guard clauses, divergent else block, happy-path-flat idiom, when-to-use-each guide: if let vs let-else vs match)**, let chains (Rust 2024 with `&&`), destructuring (enums, structs, tuples, nested), match guards (`if condition`), `..` ignore pattern for structs, `Box<Expr>` for recursive types (brief), `matches!` macro, capstone `Ticket` system example with nested pattern matching and Display impl
