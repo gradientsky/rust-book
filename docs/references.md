@@ -267,6 +267,22 @@ Resources used to build book materials, organized by topic.
 - [RFC 2906: Workspace Dependency Deduplication - The Rust RFC Book](https://rust-lang.github.io/rfcs/2906-cargo-workspace-deduplicate.html)
 - [Minimize Visibility - Effective Rust](https://effective-rust.com/visibility.html)
 
+## Testing
+
+- [How to Write Tests - The Rust Programming Language](https://doc.rust-lang.org/book/ch11-01-writing-tests.html)
+- [Controlling How Tests Are Run - The Rust Programming Language](https://doc.rust-lang.org/book/ch11-02-running-tests.html)
+- [Test Organization - The Rust Programming Language](https://doc.rust-lang.org/book/ch11-03-test-organization.html)
+- [Documentation Tests - The rustdoc book](https://doc.rust-lang.org/rustdoc/write-documentation/documentation-tests.html)
+- [cargo test - The Cargo Book](https://doc.rust-lang.org/cargo/commands/cargo-test.html)
+- [Unit testing - Rust By Example](https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html)
+- [Integration testing - Rust By Example](https://doc.rust-lang.org/rust-by-example/testing/integration_testing.html)
+- [Doc testing - Rust By Example](https://doc.rust-lang.org/rust-by-example/testing/doc_testing.html)
+- [Rustdoc Combined Doctests - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/rustdoc-doctests.html)
+- [assert! macro - Rust std docs](https://doc.rust-lang.org/std/macro.assert.html)
+- [assert_eq! macro - Rust std docs](https://doc.rust-lang.org/std/macro.assert_eq.html)
+- [assert_ne! macro - Rust std docs](https://doc.rust-lang.org/std/macro.assert_ne.html)
+- [Announcing Rust 1.89.0 (doctest cross-compilation) - Rust Blog](https://blog.rust-lang.org/2025/08/07/Rust-1.89.0/)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
