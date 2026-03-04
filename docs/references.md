@@ -303,6 +303,9 @@ Resources used to build book materials, organized by topic.
 - [str::floor_char_boundary - Rust std docs](https://doc.rust-lang.org/std/primitive.str.html#method.floor_char_boundary)
 - [str::ceil_char_boundary - Rust std docs](https://doc.rust-lang.org/std/primitive.str.html#method.ceil_char_boundary)
 - [Announcing Rust 1.91.0 (floor/ceil_char_boundary) - Rust Blog](https://blog.rust-lang.org/2025/10/30/Rust-1.91.0/)
+- [Cow<T> - Rust std docs](https://doc.rust-lang.org/std/borrow/enum.Cow.html)
+- [String::from_utf8_lossy - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy)
+- [Clone on write (Cow) - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/cow.html)
 
 ## Modules, Visibility, and Project Structure
 
