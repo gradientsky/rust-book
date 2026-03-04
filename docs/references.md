@@ -151,6 +151,8 @@ Resources used to build book materials, organized by topic.
 - [if let temporary scope - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/temporary-if-let-scope.html)
 - [let chains in if and while - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/let-chains.html)
 - [Announcing Rust 1.88.0 | Rust Blog](https://blog.rust-lang.org/2025/06/26/Rust-1.88.0/)
+- [let-else statements - The Rust Reference](https://doc.rust-lang.org/reference/statements.html#let-else-statements)
+- [Announcing Rust 1.65.0 (let-else stabilization) - Rust Blog](https://blog.rust-lang.org/2022/11/03/Rust-1.65.0.html)
 - [matches! macro - Rust std docs](https://doc.rust-lang.org/std/macro.matches.html)
 - [std::mem::discriminant - Rust std docs](https://doc.rust-lang.org/std/mem/fn.discriminant.html)
 - [Box<T> - Rust std docs](https://doc.rust-lang.org/std/boxed/struct.Box.html)
