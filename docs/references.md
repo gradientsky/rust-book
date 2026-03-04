@@ -193,6 +193,24 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.86.0 (trait upcasting, dyn compatible) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
 - [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
 
+## Iterators and Functional Patterns
+
+- [Iterator trait - Rust std docs](https://doc.rust-lang.org/std/iter/trait.Iterator.html)
+- [IntoIterator trait - Rust std docs](https://doc.rust-lang.org/std/iter/trait.IntoIterator.html)
+- [std::iter module - Rust std docs](https://doc.rust-lang.org/std/iter/index.html)
+- [Iterators - The Rust Programming Language](https://doc.rust-lang.org/book/ch13-02-iterators.html)
+- [Processing a Series of Items with Iterators - The Rust Programming Language](https://doc.rust-lang.org/book/ch13-02-iterators.html)
+- [Comparing Performance: Loops vs. Iterators - The Rust Programming Language](https://doc.rust-lang.org/book/ch13-04-performance.html)
+- [Iterator - Rust By Example](https://doc.rust-lang.org/rust-by-example/trait/iter.html)
+- [FromIterator trait - Rust std docs](https://doc.rust-lang.org/std/iter/trait.FromIterator.html)
+- [iter::repeat_n - Rust std docs](https://doc.rust-lang.org/std/iter/fn.repeat_n.html)
+- [iter::successors - Rust std docs](https://doc.rust-lang.org/std/iter/fn.successors.html)
+- [iter::from_fn - Rust std docs](https://doc.rust-lang.org/std/iter/fn.from_fn.html)
+- [iter::once - Rust std docs](https://doc.rust-lang.org/std/iter/fn.once.html)
+- [Iterator::is_sorted - Rust std docs](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.is_sorted)
+- [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
+- [Announcing Rust 1.82.0 (is_sorted, repeat_n) - Rust Blog](https://blog.rust-lang.org/2024/10/17/Rust-1.82.0/)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
