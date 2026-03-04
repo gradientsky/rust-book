@@ -113,6 +113,7 @@ Resources used to build book materials, organized by topic.
 
 - [References and Borrowing - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html)
 - [The Slice Type - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-03-slices.html)
+- [str::find - Rust std docs](https://doc.rust-lang.org/std/primitive.str.html#method.find)
 - [Validating References with Lifetimes - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)
 - [Borrowing - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/borrow.html)
 - [Lifetimes - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/lifetime.html)
