@@ -82,12 +82,12 @@ Working notes and action items for the next iteration.
 - No Rust 2024-specific changes to core borrowing/reference mechanics; NLL has been stable since Rust 2018 edition; match ergonomics 2024 changes exist but are too advanced for this chapter
 - Builds on 2.3: opens with the ownership-only pain point (tuple return pattern), introduces `&` as the solution
 - Introduced `vec![]` macro minimally for borrow checker examples — used without explanation, context makes intent clear
-- Introduced `iter().max().unwrap()` and `*` dereference briefly in practical patterns — minimal, self-contained
+- Practical patterns use only concepts from Parts 1–2 (indexing, loops, Copy types); no forward references to iterators or `unwrap`
 - **Review items:**
   - Verify the `vec![]` usage doesn't confuse readers who haven't formally seen it (it appeared in 1.2 clippy example)
-  - The `first_word` function uses `s.bytes().enumerate()` and byte literal `b' '` — verify this is approachable for beginners
+  - ~~The `first_word` function uses `s.bytes().enumerate()` and byte literal `b' '` — verify this is approachable for beginners~~ — RESOLVED: replaced with `find(' ')` + `if let Some(space)` pattern; avoids byte-level operations, uses only concepts from 2.1 (`if let`) and intuitive `find` method; added explanatory paragraph about `find` returning `Option`
   - The lifetime annotation section uses `longer` function — classic example, but verify the nested scope example doesn't feel contrived
-  - The `*scores.iter().max().unwrap()` pattern in "Separate Your Reads and Writes" may be too dense — consider if it needs more explanation
+  - ~~The `*scores.iter().max().unwrap()` pattern in "Separate Your Reads and Writes" may be too dense — consider if it needs more explanation~~ — RESOLVED: replaced with explicit index-based loop (`for i in 1..scores.len()`) using only Copy semantics and comparison; avoids iterators (Part 4), `unwrap` (Part 3), and dereference; added explanatory paragraph about why index-based reads avoid borrow conflicts
   - No mention of reborrowing — deliberately omitted for simplicity
   - No mention of `Deref` coercion beyond the `&String` → `&str` auto-conversion — details deferred to Part 4 (Traits)
   - Consider whether the "Working With the Borrow Checker" section should come before or after the dangling references section
