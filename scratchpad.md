@@ -308,7 +308,7 @@ Working notes and action items for the next iteration.
 ### 5.3 Modules and Project Structure — ITERATED
 - Covers: `mod`/`use`/`pub`, visibility spectrum (private default, `pub(crate)`, `pub(super)`, `pub`), struct field visibility with invariant protection, re-exports (`pub use`), grouped imports (`use std::io::{self, Write}`), `as` renaming, file layout (named-file convention: `network.rs` + `network/` directory), library vs binary crates (`lib.rs`/`main.rs`), lib+bin pattern, multiple binaries (`src/bin/`), Cargo.toml in depth (package metadata, edition/rust-version, dependencies/dev-dependencies/build-dependencies, `[lints]` section with priority, resolver v3 MSRV-aware), workspaces (members, `workspace.dependencies` with `workspace = true`, `workspace.lints`, 2024 `default-features` hard error), evaluating third-party crates (docs.rs, crates.io, lib.rs, ecosystem defaults table), capstone KeyValueStore example with modules/visibility/re-exports
 - Philosophy: modules define boundaries, not just organize files; every `pub` is a promise; private by default forces deliberate API design; visibility enforced by compiler, not convention
-- All 8 compilable code examples verified zero-warning (Rust 1.93+, edition 2024); 5 `rust,ignore` multi-file examples (cannot compile in single-file context)
+- All 9 compilable code examples verified zero-warning (Rust 1.93+, edition 2024); 5 `rust,ignore` multi-file examples (cannot compile in single-file context)
 - No Rust 2024-specific changes to core module/path/visibility system; edition-relevant: resolver v3 default, `default-features` rejection in workspace inheritance, `gen` reserved keyword (not demonstrated but relevant context)
 - Builds on 5.2: bridge from "data structures" to "how to organize code"
 - Builds on 3.1: struct methods, impl blocks
@@ -330,6 +330,7 @@ Working notes and action items for the next iteration.
   - Consider whether `pub(super)` deserves a code example or if the visibility table is sufficient — DEFERRED: the table is sufficient for a pocket book
   - The `mod.rs` vs named-file convention is explained — old convention mentioned briefly for codebase literacy
   - The capstone sorts HashMap keys for deterministic output — same pattern as 5.2
+  - **Added `#[expect]` vs `#[allow]` C-head** under The Lints Section (Rust 1.81): philosophy-first explanation of stale `#[allow]` annotations; `#[expect(dead_code)]` code example (zero-warning, verified Rust 1.93.1); unfulfilled lint expectation warning output (shown when suppressed lint stops firing); production-grade recommendation to prefer `#[expect]` over `#[allow]`; connects to book's running theme of "the compiler keeps you honest"
   - **Added "Cargo Manages Its Own Cache" A-head section** (Rust 1.88): philosophy-first explanation of cache growth problem; how automatic GC works (1.78 timestamp tracking → 1.88 deletion); retention table (`.crate` archives 3 months, extracted sources 1 month); `[cache] auto-clean-frequency` config in _~/.cargo/config.toml_ with value table; CI caching caveat with `"never"` workaround; added to key points summary; no compilable code examples (TOML config only)
 
 ### 5.4 Testing as a First-Class Citizen — ITERATED
