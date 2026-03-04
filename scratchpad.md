@@ -71,11 +71,26 @@ Working notes and action items for the next iteration.
   - The "Why This Matters" section lists data races as prevented by ownership — technically ownership + borrowing together; verify this claim is precise enough
   - No mention of partial moves — deliberately omitted for simplicity; will be relevant in Part 3 (structs)
 
-### 2.4 Borrowing and References — NEXT UP
-- &T vs &mut T, borrow checker, lifetime concept (not memorization)
-- Build on 2.3: borrowing is how you use values without taking ownership
-- The chapter closer in 2.3 sets this up: "without borrowing, you'd have to move values back and forth"
-- Key patterns to cover: function parameters as references, the "many readers or one writer" rule, borrow checker errors and how to read them, lifetime elision (concept, not rules)
+### 2.4 Borrowing and References — DRAFT COMPLETE
+- Covers: shared references (`&T`), mutable references (`&mut T`), the many-readers-or-one-writer rule, Non-Lexical Lifetimes (NLL), borrow checker error anatomy (E0596, E0499, E0502, E0106), string slices (`&str` vs `&String`), array/vector slices (`&[T]`), dangling references, lifetime annotations (`'a`), lifetime elision, practical patterns (separate reads/writes, index-based mutation, narrow scopes)
+- Philosophy: borrowing is what makes ownership practical — use without owning; borrow checker is a tool, not an obstacle
+- All 14 compilable code examples verified (Rust 1.93+, edition 2024); 5 does_not_compile examples verified with exact error messages
+- No Rust 2024-specific changes to core borrowing/reference mechanics; NLL has been stable since Rust 2018 edition; match ergonomics 2024 changes exist but are too advanced for this chapter
+- Builds on 2.3: opens with the ownership-only pain point (tuple return pattern), introduces `&` as the solution
+- Introduced `vec![]` macro minimally for borrow checker examples — used without explanation, context makes intent clear
+- Introduced `iter().max().unwrap()` and `*` dereference briefly in practical patterns — minimal, self-contained
+- **Review items:**
+  - Verify the `vec![]` usage doesn't confuse readers who haven't formally seen it (it appeared in 1.2 clippy example)
+  - The `first_word` function uses `s.bytes().enumerate()` and byte literal `b' '` — verify this is approachable for beginners
+  - The lifetime annotation section uses `longer` function — classic example, but verify the nested scope example doesn't feel contrived
+  - The `*scores.iter().max().unwrap()` pattern in "Separate Your Reads and Writes" may be too dense — consider if it needs more explanation
+  - No mention of reborrowing — deliberately omitted for simplicity
+  - No mention of `Deref` coercion beyond the `&String` → `&str` auto-conversion — details deferred to Part 4 (Traits)
+  - Consider whether the "Working With the Borrow Checker" section should come before or after the dangling references section
+
+### Part 3 — NEXT UP
+- 3.1 Structs and Methods: build on ownership + borrowing; `&self`, `&mut self`, `self` method receivers map directly to the borrowing concepts from 2.4
+- The chapter closer in 2.4 bridges to structs: "choosing when methods should read, modify, or consume the values they operate on"
 
 ## Rust 2024 Features Tracker (for future chapters)
 

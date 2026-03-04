@@ -89,6 +89,22 @@ Resources used to build book materials, organized by topic.
 - [Tail expression temporary scope - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/temporary-tail-expr-scope.html)
 - [if let temporary scope - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/temporary-if-let-scope.html)
 
+## Borrowing, References, and Lifetimes
+
+- [References and Borrowing - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html)
+- [The Slice Type - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-03-slices.html)
+- [Validating References with Lifetimes - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)
+- [Borrowing - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/borrow.html)
+- [Lifetimes - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/lifetime.html)
+- [E0596 Error Code Reference](https://doc.rust-lang.org/error_codes/E0596.html)
+- [E0499 Error Code Reference](https://doc.rust-lang.org/error_codes/E0499.html)
+- [E0502 Error Code Reference](https://doc.rust-lang.org/error_codes/E0502.html)
+- [E0106 Error Code Reference](https://doc.rust-lang.org/error_codes/E0106.html)
+- [if let temporary scope - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/temporary-if-let-scope.html)
+- [RPIT lifetime capture rules - The Rust Edition Guide](https://doc.rust-lang.org/nightly/edition-guide/rust-2024/rpit-lifetime-capture.html)
+- [Match ergonomics reservations - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/match-ergonomics.html)
+- [Disallow references to static mut - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/static-mut-references.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
