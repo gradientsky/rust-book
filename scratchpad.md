@@ -332,28 +332,28 @@ Working notes and action items for the next iteration.
   - **Updated all test output** to match Rust 1.93.1 format: `#[ignore]` reason strings now shown inline (`... ignored, reason`); `test result:` lines now include `; finished in X.XXs` suffix
   - **Updated `#[ignore]` prose** to note that reason strings appear directly in test output (not just when listing tests)
 
-### 6.1 Concurrency Without Data Races — DRAFT COMPLETE
+### 6.1 Concurrency Without Data Races — ITERATED
 - Covers: data race philosophy (ownership prevents races at compile time), `thread::spawn` (JoinHandle, join, move closures, `'static` requirement), `thread::scope` (scoped threads, non-`'static` borrowing, automatic joining), `Send` and `Sync` traits (auto traits, marker traits, `Rc` non-Send example, `Cell`/`RefCell` non-Sync), `Arc<T>` (atomic reference counting, `Arc::clone` convention), `Mutex<T>` (MutexGuard RAII, poisoning, lock scope best practices), **`RwLock<T>` (many-readers-or-one-writer runtime enforcement, read/write guards, Mutex vs RwLock decision guidance)**, `Arc<Mutex<T>>` pattern, channels (`mpsc::channel`, Sender/Receiver, iterator protocol, multiple producers, `drop(tx)` pattern), async taste (`async`/`await`, Future trait, runtime requirement, tokio, `tokio::spawn`, `#[tokio::main]`), async closures (Rust 2024: `async || {}`, `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` traits), capstone worker pool example (threads + channels + Arc<Mutex<T>>)
 - Philosophy: concurrency safe by default; ownership/borrowing rules ARE the data race prevention rules; same system prevents use-after-free and data races
-- All 10 compilable code examples verified (Rust 1.93+, edition 2024); 2 does_not_compile examples verified (E0373 borrow in thread, E0277 Rc not Send)
+- All 10 compilable code examples verified zero-warning (Rust 1.93.1, edition 2024); 2 does_not_compile examples verified (E0373 borrow in thread, E0277 Rc not Send); 5 `rust,ignore` examples (spawn signature, async/tokio)
 - Rust 2024 features: async closures (`async || {}`) stabilized in Rust 1.85.0, `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` in prelude for all editions; `std::env::set_var`/`remove_var` now unsafe (concurrency safety); `Future`/`IntoFuture` in prelude
 - Builds on 5.4: bridge from "testing" to "concurrent programming"; closing paragraph connects to Part 7 (idiomatic patterns)
 - Builds on 5.2: `Arc<T>` revisited (introduced in 5.2 for thread-safe shared ownership), `Rc<T>` contrasted
 - Builds on 2.3/2.4: ownership and borrowing rules directly prevent data races; move semantics with `move` keyword
 - Builds on 2.2: closures, `move` keyword, `Fn`/`FnMut`/`FnOnce` hierarchy mirrored by `AsyncFn` traits
 - Async section uses `rust,ignore` for tokio examples (require external dependency)
+- **Heading style fix**: `#### The AsyncFn traits` → `#### The async closure traits` (removed code element from heading per O'Reilly style)
 - **Review items:**
-  - Thread output ordering is non-deterministic — documented with "(order may vary)" notes
-  - The `thread::scope` example is brief — could demonstrate mutable borrowing across threads (only one mutable borrow allowed)
-  - Mutex poisoning explained briefly — consider whether more detail is needed for beginners
-  - The async section is deliberately shallow ("a taste") — verify it gives enough to recognize async code without overwhelming
-  - ~~`AsyncFn` trait bound syntax shown as `async Fn()` — verify this compiles on current stable~~ — RESOLVED: rewrote async closures section; confirmed `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` are the correct stable trait names (Rust 1.85+); `async Fn()` bound modifier syntax is nightly-only (`async_trait_bounds` feature); retry example now uses `AsyncFnMut` (correct for multi-call) with `mut action` parameter; added AsyncFn traits table; explained old `|| async move {}` capture limitation; noted old `Fn() -> Fut` pattern limitation for higher-ranked lifetimes; all async examples remain `rust,ignore` (require tokio dependency)
-  - ~~No mention of `RwLock`~~ — RESOLVED: added "RwLock: Many Readers or One Writer" B-head subsection after Mutex; covers `.read()`/`.write()` guards, RAII semantics, poisoning, "Choosing between Mutex and RwLock" C-head with practical guidance; `Arc<RwLock<String>>` config example verified (Rust 1.93+, edition 2024); updated "When to Use" section and closing recap to reference RwLock
-  - ~~The `thread::scope` example is brief — could demonstrate mutable borrowing across threads (only one mutable borrow allowed)~~ — RESOLVED: added "Mutable borrowing across threads" C-head after the immutable scoped threads example; demonstrates `split_at_mut` for disjoint mutable slices processed in parallel; compiler proves no aliasing; verified output `[10, 20, 30, 40, 50, 60]` (Rust 1.93+, edition 2024); reinforces "many readers or one writer" rule in concurrent context
-  - No mention of `Atomic*` types — mentioned implicitly through Arc's atomic refcount; explicit atomics better for Part 7
+  - ~~Thread output ordering is non-deterministic — documented with "(order may vary)" notes~~ — VERIFIED: all 10 compilable examples produce correct output; non-deterministic thread order documented with "(order may vary)" or "(thread order may vary)" notes; deterministic results section (sorted) always matches exactly
+  - ~~The `thread::scope` example is brief — could demonstrate mutable borrowing across threads~~ — RESOLVED (prior iteration)
+  - ~~Mutex poisoning explained briefly~~ — ACCEPTED: brief explanation sufficient for pocket book; poisoning is a rare edge case
+  - ~~The async section is deliberately shallow ("a taste")~~ — ACCEPTED: provides enough to recognize and understand async code; links to Tokio tutorial and Async Book for depth
+  - ~~`AsyncFn` trait bound syntax shown as `async Fn()`~~ — RESOLVED (prior iteration)
+  - ~~No mention of `RwLock`~~ — RESOLVED (prior iteration)
+  - ~~No mention of `Atomic*` types~~ — ACCEPTED: mentioned implicitly through Arc's atomic refcount; explicit atomics better for Part 7
   - The capstone wraps `Receiver` in `Arc<Mutex<Receiver>>` — this is a known anti-pattern (better to use crossbeam-channel MPMC), but acceptable for teaching since only std library is used
-  - `sync_channel` (bounded channel) deliberately omitted — simpler to teach unbounded first; bounded channels mentioned in the "when to use" section prose
-  - Consider whether `thread::Builder` (named threads, stack size) deserves mention
+  - `sync_channel` (bounded channel) deliberately omitted — simpler to teach unbounded first
+  - `thread::Builder` (named threads, stack size) deliberately omitted — too niche for pocket book intro
 
 ### 7.1 Patterns the Pros Use — DRAFT COMPLETE
 - Covers: builder pattern (consuming builders, method chaining, `builder()` convention, fallible `build()` with `Result`, when to use), newtype pattern (zero-cost type safety, `UserId`/`OrderId` example, behavior on newtypes, orphan rule workaround with `PrettyVec`), type-state pattern (`PhantomData<State>`, zero-sized state markers, compile-time state machine enforcement, `Document<Draft>`/`Document<Reviewed>`/`Document<Published>` lifecycle), combinators (`map`/`and_then`/`filter`/`unwrap_or`/`unwrap_or_else`/`or`/`or_else`, combinator quick reference table, pipeline composition vs nested `match`), extension traits (`StrExt` for `str`, blanket implementations with `DisplayExt`, `FooExt` naming convention, ecosystem examples), capstone document processing system combining all five patterns
