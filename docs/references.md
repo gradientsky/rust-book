@@ -215,6 +215,12 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.86.0 (trait upcasting, dyn compatible) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
 - [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
 
+## Floating-Point Ordering
+
+- [f64::total_cmp - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.total_cmp)
+- [Announcing Rust 1.62.0 (total_cmp stabilization) - Rust Blog](https://blog.rust-lang.org/2022/06/30/Rust-1.62.0/)
+- [Tracking Issue #72599: total_cmp for f32 and f64](https://github.com/rust-lang/rust/issues/72599)
+
 ## Iterators and Functional Patterns
 
 - [Iterator trait - Rust std docs](https://doc.rust-lang.org/std/iter/trait.Iterator.html)

@@ -189,10 +189,10 @@ Working notes and action items for the next iteration.
   - Consider whether `impl Trait` same-type vs different-type distinction needs a code example showing the difference (currently prose-only)
 
 ### 4.3 Iterators and Functional Patterns — DRAFT COMPLETE
-- Covers: Iterator trait (`next`, `Item`), three iteration modes (iter/iter_mut/into_iter), for-loop desugaring, lazy evaluation, adaptors (map, filter, filter_map, enumerate, zip, take, skip, flatten, flat_map, chain, inspect), consumers (collect, fold, sum, product, count, any, all, find, position, min, max, min_by_key, max_by_key), collecting into Vec/String/HashMap/HashSet/Result, ranges as iterators, std::iter constructors (repeat_n, once, from_fn, successors), implementing Iterator for custom types (Countdown), IntoIterator for custom collections (Playlist), `is_sorted_by_key` (stable 1.82)
+- Covers: Iterator trait (`next`, `Item`), three iteration modes (iter/iter_mut/into_iter), for-loop desugaring, lazy evaluation, adaptors (map, filter, filter_map, enumerate, zip, take, skip, flatten, flat_map, chain, inspect), consumers (collect, fold, sum, product, count, any, all, find, position, min, max, min_by_key, max_by_key), **`total_cmp` for float sorting** (PartialOrd vs Ord, NaN safety, `sort_by`/`max_by` patterns), collecting into Vec/String/HashMap/HashSet/Result, ranges as iterators, std::iter constructors (repeat_n, once, from_fn, successors), implementing Iterator for custom types (Countdown), IntoIterator for custom collections (Playlist), `is_sorted_by_key` (stable 1.82)
 - Philosophy: iterators eliminate the trade-off between readable high-level code and fast execution; lazy evaluation enables compiler to fuse pipeline into single loop; zero-cost abstraction applied to data processing
-- All 27 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
-- No Rust 2024-specific changes to core iterator trait; `IntoIterator for Box<[T]>` is edition-gated but not demonstrated (too niche for intro); `gen` keyword reserved in 2024 for future gen blocks (nightly-only); `is_sorted`/`is_sorted_by_key` stable since 1.82; `repeat_n` stable since 1.82
+- All 28 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- No Rust 2024-specific changes to core iterator trait; `IntoIterator for Box<[T]>` is edition-gated but not demonstrated (too niche for intro); `gen` keyword reserved in 2024 for future gen blocks (nightly-only); `is_sorted`/`is_sorted_by_key` stable since 1.82; `repeat_n` stable since 1.82; `f64::total_cmp` stable since 1.62 — taught as the production-grade float sorting pattern (replaces `partial_cmp().unwrap()` anti-pattern)
 - Builds on 4.2: closing paragraph bridges from generics to iterators; `impl Iterator` return type pattern from 4.2 revisited
 - Builds on 4.1: `Iterator` is the key trait; `IntoIterator` and `FromIterator` are standard library traits
 - Builds on 3.3: `Option` and `Result` used in `next()`, `find()`, `collect::<Result<Vec<_>,_>>()`; `filter_map` with `.ok()`
@@ -202,6 +202,7 @@ Working notes and action items for the next iteration.
 - Deliberately omitted: `Iterator::array_chunks` (nightly-only), `Iterator::map_windows` (nightly-only), `gen` blocks (nightly-only), `IntoIterator for Box<[T]>` 2024 behavior change (too niche), `try_fold`/`ControlFlow` (advanced), `Extend` trait (Part 5), `ExactSizeIterator`/`DoubleEndedIterator` (advanced traits better for Part 7), `iter::chain` free function (1.91, not needed when method form exists)
 - **Review items:**
   - ~~The `&&n` pattern in `filter` examples may confuse beginners~~ — RESOLVED: added dedicated "Why the double ampersand" C-head subsection in Filter section with step-by-step trace of `&&i32` origin; contrasts `filter`/`find` (`&Self::Item`) with `map`/`any`/`all`/`position` (`Self::Item`); lazy evaluation example changed to range-based to avoid unexplained `&&` before explanation; consumers section adds brief callback note
+  - ~~The capstone uses `partial_cmp(&b).unwrap()` for f64 comparison — could note that f64 is `PartialOrd` not `Ord`~~ — RESOLVED: replaced with `total_cmp` (stable since Rust 1.62); added "Sorting floating-point numbers" C-head subsection after min/max; teaches `total_cmp` as the production-grade pattern, warns against `partial_cmp().unwrap()`
   - The `HashMap` output ordering is non-deterministic; capstone sorts keys for deterministic output — verify this doesn't add confusion
   - The `collect::<Result<Vec<_>,_>>` pattern is powerful but dense — verify the explanation is sufficient for readers who haven't seen advanced generics
   - `repeat_n` (1.82) used instead of `repeat().take()` — modern idiom but less commonly seen in older tutorials
@@ -354,7 +355,7 @@ Working notes and action items for the next iteration.
   - The `Deref` inheritance section describes the anti-pattern in prose but does not show the wrong code — deliberate to avoid teaching readers how to misuse Deref; consider whether a brief does_not_compile example would be more instructive
   - The `unsafe` section's `process_raw` example is contrived — raw pointer iteration when slice already works; acceptable as it demonstrates the 2024 edition change
   - The smart pointers section is brief — could expand with `Rc` cycle example using `Weak`, but that's covered in 5.2
-  - The capstone uses `partial_cmp(&b).unwrap()` for f64 — same caveat as 4.3 capstone (PartialOrd not Ord)
+  - ~~The capstone uses `partial_cmp(&b).unwrap()` for f64~~ — RESOLVED: replaced with `a.0.total_cmp(&b.0)` using newtype inner field; consistent with 4.3 `total_cmp` teaching
   - Consider whether the "when cloning is correct" section needs a code example
   - No mention of `Cow<str>` as an alternative to cloning — too advanced for this chapter
 
