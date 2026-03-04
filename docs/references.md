@@ -97,6 +97,8 @@ Resources used to build book materials, organized by topic.
 
 ## Ownership, Move Semantics, and Drop
 
+- [move keyword - Rust std docs](https://doc.rust-lang.org/std/keyword.move.html)
+- [Capturing - Rust By Example](https://doc.rust-lang.org/rust-by-example/fn/closures/capture.html)
 - [Understanding Ownership - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html)
 - [What is Ownership? - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)
 - [The Stack and the Heap - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-stack-and-the-heap)

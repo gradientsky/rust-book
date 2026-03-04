@@ -61,14 +61,14 @@ Working notes and action items for the next iteration.
   - Consider whether the Fn trait hierarchy section is too abstract for beginners — it's conceptual and short, but could be trimmed further
 
 ### 2.3 Ownership — DRAFT COMPLETE
-- Covers: three rules of ownership, stack vs heap mental model (with ASCII diagram), move semantics (assignment, function calls, return values), E0382 error example, Copy types (full list), Clone (explicit deep copy), Drop trait and RAII, drop order (reverse declaration order with Noisy struct demo), early drop with `std::mem::drop` (including its trivial implementation), comprehensive "ownership in action" capstone example
+- Covers: three rules of ownership, stack vs heap mental model (with ASCII diagram), move semantics (assignment, function calls, return values, **closures with `move`**), E0382 error example, Copy types (full list), Clone (explicit deep copy), Drop trait and RAII, drop order (reverse declaration order with Noisy struct demo), early drop with `std::mem::drop` (including its trivial implementation), comprehensive "ownership in action" capstone example
 - Philosophy: ownership as the third path between GC and manual memory — compiler checks, zero runtime cost; ownership is not a restriction but a system that eliminates bugs
-- All 12 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- All 14 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
 - No Rust 2024-specific changes to ownership model itself; tail expression temporary scope change (RFC 3606) is relevant to Drop order but too advanced for this chapter — covered implicitly by teaching correct patterns
 - Builds on 2.2: functions transfer/return ownership, `move` keyword from 2.2 gets context here
 - Introduced `struct` and `impl Drop` minimally for the drop order example — self-contained, no forward reference needed
 - **Review items:**
-  - The `move` keyword from 2.2 is not explicitly re-explained here — verify the 2.2→2.3 connection is clear enough; consider adding a brief callback
+  - ~~The `move` keyword from 2.2 is not explicitly re-explained here~~ — RESOLVED: added "Moves into closures" C-head subsection after "Moves and Return Values"; shows `move` closure taking ownership of `String` (greet example), `make_greeter(String) -> impl Fn()` function factory (closure outliving scope); 2 verified code examples; fulfills the promise made in 2.2 ("you will see why in the next chapter on ownership")
   - The ASCII diagrams (stack/heap, double-pointer) are important for understanding — verify they render well in target format
   - The `Noisy` struct example introduces `struct`, `impl`, and trait implementation before Part 3 — minimal and self-contained, but verify it doesn't confuse readers
   - Consider adding a note about `String::from` vs string literals — currently shown but not explicitly contrasted (`&str` vs `String` distinction)
