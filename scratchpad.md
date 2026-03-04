@@ -200,7 +200,7 @@ Working notes and action items for the next iteration.
 - Introduced `HashSet` minimally for collect examples — same
 - Deliberately omitted: `Iterator::array_chunks` (nightly-only), `Iterator::map_windows` (nightly-only), `gen` blocks (nightly-only), `IntoIterator for Box<[T]>` 2024 behavior change (too niche), `try_fold`/`ControlFlow` (advanced), `Extend` trait (Part 5), `ExactSizeIterator`/`DoubleEndedIterator` (advanced traits better for Part 7), `iter::chain` free function (1.91, not needed when method form exists)
 - **Review items:**
-  - The `&&n` pattern in `filter` examples may confuse beginners — explained inline but could use more emphasis
+  - ~~The `&&n` pattern in `filter` examples may confuse beginners~~ — RESOLVED: added dedicated "Why the double ampersand" C-head subsection in Filter section with step-by-step trace of `&&i32` origin; contrasts `filter`/`find` (`&Self::Item`) with `map`/`any`/`all`/`position` (`Self::Item`); lazy evaluation example changed to range-based to avoid unexplained `&&` before explanation; consumers section adds brief callback note
   - The `HashMap` output ordering is non-deterministic; capstone sorts keys for deterministic output — verify this doesn't add confusion
   - The `collect::<Result<Vec<_>,_>>` pattern is powerful but dense — verify the explanation is sufficient for readers who haven't seen advanced generics
   - `repeat_n` (1.82) used instead of `repeat().take()` — modern idiom but less commonly seen in older tutorials
