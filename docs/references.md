@@ -247,6 +247,26 @@ Resources used to build book materials, organized by topic.
 - [The Rust Performance Book: Heap Allocations](https://nnethercote.github.io/perf-book/heap-allocations.html)
 - [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
 
+## Modules, Visibility, and Project Structure
+
+- [Managing Growing Projects with Packages, Crates, and Modules - The Rust Programming Language](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html)
+- [Separating Modules into Different Files - The Rust Programming Language](https://doc.rust-lang.org/book/ch07-05-separating-modules-into-different-files.html)
+- [Defining Modules to Control Scope and Privacy - The Rust Programming Language](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html)
+- [Paths for Referring to an Item in the Module Tree - The Rust Programming Language](https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html)
+- [Bringing Paths into Scope with the use Keyword - The Rust Programming Language](https://doc.rust-lang.org/book/ch07-04-bringing-names-into-scope-with-the-use-keyword.html)
+- [Modules - The Rust Reference](https://doc.rust-lang.org/reference/items/modules.html)
+- [Visibility and Privacy - The Rust Reference](https://doc.rust-lang.org/reference/visibility-and-privacy.html)
+- [Package Layout - The Cargo Book](https://doc.rust-lang.org/cargo/guide/project-layout.html)
+- [The Manifest Format - The Cargo Book](https://doc.rust-lang.org/cargo/reference/manifest.html)
+- [Workspaces - The Cargo Book](https://doc.rust-lang.org/cargo/reference/workspaces.html)
+- [Specifying Dependencies - The Cargo Book](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)
+- [Cargo: Rust-version aware resolver - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/cargo-resolver.html)
+- [Cargo: Reject unused inherited default-features - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/cargo-inherited-default-features.html)
+- [gen keyword - The Rust Edition Guide](https://doc.rust-lang.org/nightly/edition-guide/rust-2024/gen-keyword.html)
+- [RFC 3389: Manifest Lints - The Rust RFC Book](https://rust-lang.github.io/rfcs/3389-manifest-lint.html)
+- [RFC 2906: Workspace Dependency Deduplication - The Rust RFC Book](https://rust-lang.github.io/rfcs/2906-cargo-workspace-deduplicate.html)
+- [Minimize Visibility - Effective Rust](https://effective-rust.com/visibility.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)

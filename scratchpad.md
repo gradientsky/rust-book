@@ -243,9 +243,33 @@ Working notes and action items for the next iteration.
   - Consider whether `BTreeMap` deserves more than a one-sentence mention
   - The `has_tag` method was removed from capstone to avoid unused warning — verify the HashSet::contains mention in the recap is sufficient
 
+### 5.3 Modules and Project Structure — DRAFT COMPLETE
+- Covers: `mod`/`use`/`pub`, visibility spectrum (private default, `pub(crate)`, `pub(super)`, `pub`), struct field visibility with invariant protection, re-exports (`pub use`), grouped imports (`use std::io::{self, Write}`), `as` renaming, file layout (named-file convention: `network.rs` + `network/` directory), library vs binary crates (`lib.rs`/`main.rs`), lib+bin pattern, multiple binaries (`src/bin/`), Cargo.toml in depth (package metadata, edition/rust-version, dependencies/dev-dependencies/build-dependencies, `[lints]` section with priority, resolver v3 MSRV-aware), workspaces (members, `workspace.dependencies` with `workspace = true`, `workspace.lints`, 2024 `default-features` hard error), evaluating third-party crates (docs.rs, crates.io, lib.rs, ecosystem defaults table), capstone KeyValueStore example with modules/visibility/re-exports
+- Philosophy: modules define boundaries, not just organize files; every `pub` is a promise; private by default forces deliberate API design; visibility enforced by compiler, not convention
+- All 8 compilable code examples verified (Rust 1.93+, edition 2024); 5 `rust,ignore` multi-file examples (cannot compile in single-file context)
+- No Rust 2024-specific changes to core module/path/visibility system; edition-relevant: resolver v3 default, `default-features` rejection in workspace inheritance, `gen` reserved keyword (not demonstrated but relevant context)
+- Builds on 5.2: bridge from "data structures" to "how to organize code"
+- Builds on 3.1: struct methods, impl blocks
+- Builds on 4.3: iterator patterns in capstone (collect, map, sort)
+- Introduced `use std::io::{self, Write}` — `self` import pattern explained
+- Introduced `writeln!` macro briefly — used without deep explanation (I/O traits)
+- `[lints]` section: stable since Rust 1.74, not 2024-specific but modern and relevant
+- `workspace.dependencies` and `workspace.lints`: stable since 1.64 and 1.74 respectively
+- Deliberately omitted: `pub(in path)` (rarely used, mentioned in visibility table only conceptually), `extern crate` (obsolete since 2018 edition), `#[path]` attribute for custom module paths (rare), conditional compilation (`#[cfg]`, better for advanced chapter), `build.rs` build scripts (too advanced), `[features]` in Cargo.toml (better for library authoring guide), `Cargo.lock` detailed mechanics, `cargo publish` workflow
+- **Review items:**
+  - The `is_even` dead_code warning in example 1 is acceptable for teaching private items
+  - The `email` field unused warning in the User struct example is acceptable — demonstrates field-level visibility
+  - The FmtResult/IoResult renaming example generates unused import warnings — acceptable for teaching `as` syntax
+  - The HashSet output order in example 4 is non-deterministic — output may vary
+  - The multi-file examples use `rust,ignore` since they cannot be verified in single-file context — file layout descriptions substitute for compilation proof
+  - The crate evaluation table lists ecosystem defaults — verify these are still accurate (serde, thiserror, anyhow, reqwest, axum, clap, tokio, tracing)
+  - Consider whether `pub(super)` deserves a code example or if the visibility table is sufficient
+  - The `mod.rs` vs named-file convention is explained — old convention mentioned briefly for codebase literacy
+  - The capstone sorts HashMap keys for deterministic output — same pattern as 5.2
+
 ### Part 5 — NEXT UP
-- 5.3 Modules and Project Structure: mod/use/pub, Cargo.toml, workspaces
-- Bridge from 5.2: "you now have the data structures; next, how to organize code as projects grow"
+- 5.4 Testing as a First-Class Citizen: unit/integration/doc tests, cargo test
+- Bridge from 5.3: "you can organize code with modules; next, how Rust builds testing into the language"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
