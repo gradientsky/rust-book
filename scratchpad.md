@@ -6,14 +6,16 @@ Working notes and action items for the next iteration.
 
 ## Part 1: First Contact
 
-### 1.1 Your First Rust Program — DRAFT COMPLETE
+### 1.1 Your First Rust Program — ITERATED
 - Covers: philosophy (safety + speed), rustup install, `cargo new`, Cargo.toml anatomy, `fn main`, `println!` with `{}`, `{variable}`, `{:?}`, `{:#?}`
 - Edition 2024 context: `cargo new` defaults to edition 2024 since Rust 1.85.0 (Feb 2025)
 - Current stable Rust: 1.93.1 (Feb 2026)
+- All 5 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
 - **Review items:**
-  - Verify tone is accessible to true beginners (no assumed systems programming background)
-  - Consider adding a "what you'll need" prereqs note (terminal, text editor)
+  - ~~Verify tone is accessible to true beginners (no assumed systems programming background)~~ — RESOLVED: rewrote opening three paragraphs to eliminate systems programming jargon; replaced "garbage collector" with "the language sometimes pauses to reclaim memory you are no longer using"; replaced "dangling pointers, data races, use-after-free, buffer overflows" with accessible descriptions ("crashes from accessing freed memory, data corruption from unsynchronized access, resource leaks from forgotten cleanup"); framed the trade-off through concrete language comparisons (Python/JS vs C/C++)
+  - ~~Consider adding a "what you'll need" prereqs note (terminal, text editor)~~ — DEFERRED: the chapter already instructs "Open a terminal and run" which implicitly requires a terminal; adding a formal prereqs box risks making the opening feel bureaucratic for a pocket book
   - ~~The `version = 1.85` float example is slightly misleading~~ — RESOLVED: replaced with `mass_kg = 72.5`, a naturally floating-point value
+  - ~~Style compliance: first-mention styling for rustup and Cargo~~ — RESOLVED: _rustup_ italic on first mention (line 30), _Cargo_ italic on first mention (line 31, moved from line 64), "crates" introduced with inline gloss ("projects (_crates_, in Rust terminology)") on first use
 
 ### 1.2 The Compiler Is Your Ally — DRAFT COMPLETE
 - Covers: error anatomy (E0382, E0308, unused variable warning), `cargo check` as fast feedback, `cargo clippy` with needless_range_loop and bool_comparison examples, `cargo fmt` with before/after, quality baseline workflow
