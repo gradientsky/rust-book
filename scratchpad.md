@@ -208,7 +208,6 @@ Working notes and action items for the next iteration.
   - `repeat_n` (1.82) used instead of `repeat().take()` — modern idiom but less commonly seen in older tutorials
   - The `IntoIterator` custom impl delegates to `Vec::into_iter` — simple approach; more complex custom IntoIter structs deferred
   - Consider whether the `inspect` stderr example output is confusing (interleaved output from lazy evaluation)
-  - The capstone uses `partial_cmp(&b).unwrap()` for f64 comparison — could note that f64 is `PartialOrd` not `Ord`
 
 ### 5.1 Error Handling in Practice — DRAFT COMPLETE
 - Covers: `Error` trait (Debug+Display, `source()` for error chains), manual error chain walking, thiserror 2.x (`#[error("...")]` for Display, `#[from]` for From+source, `#[source]` for source-only, `#[error(transparent)]` for delegation), anyhow 1.x (`anyhow::Result<T>`, `.context()`/`.with_context()`, `bail!`/`ensure!`/`anyhow!` macros, `.chain()` for walking), `?` operator `From::from()` conversion mechanism, library vs application error strategy (thiserror for libs, anyhow for apps), unwrap spectrum (`?` > `unwrap_or` > `expect` > `unwrap`), capstone Inventory example with typed errors and `Box<dyn Error>`
@@ -328,7 +327,7 @@ Working notes and action items for the next iteration.
 - Introduced `PhantomData<T>` for type-state — explained as "tells the compiler this struct is parameterized by T without adding runtime data"
 - Deliberately omitted: `bon`/`typed-builder`/`derive_builder` crates (too opinionated for intro; mentioned in ecosystem context only), `Deref`/`DerefMut` on newtypes (advanced, can lead to anti-patterns), sealed traits (advanced extension trait technique), `IntoFuture` async builder pattern (covered in 6.1 async taste), `@` bindings in match (too advanced)
 - **Review items:**
-  - The builder section does not mention `#[must_use]` annotation on builder types — consider adding as a best practice note
+  - ~~The builder section does not mention `#[must_use]` annotation on builder types — consider adding as a best practice note~~ — RESOLVED: added "Catching forgotten builds" C-head subsection with `#[must_use]` on `EmailBuilder`, verified warning output; also added `#[must_use]` to `ServerBuilder` (builder convention example) and capstone `DocumentBuilder`; fixed capstone word count output (was 25/9, corrected to 22/8)
   - The `PrettyVec` newtype example wraps `Vec<String>` — accessing inner `.0` field is slightly awkward; consider whether `Deref` should be mentioned (currently deliberately omitted)
   - The type-state section uses `PhantomData` before Part 7 — it was not previously introduced; verify the inline explanation is sufficient
   - The combinator quick reference table covers `Option` only — `Result` equivalents mentioned in prose but not tabled; consider expanding
