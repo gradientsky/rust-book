@@ -42,6 +42,14 @@ Resources used to build book materials, organized by topic.
 - [Rustfmt: Style Edition - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/rustfmt-style-edition.html)
 - [cargo check - The Cargo Book](https://doc.rust-lang.org/cargo/commands/cargo-check.html)
 
+## Constants and Statics
+
+- [const keyword - Rust std docs](https://doc.rust-lang.org/std/keyword.const.html)
+- [static keyword - Rust std docs](https://doc.rust-lang.org/std/keyword.static.html)
+- [RFC 0246: const vs static](https://rust-lang.github.io/rfcs/0246-const-vs-static.html)
+- [Disallow references to static mut - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/static-mut-references.html)
+- [LazyLock in std::sync - Rust std docs](https://doc.rust-lang.org/std/sync/struct.LazyLock.html)
+
 ## Variables, Types, and Expressions
 
 - [Variables and Mutability - The Rust Programming Language](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html)
