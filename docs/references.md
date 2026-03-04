@@ -400,6 +400,7 @@ Resources used to build book materials, organized by topic.
 - [std::thread module - Rust std docs](https://doc.rust-lang.org/std/thread/)
 - [thread::spawn - Rust std docs](https://doc.rust-lang.org/std/thread/fn.spawn.html)
 - [thread::scope - Rust std docs](https://doc.rust-lang.org/std/thread/fn.scope.html)
+- [thread::available_parallelism - Rust std docs](https://doc.rust-lang.org/std/thread/fn.available_parallelism.html)
 - [JoinHandle - Rust std docs](https://doc.rust-lang.org/std/thread/struct.JoinHandle.html)
 - [Send trait - Rust std docs](https://doc.rust-lang.org/std/marker/trait.Send.html)
 - [Sync trait - Rust std docs](https://doc.rust-lang.org/std/marker/trait.Sync.html)
