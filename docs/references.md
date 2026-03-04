@@ -135,6 +135,20 @@ Resources used to build book materials, organized by topic.
 - [std::mem::discriminant - Rust std docs](https://doc.rust-lang.org/std/mem/fn.discriminant.html)
 - [Box<T> - Rust std docs](https://doc.rust-lang.org/std/boxed/struct.Box.html)
 
+## Option, Result, and Error Handling
+
+- [Option enum - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html)
+- [Result enum - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html)
+- [The ? operator - The Rust Reference](https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator)
+- [Error Handling - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
+- [Recoverable Errors with Result - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
+- [To panic! or Not to panic! - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html)
+- [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
+- [Option::is_some_and - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.is_some_and)
+- [Option::is_none_or - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.is_none_or)
+- [Make Illegal States Unrepresentable - corrode.dev](https://corrode.dev/blog/illegal-state/)
+- [The Typestate Pattern in Rust - Cliffle](https://cliffle.com/blog/rust-typestate/)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
