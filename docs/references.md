@@ -321,6 +321,8 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.91.0 (floor/ceil_char_boundary) - Rust Blog](https://blog.rust-lang.org/2025/10/30/Rust-1.91.0/)
 - [Vec::pop_if - Rust std docs](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.pop_if)
 - [Announcing Rust 1.86.0 (Vec::pop_if) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
+- [slice::as_array - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.as_array)
+- [Announcing Rust 1.93.0 (as_array stabilization) - Rust Blog](https://blog.rust-lang.org/2026/01/22/Rust-1.93.0/)
 - [Cow<T> - Rust std docs](https://doc.rust-lang.org/std/borrow/enum.Cow.html)
 - [String::from_utf8_lossy - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy)
 - [Clone on write (Cow) - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/cow.html)
