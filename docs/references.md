@@ -324,6 +324,8 @@ Resources used to build book materials, organized by topic.
 - [Option::inspect - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.inspect)
 - [std::process::Termination trait - Rust std docs](https://doc.rust-lang.org/std/process/trait.Termination.html)
 - [std::process::ExitCode - Rust std docs](https://doc.rust-lang.org/std/process/struct.ExitCode.html)
+- [Type Aliases - The Rust Reference](https://doc.rust-lang.org/reference/items/type-aliases.html)
+- [std::io::Result type alias - Rust std docs](https://doc.rust-lang.org/std/io/type.Result.html)
 
 ## Collections, Strings, and Smart Pointers
 
