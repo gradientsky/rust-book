@@ -301,6 +301,8 @@ Resources used to build book materials, organized by topic.
 - [Result::inspect_err - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html#method.inspect_err)
 - [Result::inspect - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html#method.inspect)
 - [Option::inspect - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.inspect)
+- [std::process::Termination trait - Rust std docs](https://doc.rust-lang.org/std/process/trait.Termination.html)
+- [std::process::ExitCode - Rust std docs](https://doc.rust-lang.org/std/process/struct.ExitCode.html)
 
 ## Collections, Strings, and Smart Pointers
 
