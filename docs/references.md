@@ -75,6 +75,20 @@ Resources used to build book materials, organized by topic.
 - [RPIT Lifetime Capture Rules - The Rust Edition Guide](https://doc.rust-lang.org/nightly/edition-guide/rust-2024/rpit-lifetime-capture.html)
 - [RFC 3668: Async Closures - The Rust RFC Book](https://rust-lang.github.io/rfcs/3668-async-closures.html)
 
+## Ownership, Move Semantics, and Drop
+
+- [Understanding Ownership - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html)
+- [What is Ownership? - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)
+- [The Stack and the Heap - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-stack-and-the-heap)
+- [Copy trait - Rust std docs](https://doc.rust-lang.org/std/marker/trait.Copy.html)
+- [Clone trait - Rust std docs](https://doc.rust-lang.org/std/clone/trait.Clone.html)
+- [Drop trait - Rust std docs](https://doc.rust-lang.org/std/ops/trait.Drop.html)
+- [std::mem::drop - Rust std docs](https://doc.rust-lang.org/std/mem/fn.drop.html)
+- [Running Code on Cleanup with the Drop Trait - The Rust Programming Language](https://doc.rust-lang.org/book/ch15-03-drop.html)
+- [Destructors - The Rust Reference](https://doc.rust-lang.org/stable/reference/destructors.html)
+- [Tail expression temporary scope - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/temporary-tail-expr-scope.html)
+- [if let temporary scope - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/temporary-if-let-scope.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
