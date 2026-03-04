@@ -31,7 +31,7 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
 | 4.1 Traits | [`src/part4/4.1 Traits.md`](../src/part4/4.1%20Traits.md) | **Draft** | Trait definition/impl, default methods, `impl Trait` params, derive (`Debug`/`Clone`/`PartialEq`/`Eq`/`Hash`/`Default`/`PartialOrd`/`Ord`/`Copy`), `Display` vs `Debug`, `From`/`Into`, `TryFrom`/`TryInto`, `AsRef`, operator traits (`Add`), orphan rule, capstone temperature conversion example |
-| 4.2 Generics | — | Planned | Generics, trait bounds, impl Trait, dyn Trait |
+| 4.2 Generics | [`src/part4/4.2 Generics.md`](../src/part4/4.2%20Generics.md) | **Draft** | Generic functions/structs/enums, trait bounds (`T: Trait`), `impl Trait` (argument + return position), `where` clauses, associated types vs type params, trait objects (`dyn Trait`), dyn compatibility, monomorphization/zero-cost abstraction, capstone Measurable example |
 | 4.3 Iterators and Functional Patterns | — | Planned | Iterator adaptors, lazy evaluation, collect |
 
 ## Part 5: Building Real Things
