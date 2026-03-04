@@ -354,6 +354,10 @@ Resources used to build book materials, organized by topic.
 - [RFC 3389: Manifest Lints - The Rust RFC Book](https://rust-lang.github.io/rfcs/3389-manifest-lint.html)
 - [RFC 2906: Workspace Dependency Deduplication - The Rust RFC Book](https://rust-lang.github.io/rfcs/2906-cargo-workspace-deduplicate.html)
 - [Minimize Visibility - Effective Rust](https://effective-rust.com/visibility.html)
+- [Announcing Rust 1.88.0 | Rust Blog](https://blog.rust-lang.org/2025/06/26/Rust-1.88.0/) — Cargo automatic cache garbage collection
+- [Cargo Cache Cleaning | Rust Blog](https://blog.rust-lang.org/2023/12/11/cargo-cache-cleaning/) — design overview
+- [Stabilize automatic garbage collection - cargo PR #14287](https://github.com/rust-lang/cargo/pull/14287)
+- [Configuration - The Cargo Book](https://doc.rust-lang.org/cargo/reference/config.html) — `[cache]` section
 
 ## Testing
 
