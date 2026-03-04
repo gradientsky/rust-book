@@ -51,7 +51,7 @@ Working notes and action items for the next iteration.
   - The `while let` chain example uses array indexing (`values[index]`) which is less idiomatic than iterator-based approaches — acceptable here since iterators aren't introduced yet
   - ~~The statics section mentions `Mutex`/`Atomic` types for mutable globals but does not demonstrate them — deliberate forward-reference to Part 5/6~~ — RESOLVED: replaced forward reference with `AtomicU32` static counter example; shows `fetch_add`/`load` with `Ordering::Relaxed`; explains enough to understand the pattern without requiring concurrency knowledge; removes "you will learn in Part 5/6" phrasing
 
-### 2.2 Functions and Closures — DRAFT COMPLETE
+### 2.2 Functions and Closures — ITERATED
 - Covers: function definitions (params, return types), implicit last-expression return, early return with `return`, expression-oriented function bodies, closures (syntax, type inference, capture by reference/mutable reference), Fn/FnMut/FnOnce trait hierarchy (conceptual), higher-order functions (`impl Fn` in argument position), passing named functions, choosing the right trait bound, returning closures (`impl Fn` in return position), function factories, `move` keyword (intro only)
 - Philosophy: functions as primary abstraction unit; expression-oriented design makes bodies concise; closures "close over" environment
 - All 14 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
@@ -60,11 +60,12 @@ Working notes and action items for the next iteration.
 - Introduced `'static` lifetime annotation briefly for string literals — minimal explanation, no deep dive
 - Deliberately omitted: async closures (too advanced, covered in Part 6), `Box<dyn Fn>` (needs heap/trait objects from Part 4), full `move` semantics (needs ownership from 2.3)
 - **Review items:**
-  - The `apply_to_each` example uses a fixed-size `[i32; 3]` return — slightly artificial; acceptable since `Vec` hasn't been introduced
+  - ~~The `apply_to_each` example uses a fixed-size `[i32; 3]` return — slightly artificial~~ — RESOLVED: replaced hardcoded `[i32; 3]` return with proper slice iteration using `for &v in values`; function now accepts any-length `&[i32]` and prints `v -> f(v)` per element; avoids panic on short slices, consistent with capstone `convert_temps` pattern; zero Clippy warnings; output verified Rust 1.93.1
   - The `&'static str` in `classify` and `make_greeter` is explained minimally — verify this doesn't confuse readers who haven't seen lifetimes
   - ~~`run_once`/`run_repeatedly` example had misleading comment claiming `move` closure "can only run once" — actually `move || println!("{message}")` implements `Fn` since `println!` only borrows; `run_repeatedly` used trivial non-capturing closure that didn't demonstrate `FnMut`~~ — RESOLVED: rewrote example to use genuine `FnMut` closure (mutates `count`); fixed `move` explanation to accurately describe ownership transfer without conflating it with consumption; added "why not always use FnOnce?" closing note; verified output matches
   - The `move` keyword is introduced with a light touch ("forces ownership") — full explanation deferred to 2.3 (ownership)
   - The Fn trait hierarchy section is conceptual and short — appropriate level of abstraction for pre-generics introduction
+  - Clippy flags `first_positive` as `manual_find` — intentional: the example teaches early returns, iterators not introduced until Part 4
 
 ### 2.3 Ownership — DRAFT COMPLETE
 - Covers: three rules of ownership, stack vs heap mental model (with ASCII diagram), move semantics (assignment, function calls, return values, **closures with `move`**), E0382 error example, Copy types (full list), Clone (explicit deep copy), Drop trait and RAII, drop order (reverse declaration order with Noisy struct demo), early drop with `std::mem::drop` (including its trivial implementation), comprehensive "ownership in action" capstone example
