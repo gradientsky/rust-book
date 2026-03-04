@@ -272,7 +272,8 @@ Working notes and action items for the next iteration.
 ### 5.2 Collections, Strings, and Smart Pointers — ITERATED
 - Covers: Vec (creation with vec!/Vec::new/with_capacity/collect, access with []/get/last, modify with push/pop/insert/remove/retain, slices &[T], three iteration modes), HashMap (new/from/collect, get/indexing/contains_key, entry API with or_insert/or_insert_with), HashSet (insert/contains, intersection/union/difference), String vs &str (owned vs borrowed, deref coercion, when to use each, creation/conversion/concatenation/format!, common operations, UTF-8 guarantees), Box (recursive types Expr tree, trait objects Vec<Box<dyn Shape>>), Rc (reference counting, Rc::clone convention, shared ownership in graph-like structures, limitations: not thread-safe, immutable), Arc (thread-safe shared ownership, thread::spawn example), choosing the right pointer (decision table), capstone Library/Document tag system with Vec/HashMap/HashSet/Rc/String/Display
 - Philosophy: ownership extends into data structures; collections own their elements; smart pointers extend the ownership model when simple ownership doesn't fit
-- All 30 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- All 32 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- **Added `pop_if` C-head** under Modifying Vectors: conditional pop with closure predicate (stabilized Rust 1.86); philosophy-first explanation of peek-then-pop limitation with `last()` + `pop()` two-step pattern; before/after comparison showing `is_some_and` workaround vs single `pop_if` call; demonstrates true/false/empty-vec edge cases
 - **Added `get_disjoint_mut` C-head** under Modifying Vectors: safe simultaneous mutable access to multiple elements by index (stabilized Rust 1.86); philosophy-first explanation of why borrow checker prevents naive `&mut v[i]` + `&mut v[j]`, `split_at_mut` as prior workaround, `get_disjoint_mut` as modern solution
 - **Added `extract_if` C-head** under Modifying Vectors: conditional removal that returns extracted elements as iterator (Vec stabilized Rust 1.87, HashMap/HashSet stabilized 1.88); philosophy-first explanation of retain's limitation (discards removed elements), range parameter for Vec, lazy iterator semantics, HashMap example for cross-collection demonstration
 - **Added safe string truncation C-head** under Strings Are UTF-8: `floor_char_boundary`/`ceil_char_boundary` (Rust 1.91); philosophy-first explanation of byte-budget truncation problem, café ☕ example showing byte 7 inside emoji, rounds down to 6 / up to 9; production-grade safe truncation pattern
@@ -458,7 +459,7 @@ Working notes and action items for the next iteration.
 Features stabilized in recent Rust releases that could strengthen the book:
 - **2.1**: ~~`cast_signed()`/`cast_unsigned()` (1.87) — safe explicit sign conversion~~ DONE; ~~`is_multiple_of()` (1.87) — cleaner than `% == 0`~~ DONE; ~~`midpoint()` (1.85) — overflow-safe average~~ DONE
 - **3.3/5.1**: `Result::flatten()` (1.89) — covered in 7.1 table; could add demonstration in 3.3 or 5.1
-- **5.2**: `Vec::pop_if()` (1.86) — conditional pop; `[T]::as_array::<N>()` (1.93) — slice to fixed-size array
+- **5.2**: ~~`Vec::pop_if()` (1.86) — conditional pop~~ DONE; `[T]::as_array::<N>()` (1.93) — slice to fixed-size array
 - **5.3**: Cargo automatic cache garbage collection (1.88) — `~/.cargo` self-cleans
 - **6.1**: `std::io::pipe()` (1.87) — cross-platform anonymous pipes in std
 - **7.3**: `slice::array_windows::<N>()` (1.94) — const-generic sliding window; `LazyLock::get()`/`force_mut()` (1.94) — inspect/mutate lazy values
