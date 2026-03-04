@@ -286,6 +286,9 @@ Resources used to build book materials, organized by topic.
 - [slice::array_windows - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.array_windows)
 - [slice::windows - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.windows)
 - [Stabilize array_windows - PR #148814](https://github.com/rust-lang/rust/pull/148814)
+- [Peekable - Rust std docs](https://doc.rust-lang.org/std/iter/struct.Peekable.html)
+- [Peekable::next_if - Rust std docs](https://doc.rust-lang.org/std/iter/struct.Peekable.html#method.next_if)
+- [Stabilize peekable_next_if - PR #80011](https://github.com/rust-lang/rust/pull/80011)
 - [Tracking Issue for slice::array_windows - Issue #75027](https://github.com/rust-lang/rust/issues/75027)
 
 ## Error Handling in Practice
