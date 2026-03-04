@@ -49,6 +49,8 @@ Resources used to build book materials, organized by topic.
 - [RFC 0246: const vs static](https://rust-lang.github.io/rfcs/0246-const-vs-static.html)
 - [Disallow references to static mut - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/static-mut-references.html)
 - [LazyLock in std::sync - Rust std docs](https://doc.rust-lang.org/std/sync/struct.LazyLock.html)
+- [AtomicU32 in std::sync::atomic - Rust std docs](https://doc.rust-lang.org/std/sync/atomic/struct.AtomicU32.html)
+- [Ordering in std::sync::atomic - Rust std docs](https://doc.rust-lang.org/std/sync/atomic/enum.Ordering.html)
 
 ## Integer Overflow
 
