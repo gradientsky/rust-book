@@ -307,7 +307,7 @@ Working notes and action items for the next iteration.
   - The `thread::scope` example is brief — could demonstrate mutable borrowing across threads (only one mutable borrow allowed)
   - Mutex poisoning explained briefly — consider whether more detail is needed for beginners
   - The async section is deliberately shallow ("a taste") — verify it gives enough to recognize async code without overwhelming
-  - `AsyncFn` trait bound syntax shown as `async Fn()` — verify this compiles on current stable (the `rust,ignore` annotation means it's not auto-verified)
+  - ~~`AsyncFn` trait bound syntax shown as `async Fn()` — verify this compiles on current stable~~ — RESOLVED: rewrote async closures section; confirmed `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` are the correct stable trait names (Rust 1.85+); `async Fn()` bound modifier syntax is nightly-only (`async_trait_bounds` feature); retry example now uses `AsyncFnMut` (correct for multi-call) with `mut action` parameter; added AsyncFn traits table; explained old `|| async move {}` capture limitation; noted old `Fn() -> Fut` pattern limitation for higher-ranked lifetimes; all async examples remain `rust,ignore` (require tokio dependency)
   - ~~No mention of `RwLock`~~ — RESOLVED: added "RwLock: Many Readers or One Writer" B-head subsection after Mutex; covers `.read()`/`.write()` guards, RAII semantics, poisoning, "Choosing between Mutex and RwLock" C-head with practical guidance; `Arc<RwLock<String>>` config example verified (Rust 1.93+, edition 2024); updated "When to Use" section and closing recap to reference RwLock
   - ~~The `thread::scope` example is brief — could demonstrate mutable borrowing across threads (only one mutable borrow allowed)~~ — RESOLVED: added "Mutable borrowing across threads" C-head after the immutable scoped threads example; demonstrates `split_at_mut` for disjoint mutable slices processed in parallel; compiler proves no aliasing; verified output `[10, 20, 30, 40, 50, 60]` (Rust 1.93+, edition 2024); reinforces "many readers or one writer" rule in concurrent context
   - No mention of `Atomic*` types — mentioned implicitly through Arc's atomic refcount; explicit atomics better for Part 7
@@ -384,7 +384,7 @@ Working notes and action items for the next iteration.
 ## Rust 2024 Features Tracker
 
 - `use<>` precise capturing syntax — stabilized Rust 1.82.0 (bare fns), Rust 1.88.0 (trait return position) — covered implicitly via 2024 default behavior in 4.2
-- Async closures — covered in 6.1 (taste) and referenced in 7.3 (Where to Go from Here)
+- Async closures (`async || {}`) — stabilized Rust 1.85.0; `AsyncFn`/`AsyncFnMut`/`AsyncFnOnce` traits in prelude; `async Fn()` bound modifier syntax is nightly-only (`async_trait_bounds`); covered in 6.1 (taste with AsyncFn traits table and retry example) and 7.3 (Where to Go from Here)
 - unsafe_op_in_unsafe_fn — covered in 7.2 (anti-patterns) and 7.3 (2024 safety improvements)
 - unsafe extern blocks — covered in 7.3
 - static mut references disallowed — covered in 7.3
