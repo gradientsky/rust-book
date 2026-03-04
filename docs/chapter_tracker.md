@@ -39,7 +39,7 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
 | 5.1 Error Handling in Practice | [`src/part5/5.1 Error Handling in Practice.md`](../src/part5/5.1%20Error%20Handling%20in%20Practice.md) | **Draft** | `Error` trait (Debug+Display, `source()`), error chains, thiserror 2.x (`#[error]`/`#[from]`/`#[source]`/`#[error(transparent)]`), anyhow 1.x (`Result`, `Context`/`with_context`, `bail!`/`ensure!`/`anyhow!`), `?` and `From::from()` composition, library vs application error strategy, unwrap spectrum, capstone Inventory example |
-| 5.2 Collections, Strings, and Smart Pointers | — | Planned | Vec, HashMap, String/&str, Box/Rc/Arc |
+| 5.2 Collections, Strings, and Smart Pointers | [`src/part5/5.2 Collections, Strings, and Smart Pointers.md`](../src/part5/5.2%20Collections,%20Strings,%20and%20Smart%20Pointers.md) | **Draft** | Vec (creation/access/modify/slices/iteration), HashMap (creation/get/entry API), HashSet (membership/set ops), String vs &str (ownership/conversion/UTF-8), Box (recursive types/trait objects), Rc (shared ownership/refcount), Arc (thread-safe shared ownership), capstone Library/Document tag system |
 | 5.3 Modules and Project Structure | — | Planned | mod/use/pub, Cargo.toml, workspaces |
 | 5.4 Testing as a First-Class Citizen | — | Planned | Unit/integration/doc tests, cargo test |
 

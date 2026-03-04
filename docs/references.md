@@ -225,6 +225,28 @@ Resources used to build book materials, organized by topic.
 - [Recoverable Errors with Result - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
 - [To panic! or Not to panic! - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html)
 
+## Collections, Strings, and Smart Pointers
+
+- [Vec<T> - Rust std docs](https://doc.rust-lang.org/std/vec/struct.Vec.html)
+- [HashMap<K, V> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashMap.html)
+- [HashSet<T> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashSet.html)
+- [Entry API - Rust std docs](https://doc.rust-lang.org/std/collections/hash_map/enum.Entry.html)
+- [String - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html)
+- [str (primitive) - Rust std docs](https://doc.rust-lang.org/std/primitive.str.html)
+- [Storing UTF-8 Encoded Text with Strings - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-02-strings.html)
+- [Storing Keys with Associated Values in Hash Maps - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-03-hash-maps.html)
+- [Common Collections - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-00-common-collections.html)
+- [Box<T> - Rust std docs](https://doc.rust-lang.org/std/boxed/struct.Box.html)
+- [Using Box to Point to Data on the Heap - The Rust Programming Language](https://doc.rust-lang.org/book/ch15-01-box.html)
+- [Rc<T> - Rust std docs](https://doc.rust-lang.org/std/rc/struct.Rc.html)
+- [Reference Counted Smart Pointer - The Rust Programming Language](https://doc.rust-lang.org/book/ch15-04-rc.html)
+- [Arc<T> - Rust std docs](https://doc.rust-lang.org/std/sync/struct.Arc.html)
+- [Shared-State Concurrency - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-03-shared-state.html)
+- [Use borrowed types for arguments - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/coercion-arguments.html)
+- [Clone to satisfy the borrow checker (anti-pattern) - Rust Design Patterns](https://rust-unofficial.github.io/patterns/anti_patterns/borrow_clone.html)
+- [The Rust Performance Book: Heap Allocations](https://nnethercote.github.io/perf-book/heap-allocations.html)
+- [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
