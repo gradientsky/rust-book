@@ -204,9 +204,27 @@ Working notes and action items for the next iteration.
   - Consider whether the `inspect` stderr example output is confusing (interleaved output from lazy evaluation)
   - The capstone uses `partial_cmp(&b).unwrap()` for f64 comparison — could note that f64 is `PartialOrd` not `Ord`
 
+### 5.1 Error Handling in Practice — DRAFT COMPLETE
+- Covers: `Error` trait (Debug+Display, `source()` for error chains), manual error chain walking, thiserror 2.x (`#[error("...")]` for Display, `#[from]` for From+source, `#[source]` for source-only, `#[error(transparent)]` for delegation), anyhow 1.x (`anyhow::Result<T>`, `.context()`/`.with_context()`, `bail!`/`ensure!`/`anyhow!` macros, `.chain()` for walking), `?` operator `From::from()` conversion mechanism, library vs application error strategy (thiserror for libs, anyhow for apps), unwrap spectrum (`?` > `unwrap_or` > `expect` > `unwrap`), capstone Inventory example with typed errors and `Box<dyn Error>`
+- Philosophy: error handling is about communicating what went wrong clearly enough to fix it; typed errors for programmatic consumers, context chains for human readers; two-crate pattern respects both audiences
+- All 11 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- thiserror 2.0.18 (latest as of Feb 2026): breaking changes from 1.x include raw identifier format string removal, direct dependency requirement, no_std support; `#[from]` implies `#[source]`
+- anyhow 1.0.102 (latest as of Feb 2026): stable 1.x series, no breaking changes; `Context` trait for `.context()`/`.with_context()`
+- `core::error::Error` stabilized in Rust 1.81 (Sep 2024) — mentioned conceptually but not demonstrated (no_std is out of scope for this chapter)
+- Builds on 3.3: `Result`, `Option`, `?` operator, custom error enums with Display
+- Builds on 4.1: `From` trait for error conversion, trait implementation patterns
+- Deliberately omitted: `try` blocks (nightly-only), `Error::provide()` (nightly-only), `Error::sources()` iterator (nightly-only), snafu crate (thiserror is the community standard), backtrace capture (nightly `provide()` required), `#[diagnostic::do_not_recommend]` (too advanced)
+- **Review items:**
+  - The capstone uses `Box<dyn std::error::Error>` instead of `anyhow::Result` to avoid requiring anyhow dependency — verify this substitution is clear enough; noted in prose that anyhow has the same effect
+  - thiserror and anyhow are shown with `Cargo.toml` snippets but examples are self-contained (no actual file I/O beyond `read_config` which hits a missing file) — verify all examples work in a single-file context
+  - The `#[error(transparent)]` example uses `Box<dyn Error + Send + Sync>` — verify readers understand `Send + Sync` or if this needs a forward reference note to Part 6
+  - The "How the Question Mark Converts Errors" section shows `rust,ignore` pseudo-code — verify this is acceptable for non-compilable expansion examples
+  - Error message convention (lowercase, no trailing punctuation) is stated but not heavily enforced in all examples — consistent enough for teaching purposes
+  - The `HOME` env var in expect example is platform-specific (macOS/Linux) — same caveat as 3.3
+
 ### Part 5 — NEXT UP
-- 5.1 Error Handling in Practice: custom error types with enums, thiserror for library crates, anyhow for application crates, composing fallible operations, unwrap/expect/proper handling guidance
-- Bridge from Part 4: "you have built the abstraction toolkit; now let's use it to build real things"
+- 5.2 Collections, Strings, and Smart Pointers: Vec, HashMap, HashSet, String/&str in depth, slices, Box/Rc/Arc
+- Bridge from 5.1: "you now have the tools to handle errors; next, the core collection types"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
