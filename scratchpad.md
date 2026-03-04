@@ -125,9 +125,28 @@ Working notes and action items for the next iteration.
   - Consider whether the `if let else` chain example (Discount) should note that `match` is preferred for exhaustiveness
   - The or-pattern example (`Day::Saturday | Day::Sunday`) could note that `matches!` is even more concise for boolean returns
 
-### Part 3 — NEXT UP
-- 3.3 Null, Errors, and the Type System: `Option<T>` replaces null, `Result<T, E>` replaces exceptions, `?` operator, making illegal states unrepresentable
-- Bridge from 3.2: "you will meet two enums that are so fundamental they are built into Rust's standard library"
+### 3.3 Null, Errors, and the Type System — DRAFT COMPLETE
+- Covers: `Option<T>` (Some/None, unwrap_or, unwrap_or_else, map, and_then, is_some_and, is_none_or), `Result<T, E>` (Ok/Err, unwrap_or, map, map_err), `?` operator (with Result and Option), Option↔Result conversion (ok_or, ok), unwrap/expect guidance, making illegal states unrepresentable (enum replacing boolean flags, newtype wrappers for type safety, validated construction with Result), capstone Score/grade example combining all concepts
+- Philosophy: invisible trapdoors (null, exceptions) vs explicit types; if a function can fail its signature must say so; billion-dollar mistake; type system as map of where things can go wrong
+- All 19 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0369) verified with exact error message
+- No Rust 2024-specific changes to Option/Result/`?` operator semantics; `is_none_or` stabilized 1.82, `is_some_and`/`is_ok_and` stabilized 1.70 — all pre-2024 but modern idioms
+- Builds on 3.2: bridges from "two enums built into the standard library" closing; uses pattern matching, exhaustive match, if let
+- Builds on 3.1: uses struct definition, impl blocks, Display trait, use std::fmt
+- Introduced `filter_map` minimally in capstone — explained by context (filter + map on iterators)
+- Introduced `.parse::<T>()` turbofish syntax — used throughout, explained as "parse into type T"
+- Introduced range patterns in match (`90..=100`) — used in Score::grade, natural extension of match
+- Deliberately omitted: custom error types with From impl (Part 5), thiserror/anyhow (Part 5), try blocks (nightly-only), Result::flatten (too advanced for intro), inspect/inspect_err (better for Part 5 error handling chapter)
+- **Review items:**
+  - The `HOME` env var example in expect section is platform-specific — works on macOS/Linux, not Windows; acceptable for pocket book target audience
+  - The `ParseIntError { kind: InvalidDigit }` debug output format may change in future Rust versions — consider whether to use Display format instead
+  - The `filter_map` in capstone uses iterator chain (`.iter().filter_map(...).collect()`) — verify this is approachable before iterators are formally covered in Part 4
+  - Generics `<T>` are mentioned in Option/Result definitions but explained only as "placeholder for any type" — verify this is sufficient pre-Part 4
+  - The newtype section is brief — fuller treatment with `Deref` and trait implementations deferred to Part 7
+  - Consider whether the "making illegal states unrepresentable" section needs a note about module privacy for enforcing validated construction (modules covered in 5.3)
+
+### Part 4 — NEXT UP
+- 4.1 Traits: trait definition/impl, derive, std conversion traits (From/Into, TryFrom/TryInto, AsRef/AsMut)
+- Bridge from 3.3: "What if you want a function that works with _any_ type that can be displayed?"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
