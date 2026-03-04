@@ -23,7 +23,7 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
 | 3.1 Structs and Methods | [`src/part3/3.1 Structs and Methods.md`](../src/part3/3.1%20Structs%20and%20Methods.md) | **Draft** | Struct definition, field init shorthand, mutation, struct update syntax, tuple structs, unit structs, methods (`&self`/`&mut self`/`self`), associated functions, `new` convention, `#[derive(Debug)]`, `Display` impl, ownership with structs, capstone example |
-| 3.2 Enums and Pattern Matching | — | Planned | ADTs, match, if let, let chains (2024), destructuring |
+| 3.2 Enums and Pattern Matching | [`src/part3/3.2 Enums and Pattern Matching.md`](../src/part3/3.2%20Enums%20and%20Pattern%20Matching.md) | **Draft** | ADTs (data-carrying variants, named fields), exhaustive `match` (E0004), match as expression, wildcard `_`, or patterns (`\|`), `if let` / `if let else`, let chains (Rust 2024), destructuring (enums, structs, tuples, nested), match guards, `..` ignore pattern, `Box<Expr>` recursive types, `matches!` macro, capstone Ticket example |
 | 3.3 Null, Errors, and the Type System | — | Planned | Option, Result, `?` operator, making illegal states unrepresentable |
 
 ## Part 4: Abstraction Without Cost

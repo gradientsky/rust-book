@@ -117,6 +117,24 @@ Resources used to build book materials, organized by topic.
 - [Constructor - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/ctor.html)
 - [Match Ergonomics Reservations - Rust Edition Guide](https://doc.rust-lang.org/nightly/edition-guide/rust-2024/match-ergonomics.html)
 
+## Enums, Pattern Matching, and Destructuring
+
+- [Defining an Enum - The Rust Programming Language](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)
+- [The match Control Flow Construct - The Rust Programming Language](https://doc.rust-lang.org/book/ch06-02-match.html)
+- [Concise Control Flow with if let - The Rust Programming Language](https://doc.rust-lang.org/book/ch06-03-if-let.html)
+- [Patterns and Matching - The Rust Programming Language](https://doc.rust-lang.org/book/ch19-00-patterns.html)
+- [Pattern Syntax - The Rust Programming Language](https://doc.rust-lang.org/book/ch19-03-pattern-syntax.html)
+- [Patterns - The Rust Reference](https://doc.rust-lang.org/reference/patterns.html)
+- [E0004 Error Code Reference](https://doc.rust-lang.org/error_codes/E0004.html)
+- [Match Ergonomics Reservations - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/match-ergonomics.html)
+- [RFC 3627: Match Ergonomics 2024](https://rust-lang.github.io/rfcs/3627-match-ergonomics-2024.html)
+- [if let temporary scope - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/temporary-if-let-scope.html)
+- [let chains in if and while - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/let-chains.html)
+- [Announcing Rust 1.88.0 | Rust Blog](https://blog.rust-lang.org/2025/06/26/Rust-1.88.0/)
+- [matches! macro - Rust std docs](https://doc.rust-lang.org/std/macro.matches.html)
+- [std::mem::discriminant - Rust std docs](https://doc.rust-lang.org/std/mem/fn.discriminant.html)
+- [Box<T> - Rust std docs](https://doc.rust-lang.org/std/boxed/struct.Box.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
