@@ -211,6 +211,20 @@ Resources used to build book materials, organized by topic.
 - [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
 - [Announcing Rust 1.82.0 (is_sorted, repeat_n) - Rust Blog](https://blog.rust-lang.org/2024/10/17/Rust-1.82.0/)
 
+## Error Handling in Practice
+
+- [std::error::Error trait - Rust std docs](https://doc.rust-lang.org/std/error/trait.Error.html)
+- [core::error::Error trait - Rust std docs](https://doc.rust-lang.org/core/error/trait.Error.html)
+- [Announcing Rust 1.81.0 (core::error::Error stabilization) - Rust Blog](https://blog.rust-lang.org/2024/09/05/Rust-1.81.0/)
+- [thiserror crate - docs.rs](https://docs.rs/thiserror/latest/thiserror/)
+- [thiserror crate - crates.io](https://crates.io/crates/thiserror)
+- [thiserror 2.0.0 Release Notes - GitHub](https://github.com/dtolnay/thiserror/releases/tag/2.0.0)
+- [anyhow crate - docs.rs](https://docs.rs/anyhow/latest/anyhow/)
+- [anyhow crate - crates.io](https://crates.io/crates/anyhow)
+- [Error Handling - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
+- [Recoverable Errors with Result - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
+- [To panic! or Not to panic! - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
