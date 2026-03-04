@@ -255,6 +255,9 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.86.0 (trait upcasting, dyn compatible) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
 - [RFC 2289 - Associated Type Bounds](https://rust-lang.github.io/rfcs/2289-associated-type-bounds.html)
 - [Announcing Rust 1.79.0 (associated type bounds stabilization) - Rust Blog](https://blog.rust-lang.org/2024/06/13/Rust-1.79.0/)
+- [Const Generics MVP - The Rust Reference](https://doc.rust-lang.org/reference/items/generics.html#const-generics)
+- [Const Generics - Rust By Example](https://doc.rust-lang.org/rust-by-example/generics/const_generics.html)
+- [Announcing Rust 1.51.0 (const generics MVP stabilization) - Rust Blog](https://blog.rust-lang.org/2021/03/25/Rust-1.51.0/)
 - [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
 
 ## Floating-Point Ordering
