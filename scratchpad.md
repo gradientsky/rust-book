@@ -48,6 +48,7 @@ Working notes and action items for the next iteration.
   - ~~The compound types section (tuples, arrays) is brief by design — consider if `Vec<T>` forward reference ("covered in a later part") is acceptable or needs rewording~~ — RESOLVED: replaced forward reference with inline `vec!` macro example showing `push`; explains enough to use NOW without deep dive; full Vec coverage remains in 5.2
   - ~~Integer overflow behavior (debug panic vs release wrap) was deliberately omitted to avoid overload~~ — RESOLVED: added "What happens when integers overflow" C-head subsection after integer types; covers debug panic vs release wrap, method families table (checked/saturating/wrapping/strict), two verified code examples; `strict_add` (Rust 1.91+) included in table
   - ~~Consider adding a note about `usize` being required for array indexing — currently mentioned but could be demonstrated~~ — RESOLVED: added "Array indexing requires usize" C-head subsection after Vec intro; demonstrates `usize` index with days array; explains compiler error for wrong integer type; notes platform portability rationale
+  - **Added `is_multiple_of`** (Rust 1.87): "Testing divisibility" C-head subsection after integer overflow; philosophy-first explanation of intent-revealing methods vs raw operators; leap year example (`year.is_multiple_of(4) && ...`); notes unsigned-only availability, zero-safe behavior (no panic unlike `%`), theme of named methods making intent explicit; 1 example verified zero-warning Rust 1.93.1
   - The `while let` chain example uses array indexing (`values[index]`) which is less idiomatic than iterator-based approaches — acceptable here since iterators aren't introduced yet
   - ~~The statics section mentions `Mutex`/`Atomic` types for mutable globals but does not demonstrate them — deliberate forward-reference to Part 5/6~~ — RESOLVED: replaced forward reference with `AtomicU32` static counter example; shows `fetch_add`/`load` with `Ordering::Relaxed`; explains enough to understand the pattern without requiring concurrency knowledge; removes "you will learn in Part 5/6" phrasing
 
@@ -453,7 +454,7 @@ Working notes and action items for the next iteration.
 ## Potential Future Improvements (from Rust 1.85–1.94 feature audit, March 2026)
 
 Features stabilized in recent Rust releases that could strengthen the book:
-- **2.1**: `cast_signed()`/`cast_unsigned()` (1.87) — safe explicit sign conversion; `is_multiple_of()` (1.87) — cleaner than `% == 0`; `midpoint()` (1.85) — overflow-safe average
+- **2.1**: `cast_signed()`/`cast_unsigned()` (1.87) — safe explicit sign conversion; ~~`is_multiple_of()` (1.87) — cleaner than `% == 0`~~ DONE; `midpoint()` (1.85) — overflow-safe average
 - **3.3/5.1**: `Result::flatten()` (1.89) — covered in 7.1 table; could add demonstration in 3.3 or 5.1
 - **5.2**: `Vec::pop_if()` (1.86) — conditional pop; `[T]::as_array::<N>()` (1.93) — slice to fixed-size array
 - **5.3**: Cargo automatic cache garbage collection (1.88) — `~/.cargo` self-cleans
