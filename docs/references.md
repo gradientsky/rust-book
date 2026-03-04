@@ -260,8 +260,20 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.51.0 (const generics MVP stabilization) - Rust Blog](https://blog.rust-lang.org/2021/03/25/Rust-1.51.0/)
 - [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
 
-## Floating-Point Ordering
+## Floating-Point Methods and Ordering
 
+- [f64 primitive type - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html)
+- [f64::abs - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.abs)
+- [f64::sqrt - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.sqrt)
+- [f64::round - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.round)
+- [f64::ceil - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.ceil)
+- [f64::floor - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.floor)
+- [f64::powi - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.powi)
+- [f64::clamp - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.clamp)
+- [f64::is_nan - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.is_nan)
+- [f64::is_infinite - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.is_infinite)
+- [f64::is_finite - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.is_finite)
+- [IEEE 754 - Wikipedia](https://en.wikipedia.org/wiki/IEEE_754)
 - [f64::total_cmp - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.total_cmp)
 - [Announcing Rust 1.62.0 (total_cmp stabilization) - Rust Blog](https://blog.rust-lang.org/2022/06/30/Rust-1.62.0/)
 - [Tracking Issue #72599: total_cmp for f32 and f64](https://github.com/rust-lang/rust/issues/72599)
