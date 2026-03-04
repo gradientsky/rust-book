@@ -15,7 +15,7 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 |---------|------|--------|-------|
 | 2.1 Variables, Expressions, and Control Flow | `src/part2/2.1 Variables, Expressions, and Control Flow.md` | **Draft** | Immutability, shadowing, scalar types, type inference, constants, expressions, if/loop/while/for, ranges, loop labels, tuples/arrays, if let, let chains (2024) |
 | 2.2 Functions and Closures | `src/part2/2.2 Functions and Closures.md` | **Draft** | Functions (params, return, implicit return, early return), expression-oriented bodies, closures (syntax, capture modes, Fn/FnMut/FnOnce traits), higher-order functions, returning closures, function factories |
-| 2.3 Ownership | — | Planned | Core ownership model, move/copy/clone, Drop |
+| 2.3 Ownership | [`src/part2/2.3 Ownership.md`](../src/part2/2.3%20Ownership.md) | **Draft** | Three rules of ownership, stack vs heap, move semantics, Copy types, Clone, Drop/RAII, drop order, early drop, std::mem::drop |
 | 2.4 Borrowing and References | — | Planned | References, borrow checker, lifetimes intro |
 
 ## Part 3: Modeling Your Domain
