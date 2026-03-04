@@ -83,22 +83,26 @@ Working notes and action items for the next iteration.
   - ~~The "Why This Matters" section lists data races as prevented by ownership — technically ownership + borrowing together; verify this claim is precise enough~~ — RESOLVED: refined bullet to "Ownership ensures that a value has exactly one owner at a time. Combined with the borrowing rules you will learn next, this guarantee extends to concurrent programs — the same system that prevents use-after-free also prevents data races"
   - No mention of partial moves — deliberately omitted for simplicity; will be relevant in Part 3 (structs)
 
-### 2.4 Borrowing and References — DRAFT COMPLETE
-- Covers: shared references (`&T`), mutable references (`&mut T`), the many-readers-or-one-writer rule, Non-Lexical Lifetimes (NLL), borrow checker error anatomy (E0596, E0499, E0502, E0106), string slices (`&str` vs `&String`), array/vector slices (`&[T]`), dangling references, lifetime annotations (`'a`), lifetime elision, practical patterns (separate reads/writes, index-based mutation, narrow scopes)
+### 2.4 Borrowing and References — ITERATED
+- Covers: shared references (`&T`), mutable references (`&mut T`), the many-readers-or-one-writer rule, Non-Lexical Lifetimes (NLL), borrow checker error anatomy (E0596, E0499, E0502, E0106), string slices (`&str` vs `&String`), array/vector slices (`&[T]`), dangling references, lifetime annotations (`'a`), **lifetime violation example (E0597 does_not_compile — result used after shorter-lived borrow dropped)**, lifetime elision, practical patterns (separate reads/writes, index-based mutation, narrow scopes)
 - Philosophy: borrowing is what makes ownership practical — use without owning; borrow checker is a tool, not an obstacle
-- All 14 compilable code examples verified (Rust 1.93+, edition 2024); 5 does_not_compile examples verified with exact error messages
+- All 14 compilable code examples verified (Rust 1.93+, edition 2024); 6 does_not_compile examples verified with exact error messages (added E0597 lifetime violation)
 - No Rust 2024-specific changes to core borrowing/reference mechanics; NLL has been stable since Rust 2018 edition; match ergonomics 2024 changes exist but are too advanced for this chapter
 - Builds on 2.3: opens with the ownership-only pain point (tuple return pattern), introduces `&` as the solution
 - Introduced `vec![]` macro minimally for borrow checker examples — used without explanation, context makes intent clear
 - Practical patterns use only concepts from Parts 1–2 (indexing, loops, Copy types); no forward references to iterators or `unwrap`
+- **Updated E0596 error output** to Rust 1.93.1: added `help: consider changing this to be a mutable reference` suggestion with `&mut String` fix; added prose noting compiler suggests the fix
+- **Updated E0106 error output** to Rust 1.93.1: added `help: instead, you are more likely to want to return an owned value` suggestion showing `&String` → `String` fix; updated prose to reference compiler suggestion
+- **Added E0597 lifetime violation example**: shows `result` used outside inner scope after `s2` dropped; demonstrates that lifetime annotations let the compiler catch dangling references at compile time; completes the "show, then break" teaching pattern for lifetimes
+- **Heading case fix**: `Working With the Borrow Checker` → `Working with the Borrow Checker` (preposition lowercase per O'Reilly style)
 - **Review items:**
-  - Verify the `vec![]` usage doesn't confuse readers who haven't formally seen it (it appeared in 1.2 clippy example)
+  - ~~Verify the `vec![]` usage doesn't confuse readers who haven't formally seen it (it appeared in 1.2 clippy example)~~ — ACCEPTED: `vec![]` was introduced in 2.1 with a mini-intro; context is clear in all uses
   - ~~The `first_word` function uses `s.bytes().enumerate()` and byte literal `b' '` — verify this is approachable for beginners~~ — RESOLVED: replaced with `find(' ')` + `if let Some(space)` pattern; avoids byte-level operations, uses only concepts from 2.1 (`if let`) and intuitive `find` method; added explanatory paragraph about `find` returning `Option`
-  - The lifetime annotation section uses `longer` function — classic example, but verify the nested scope example doesn't feel contrived
+  - ~~The lifetime annotation section uses `longer` function — classic example, but verify the nested scope example doesn't feel contrived~~ — RESOLVED: added does_not_compile example showing what happens when result escapes the inner scope; the working example shows success, the failing example shows the compiler catching the bug; "show then break" pattern makes lifetimes concrete
   - ~~The `*scores.iter().max().unwrap()` pattern in "Separate Your Reads and Writes" may be too dense — consider if it needs more explanation~~ — RESOLVED: replaced with explicit index-based loop (`for i in 1..scores.len()`) using only Copy semantics and comparison; avoids iterators (Part 4), `unwrap` (Part 3), and dereference; added explanatory paragraph about why index-based reads avoid borrow conflicts
   - No mention of reborrowing — deliberately omitted for simplicity
   - No mention of `Deref` coercion beyond the `&String` → `&str` auto-conversion — details deferred to Part 4 (Traits)
-  - Consider whether the "Working With the Borrow Checker" section should come before or after the dangling references section
+  - ~~Consider whether the "Working With the Borrow Checker" section should come before or after the dangling references section~~ — ACCEPTED: current placement (after lifetimes, before capstone) works well; readers have seen all the rules and error types before getting practical advice
 
 ### 3.1 Structs and Methods — ITERATED
 - Covers: struct definition (named fields), field init shorthand, mutation (whole-struct mutability), struct update syntax with move semantics, tuple structs (newtype pattern intro), unit structs, methods with `impl` blocks, three method receivers (`&self`/`&mut self`/`self`), methods with extra parameters, associated functions (no `self`), `new` convention, `#[derive(Debug)]` for `{:?}` and `{:#?}`, `Display` trait manual implementation for `{}`, structs and ownership (move vs borrow), capstone `Task` example demonstrating all concepts
