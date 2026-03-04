@@ -40,7 +40,7 @@ Working notes and action items for the next iteration.
 - **Review items:**
   - Verify the `if let` / `Result` mini-intro is sufficient for beginners who haven't seen enums yet — it needs to "just work" without deeper understanding
   - The compound types section (tuples, arrays) is brief by design — consider if `Vec<T>` forward reference ("covered in a later part") is acceptable or needs rewording
-  - Integer overflow behavior (debug panic vs release wrap) was deliberately omitted to avoid overload — may add as a tip/note in review pass
+  - ~~Integer overflow behavior (debug panic vs release wrap) was deliberately omitted to avoid overload~~ — RESOLVED: added "What happens when integers overflow" C-head subsection after integer types; covers debug panic vs release wrap, method families table (checked/saturating/wrapping/strict), two verified code examples; `strict_add` (Rust 1.91+) included in table
   - Consider adding a note about `usize` being required for array indexing — currently mentioned but could be demonstrated
   - The `while let` chain example uses array indexing (`values[index]`) which is less idiomatic than iterator-based approaches — acceptable here since iterators aren't introduced yet
   - The statics section mentions `Mutex`/`Atomic` types for mutable globals but does not demonstrate them — deliberate forward-reference to Part 5/6
