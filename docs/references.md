@@ -61,6 +61,10 @@ Resources used to build book materials, organized by topic.
 
 - [u32::is_multiple_of - Rust Standard Library](https://doc.rust-lang.org/std/primitive.u32.html#method.is_multiple_of) — stabilized Rust 1.87.0
 - [Tracking Issue #128101 - unsigned_is_multiple_of](https://github.com/rust-lang/rust/issues/128101)
+- [u32::midpoint - Rust Standard Library](https://doc.rust-lang.org/std/primitive.u32.html#method.midpoint) — stabilized Rust 1.85.0 (unsigned), Rust 1.87.0 (signed)
+- [Tracking Issue #110840 - num_midpoint](https://github.com/rust-lang/rust/issues/110840)
+- [Announcing Rust 1.85.0 (unsigned/float midpoint)](https://blog.rust-lang.org/2025/02/20/Rust-1.85.0/)
+- [Announcing Rust 1.87.0 (signed midpoint)](https://blog.rust-lang.org/2025/05/15/Rust-1.87.0/)
 - [i32::checked_add - Rust std docs](https://doc.rust-lang.org/std/primitive.i32.html#method.checked_add)
 - [i32::saturating_add - Rust std docs](https://doc.rust-lang.org/std/primitive.i32.html#method.saturating_add)
 - [i32::wrapping_add - Rust std docs](https://doc.rust-lang.org/std/primitive.i32.html#method.wrapping_add)
