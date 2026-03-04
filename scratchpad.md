@@ -29,17 +29,21 @@ Working notes and action items for the next iteration.
 ## Part 2: Thinking in Values
 
 ### 2.1 Variables, Expressions, and Control Flow — DRAFT COMPLETE
-- Covers: immutability by default (philosophy), `let`/`mut`, shadowing (including type changes), scalar types (integers/floats/bool/char), type inference defaults (i32, f64), type annotations, constants (`const`), expression-oriented design (if/blocks as expressions), control flow (if/else, loop with break-value, while, for with ranges), loop labels, tuples and arrays at a glance, `if let` intro, let chains (Rust 2024)
-- Philosophy: immutability is a feature not a limitation; expressions produce values everywhere
-- Rust 2024 features: let chains in `if` and `while` conditions (stabilized in Rust 1.88.0, edition-gated to 2024)
-- All 26 code examples verified to compile and produce documented output (Rust 1.93+)
+- Covers: immutability by default (philosophy), `let`/`mut`, shadowing (including type changes), scalar types (integers/floats/bool/char), type inference defaults (i32, f64), type annotations, constants (`const`), statics (`static` vs `const`, when to use each, mutable globals forward-ref to Part 5/6), expression-oriented design (if/blocks as expressions), control flow (if/else, loop with break-value, while, for with ranges), loop labels, tuples and arrays at a glance, `if let` intro, let chains (Rust 2024)
+- Philosophy: immutability is a feature not a limitation; expressions produce values everywhere; mutable global state is deliberately hard because it causes data races
+- Rust 2024 features: let chains in `if` and `while` conditions (stabilized in Rust 1.88.0, edition-gated to 2024); `static mut` references disallowed in 2024 (not demonstrated — too advanced, covered in 7.3)
+- All 28 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024); 1 `does_not_compile` example (E0384 immutable reassignment)
+- ~~Immutable reassignment example was missing `does_not_compile` annotation~~ — FIXED
+- ~~Outline specifies "Constants and statics" but `static` was missing~~ — FIXED: added Statics section with `static` vs `const` comparison table, when to use each, and mutable globals forward-reference
 - Introduced `if let` and `Result` just enough for let chains — explained self-contained, no forward references
+- `LazyLock` (Rust 1.80+) for runtime-initialized statics deliberately omitted — too advanced for this chapter, better covered in Part 5/6
 - **Review items:**
   - Verify the `if let` / `Result` mini-intro is sufficient for beginners who haven't seen enums yet — it needs to "just work" without deeper understanding
   - The compound types section (tuples, arrays) is brief by design — consider if `Vec<T>` forward reference ("covered in a later part") is acceptable or needs rewording
   - Integer overflow behavior (debug panic vs release wrap) was deliberately omitted to avoid overload — may add as a tip/note in review pass
   - Consider adding a note about `usize` being required for array indexing — currently mentioned but could be demonstrated
   - The `while let` chain example uses array indexing (`values[index]`) which is less idiomatic than iterator-based approaches — acceptable here since iterators aren't introduced yet
+  - The statics section mentions `Mutex`/`Atomic` types for mutable globals but does not demonstrate them — deliberate forward-reference to Part 5/6
 
 ### 2.2 Functions and Closures — DRAFT COMPLETE
 - Covers: function definitions (params, return types), implicit last-expression return, early return with `return`, expression-oriented function bodies, closures (syntax, type inference, capture by reference/mutable reference), Fn/FnMut/FnOnce trait hierarchy (conceptual), higher-order functions (`impl Fn` in argument position), passing named functions, choosing the right trait bound, returning closures (`impl Fn` in return position), function factories, `move` keyword (intro only)
