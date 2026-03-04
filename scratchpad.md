@@ -171,10 +171,10 @@ Working notes and action items for the next iteration.
   - The newtype section is brief — fuller treatment with `Deref` and trait implementations deferred to Part 7
   - ~~Consider whether the "making illegal states unrepresentable" section needs a note about module privacy for enforcing validated construction (modules covered in 5.3)~~ — RESOLVED: added "Why the field is not public" C-head subsection after Percentage example; explains module-boundary privacy, shows `mod percentage` wrapper with pub struct + private field + validating constructor, verified output; forward-references Part 5 for full module system
 
-### 4.1 Traits — DRAFT COMPLETE
-- Covers: trait definition (required methods), implementing traits (`impl Trait for Type`), default methods, traits as parameters (`&impl Trait`), derive macros (Debug, Clone, Copy, PartialEq, Eq, Hash, Default, PartialOrd, Ord), Default trait with struct update syntax, Debug vs Display, From/Into (infallible conversions, `impl Into<String>` parameter pattern), TryFrom/TryInto (fallible conversions with associated Error type), AsRef (cheap reference conversions), implementing multiple traits, **supertraits (`trait Foo: Bar + Baz`, Loggable:Display example, prerequisite traits, bridges to Error:Debug+Display in 5.1)**, operator overloading (Add trait, associated Output type), orphan rule, capstone Celsius/Fahrenheit temperature example
+### 4.1 Traits — ITERATED
+- Covers: trait definition (required methods), implementing traits (`impl Trait for Type`), default methods, traits as parameters (`&impl Trait`), derive macros (Debug, Clone, Copy, PartialEq, Eq, Hash, Default, PartialOrd, Ord), Default trait with struct update syntax, Debug vs Display, From/Into (infallible conversions, `impl Into<String>` parameter pattern), TryFrom/TryInto (fallible conversions with associated Error type, **`Display` impl for error type**), AsRef (cheap reference conversions), implementing multiple traits, **supertraits (`trait Foo: Bar + Baz`, Loggable:Display example, prerequisite traits, bridges to Error:Debug+Display in 5.1)**, operator overloading (Add trait, associated Output type), orphan rule, capstone Celsius/Fahrenheit temperature example
 - Philosophy: shared behavior without inheritance — "can-do" relationships instead of "is-a"; traits are flat, composable, and independent
-- All 15 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024); 1 `rust,ignore` example (Storable multiple supertraits, non-compilable snippet)
+- All 15 code examples verified zero-warning (Rust 1.93.1, edition 2024); 1 `rust,ignore` example (Storable multiple supertraits, non-compilable snippet)
 - No Rust 2024-specific changes to core trait syntax; "dyn compatible" replaces "object safe" terminology (1.85+); trait upcasting stable in 1.86 — both deferred to 4.2 (Generics) since dyn Trait is covered there
 - Builds on 3.3: closing paragraph bridges to traits; validated construction pattern from 3.3 revisited as TryFrom
 - Builds on 3.1: impl blocks, Display trait, use std::fmt — now generalized
@@ -184,12 +184,18 @@ Working notes and action items for the next iteration.
 - `AsMut` deliberately omitted — `AsRef` is more common and sufficient for intro; `AsMut` can be covered in Part 5 or Part 7
 - ~~Supertraits not covered~~ — RESOLVED: added "Supertraits" A-head section between "Implementing Multiple Traits" and "Traits for Operators"; introduces `trait Loggable: fmt::Display` syntax, shows `Event` struct implementing both Display (supertrait) and Loggable, `rust,ignore` snippet for multiple supertraits (`trait Storable: Display + Debug + Clone`), explains derive table entries (Copy:Clone, Eq:PartialEq, Ord:Eq+PartialOrd) as supertrait relationships, forward-references `Error: Debug + Display` from 5.1; added to key points summary
 - **Review items:**
-  - Verify the `impl Trait` in parameter position is sufficient intro before full generics in 4.2
-  - The associated type explanation ("a type that is part of the trait's contract") is minimal — verify it bridges cleanly to 4.2 where generics vs associated types are contrasted
-  - The orphan rule explanation is brief — verify it's sufficient; newtype workaround mentioned but not demonstrated (covered in 3.3 and Part 7)
-  - The `content` field warning in example 1 (unused field) is acceptable for snippet
-  - Consider whether the `AsRef` example using byte values is too low-level — it demonstrates the concept well but byte arrays may be unfamiliar to beginners
-  - The capstone uses `Copy` derive on newtypes — verify readers understand this from 2.3
+  - ~~The `content` field warning in example 1 (unused field) is acceptable for snippet~~ — RESOLVED: removed `content` field from `Article` struct; example now zero-warning
+  - ~~Default methods example has unused `title` field~~ — RESOLVED: removed `title` field from `Article` struct; only `author` needed for `summarize_author`
+  - ~~Default values example has unused `verbose` field~~ — RESOLVED: added `println!("verbose: {}", custom.verbose)` to use the field; zero-warning
+  - ~~Debug formatting example has unused `Active` variant and unread `reason` field~~ — RESOLVED: added `label()` method that destructures all variants including `reason` field; both variants used in `main`; zero-warning
+  - ~~Display formatting example has unused `Active` variant~~ — RESOLVED: both variants now constructed and printed in `main`; zero-warning
+  - ~~TryFrom example has unread `value` and `OutOfRange(i32)` fields~~ — RESOLVED: added `Display` impl for `PercentageError` that destructures `OutOfRange(v)`; `main` uses `match` to access `p.value` and `{e}` (Display); zero-warning
+  - ~~C-head "Using Into in Function Parameters" capitalization~~ — RESOLVED: changed to sentence case "Using Into in function parameters"
+  - Verify the `impl Trait` in parameter position is sufficient intro before full generics in 4.2 — ACCEPTED: the chapter explicitly says "You will explore the full generics syntax in the next chapter"
+  - The associated type explanation ("a type that is part of the trait's contract") is minimal — ACCEPTED: bridges cleanly to 4.2 where generics vs associated types are contrasted
+  - The orphan rule explanation is brief — ACCEPTED: sufficient for intro; newtype workaround mentioned but not demonstrated (covered in 3.3 and Part 7)
+  - Consider whether the `AsRef` example using byte values is too low-level — ACCEPTED: demonstrates the concept well with concrete observable output; byte arrays are familiar enough after 2.1
+  - The capstone uses `Copy` derive on newtypes — ACCEPTED: `Copy` was introduced in 2.3 and in the derive table earlier in this chapter
 
 ### 4.2 Generics — DRAFT COMPLETE
 - Covers: generic functions (single/multiple params), trait bounds (`T: Trait`, `T: Trait1 + Trait2`), `impl Trait` (argument position as sugar, return position for unnameable types), `where` clauses (readability + advanced bounds), generic structs (Pair, KeyValue), generic enums (Tree with Box), `impl Trait` in return position, Rust 2024 RPIT lifetime capture rule, associated types vs type parameters (one-to-one vs one-to-many), trait objects (`dyn Trait`), dyn compatibility rules (with `where Self: Sized` escape hatch), monomorphization and zero-cost abstraction, capstone Measurable example with static + dynamic dispatch
