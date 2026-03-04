@@ -25,6 +25,7 @@ Resources used to build book materials, organized by topic.
 ## Rust Release History
 
 - [Announcing Rust 1.93.1](https://blog.rust-lang.org/2026/02/12/Rust-1.93.1/)
+- [Rust 1.94.0 Release Notes](https://github.com/rust-lang/rust/issues/151650)
 - [The Rust Release Announcements](https://blog.rust-lang.org/releases/)
 
 ## Compiler Errors and Diagnostics
@@ -271,6 +272,8 @@ Resources used to build book materials, organized by topic.
 - [Iterator::is_sorted - Rust std docs](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.is_sorted)
 - [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
 - [Announcing Rust 1.82.0 (is_sorted, repeat_n) - Rust Blog](https://blog.rust-lang.org/2024/10/17/Rust-1.82.0/)
+- [slice::array_windows - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.array_windows)
+- [Rust 1.94.0 Release Notes (array_windows stabilization)](https://github.com/rust-lang/rust/issues/151650)
 
 ## Error Handling in Practice
 

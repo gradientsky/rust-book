@@ -229,9 +229,9 @@ Working notes and action items for the next iteration.
   - ~~Consider whether `impl Trait` same-type vs different-type distinction needs a code example showing the difference (currently prose-only)~~ — RESOLVED: added `show_any`/`show_pair` code example demonstrating independent type params (`impl Display, impl Display`) vs shared type param (`<T: Display>`); verified compiles with correct output; commented-out `show_pair(42, "hello")` produces `error[E0308]: expected integer, found &str`
 
 ### 4.3 Iterators and Functional Patterns — ITERATED
-- Covers: Iterator trait (`next`, `Item`), three iteration modes (iter/iter_mut/into_iter), for-loop desugaring, lazy evaluation, adaptors (map, filter, filter_map, enumerate, zip, take, skip, flatten, flat_map, chain, inspect), consumers (collect, fold, sum, product, count, any, all, find, position, min, max, min_by_key, max_by_key), **`total_cmp` for float sorting** (PartialOrd vs Ord, NaN safety, `sort_by`/`max_by` patterns), collecting into Vec/String/HashMap/HashSet/Result, ranges as iterators, std::iter constructors (repeat_n, once, from_fn, successors), implementing Iterator for custom types (Countdown), IntoIterator for custom collections (Playlist), `is_sorted_by_key` (stable 1.82)
+- Covers: Iterator trait (`next`, `Item`), three iteration modes (iter/iter_mut/into_iter), for-loop desugaring, lazy evaluation, adaptors (map, filter, filter_map, enumerate, zip, take, skip, flatten, flat_map, chain, **`array_windows`**, inspect), consumers (collect, fold, sum, product, count, any, all, find, position, min, max, min_by_key, max_by_key), **`total_cmp` for float sorting** (PartialOrd vs Ord, NaN safety, `sort_by`/`max_by` patterns), collecting into Vec/String/HashMap/HashSet/Result, ranges as iterators, std::iter constructors (repeat_n, once, from_fn, successors), implementing Iterator for custom types (Countdown), IntoIterator for custom collections (Playlist), `is_sorted_by_key` (stable 1.82)
 - Philosophy: iterators eliminate the trade-off between readable high-level code and fast execution; lazy evaluation enables compiler to fuse pipeline into single loop; zero-cost abstraction applied to data processing
-- All 28 code examples verified to compile and produce documented output (Rust 1.93.1, edition 2024)
+- All 30 code examples verified to compile and produce documented output (Rust 1.94, edition 2024)
 - No Rust 2024-specific changes to core iterator trait; `IntoIterator for Box<[T]>` is edition-gated but not demonstrated (too niche for intro); `gen` keyword reserved in 2024 for future gen blocks (nightly-only); `is_sorted`/`is_sorted_by_key` stable since 1.82; `repeat_n` stable since 1.82; `f64::total_cmp` stable since 1.62 — taught as the production-grade float sorting pattern (replaces `partial_cmp().unwrap()` anti-pattern)
 - Builds on 4.2: closing paragraph bridges from generics to iterators; `impl Iterator` return type pattern from 4.2 revisited
 - Builds on 4.1: `Iterator` is the key trait; `IntoIterator` and `FromIterator` are standard library traits
@@ -239,6 +239,7 @@ Working notes and action items for the next iteration.
 - Builds on 2.3/2.4: three iteration modes mirror ownership model (borrow, mutable borrow, owned)
 - Introduced `HashMap` minimally for collect examples — used without deep explanation (covered in Part 5)
 - Introduced `HashSet` minimally for collect examples — same
+- **Added `array_windows::<N>()`** (Rust 1.94): "Array Windows" B-head subsection after Chain; philosophy-first explanation of consecutive-group analysis (trends, differences, moving averages); first example shows `readings.array_windows::<2>()` with destructuring into `&[a, b]`; explains compile-time size guarantee vs dynamic slices; second example demonstrates day-over-day price changes with `<2>` and three-day moving average with `<3>`; explains N−1/N−2 window count and empty-on-short-slice behavior; 2 new examples verified zero-warning Rust 1.94 beta
 - Deliberately omitted: `Iterator::array_chunks` (nightly-only), `Iterator::map_windows` (nightly-only), `gen` blocks (nightly-only), `IntoIterator for Box<[T]>` 2024 behavior change (too niche), `try_fold`/`ControlFlow` (advanced), `Extend` trait (Part 5), `ExactSizeIterator`/`DoubleEndedIterator` (advanced traits better for Part 7), `iter::chain` free function (1.91, not needed when method form exists)
 - **Review items:**
   - ~~The `&&n` pattern in `filter` examples may confuse beginners~~ — RESOLVED: added dedicated "Why the double ampersand" C-head subsection in Filter section with step-by-step trace of `&&i32` origin; contrasts `filter`/`find` (`&Self::Item`) with `map`/`any`/`all`/`position` (`Self::Item`); lazy evaluation example changed to range-based to avoid unexplained `&&` before explanation; consumers section adds brief callback note
@@ -465,7 +466,8 @@ Features stabilized in recent Rust releases that could strengthen the book:
 - **5.2**: ~~`Vec::pop_if()` (1.86) — conditional pop~~ DONE; ~~`[T]::as_array::<N>()` (1.93) — slice to fixed-size array~~ DONE
 - **5.3**: Cargo automatic cache garbage collection (1.88) — `~/.cargo` self-cleans
 - **6.1**: `std::io::pipe()` (1.87) — cross-platform anonymous pipes in std
-- **7.3**: `slice::array_windows::<N>()` (1.94) — const-generic sliding window; `LazyLock::get()`/`force_mut()` (1.94) — inspect/mutate lazy values
+- **4.3**: ~~`slice::array_windows::<N>()` (1.94) — const-generic sliding window~~ DONE
+- **7.3**: `LazyLock::get()`/`force_mut()` (1.94) — inspect/mutate lazy values
 
 ## General Notes
 
