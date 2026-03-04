@@ -247,6 +247,8 @@ Resources used to build book materials, organized by topic.
 - [Announcing async fn and return-position impl Trait in traits - Rust Blog](https://blog.rust-lang.org/2023/12/21/async-fn-rpit-in-traits/)
 - [Dyn compatibility rename (lang-team #286)](https://github.com/rust-lang/lang-team/issues/286)
 - [Announcing Rust 1.86.0 (trait upcasting, dyn compatible) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
+- [RFC 2289 - Associated Type Bounds](https://rust-lang.github.io/rfcs/2289-associated-type-bounds.html)
+- [Announcing Rust 1.79.0 (associated type bounds stabilization) - Rust Blog](https://blog.rust-lang.org/2024/06/13/Rust-1.79.0/)
 - [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
 
 ## Floating-Point Ordering
