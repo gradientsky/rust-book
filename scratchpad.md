@@ -7,10 +7,14 @@ Working notes and action items for the next iteration.
 ## Part 1: First Contact
 
 ### 1.1 Your First Rust Program — ITERATED
-- Covers: philosophy (safety + speed), rustup install, `cargo new`, Cargo.toml anatomy, `fn main`, `println!` with `{}`, `{variable}`, `{:?}`, `{:#?}`
+- Covers: philosophy (safety + speed), rustup install, `cargo new`, Cargo.toml anatomy, `fn main`, `println!` with `{}`, `{variable}`, `{:?}`, `{:#?}`, **format specifiers** (precision `{:.2}`, width/alignment `{:>10}`/`{:<10}`/`{:^10}`, zero-padding `{:05}`, hex `{:#x}`, binary `{:#b}`, combined specifiers), **`format!` macro** (returns `String` instead of printing)
 - Edition 2024 context: `cargo new` defaults to edition 2024 since Rust 1.85.0 (Feb 2025)
 - Current stable Rust: 1.93.1 (Feb 2026)
-- All 5 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- All 7 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- **Added "Format Specifiers" B-head** after Debug Formatting: philosophy-first explanation ("control how a value is displayed"); code example demonstrating `{:.2}` precision, `{:>10}` right-alignment, `{:05}` zero-padding, `{:#x}` hex, `{:#b}` binary; combined specifiers note (`{pi:>10.2}`); `<`/`^` alignment variants mentioned in prose; 1 new code example verified zero-warning Rust 1.93.1
+- **Added `format!` macro introduction**: brief code example showing `format!("${price:.2}")` returning a `String`; explains the relationship between `println!` (prints) and `format!` (builds string); 1 new code example verified zero-warning Rust 1.93.1; closes the gap where `format!` was used in dozens of later examples without formal introduction
+- **Updated "Anatomy" closing bullet** to mention format specifiers and `format!`
+- **Gap addressed**: `{:.2}` precision syntax was used in 40+ examples across 10+ chapters (starting from 2.2) but never explained; format specifiers now introduced in the chapter where `println!` is first taught
 - **Review items:**
   - ~~Verify tone is accessible to true beginners (no assumed systems programming background)~~ — RESOLVED: rewrote opening three paragraphs to eliminate systems programming jargon; replaced "garbage collector" with "the language sometimes pauses to reclaim memory you are no longer using"; replaced "dangling pointers, data races, use-after-free, buffer overflows" with accessible descriptions ("crashes from accessing freed memory, data corruption from unsynchronized access, resource leaks from forgotten cleanup"); framed the trade-off through concrete language comparisons (Python/JS vs C/C++)
   - ~~Consider adding a "what you'll need" prereqs note (terminal, text editor)~~ — DEFERRED: the chapter already instructs "Open a terminal and run" which implicitly requires a terminal; adding a formal prereqs box risks making the opening feel bureaucratic for a pocket book

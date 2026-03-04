@@ -6,7 +6,7 @@ Status legend: **Draft** | **Review** | **Final** | Planned
 
 | Chapter | File | Status | Notes |
 |---------|------|--------|-------|
-| 1.1 Your First Rust Program | [`src/part1/1.1 Your First Rust Program.md`](../src/part1/1.1%20Your%20First%20Rust%20Program.md) | **Review** | Philosophy-first intro (beginner-accessible opening, no jargon), install, Cargo, printing/formatting; first-mention styling for rustup/Cargo/crate |
+| 1.1 Your First Rust Program | [`src/part1/1.1 Your First Rust Program.md`](../src/part1/1.1%20Your%20First%20Rust%20Program.md) | **Review** | Philosophy-first intro (beginner-accessible opening, no jargon), install, Cargo, printing/formatting, **format specifiers** (precision `{:.2}`, width/alignment `{:>10}`/`{:<10}`/`{:^10}`, zero-padding `{:05}`, hex `{:#x}`, binary `{:#b}`, combined specifiers, `format!` macro for building strings); first-mention styling for rustup/Cargo/crate; all 7 examples verified Rust 1.93.1 |
 | 1.2 The Compiler Is Your Ally | [`src/part1/1.2 The Compiler Is Your Ally.md`](../src/part1/1.2%20The%20Compiler%20Is%20Your%20Ally.md) | **Review** | Error anatomy (E0382 with clone suggestion, E0308 with function-defined-here, unused variable warning), `cargo check`, `cargo clippy` (needless_range_loop with array, bool_comparison), **`dbg!` macro** (runtime value tracing, expression+value+location, stderr separation, pass-through return, `println!` vs `dbg!` guidance), `cargo fmt` with before/after, quality baseline workflow (updated to include `dbg!` step); all outputs verified Rust 1.93.1 |
 
 ## Part 2: Thinking in Values
