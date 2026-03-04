@@ -374,8 +374,8 @@ Working notes and action items for the next iteration.
   - Consider whether the "when cloning is correct" section needs a code example
   - No mention of `Cow<str>` as an alternative to cloning — too advanced for this chapter
 
-### 7.3 Where to Go from Here — DRAFT COMPLETE
-- Covers: async in depth (tokio runtime, JoinSet structured concurrency, async fn in traits (1.75), async closures (2024), when to use async), unsafe Rust (5 capabilities, 2024 safety improvements: unsafe_op_in_unsafe_fn warn-by-default, unsafe extern blocks with safe annotations, static mut references hard error, newly unsafe env::set_var/remove_var), macros (declarative macro_rules! with `map!` example, procedural derive/attribute/function-like, syn/quote/proc-macro2 ecosystem), ecosystem map (web: axum/actix-web/reqwest/hyper/tonic/tower, CLI: clap/ratatui/colored, serialization: serde/serde_json/toml, databases: sqlx/diesel/sea-orm, observability: tracing/log, embedded: embedded-hal 1.0/embassy/esp-hal 1.0, WebAssembly: wasm-bindgen/wasm-pack/leptos/dioxus), recommended reading (official: Book/RBE/Reference/Cargo Book/Edition Guide/Rustonomicon; community: Design Patterns/Effective Rust/API Guidelines/Performance Book; interactive: Rustlings/Exercism; staying current: This Week in Rust/Rust Blog/Users Forum), three concrete next-steps paths (web services, CLI tools, systems programming)
+### 7.3 Where to Go from Here — ITERATED
+- Covers: async in depth (tokio runtime, JoinSet structured concurrency, async fn in traits (1.75), async closures (2024), when to use async), unsafe Rust (5 capabilities, 2024 safety improvements: unsafe_op_in_unsafe_fn warn-by-default, unsafe extern blocks with safe annotations, static mut references hard error, newly unsafe env::set_var/remove_var), macros (declarative macro_rules! with `map!` example, procedural derive/attribute/function-like, syn/quote/proc-macro2 ecosystem), ecosystem map (web: axum/actix-web/reqwest/hyper/tonic/tower, CLI: clap/ratatui/colored, serialization: serde/serde_json/toml, databases: sqlx/diesel/sea-orm, observability: tracing/log, embedded: embedded-hal 1.0/embassy/esp-hal 1.0, WebAssembly: wasm-bindgen/wasm-pack/leptos/dioxus), recommended reading (official: Book/RBE/Reference/Cargo Book/Edition Guide/Rustonomicon; community: Design Patterns/Effective Rust/API Guidelines/Performance Book; interactive: Rustlings/Exercism; staying current: This Week in Rust/Rust Blog/Users Forum), four concrete next-steps paths (web services, CLI tools, embedded, systems programming)
 - Philosophy: compass not destination; fundamentals don't change; ownership/borrowing/traits/type system are the foundation of every Rust program
 - 1 compilable code example verified (macro_rules! `map!` macro, Rust 1.93+, edition 2024); 5 `rust,ignore` examples (tokio runtime, JoinSet, async trait, unsafe 2024 features)
 - Builds on 7.2: closing bridge "In the next chapter, we will look forward"
@@ -385,14 +385,16 @@ Working notes and action items for the next iteration.
 - Ecosystem versions verified via web research (March 2026): tokio 1.50.0, axum 0.8.x, reqwest 0.13.2, clap 4.5.x, serde 1.0.228, sqlx 0.8.6, diesel 2.3.x, sea-orm 2.0, embedded-hal 1.0, esp-hal 1.0, tracing 0.1.x, tower 0.5.3, leptos 0.8.x, dioxus 0.7.x
 - async-std noted as discontinued (March 2025); not recommended in the chapter
 - **Review items:**
-  - The JoinSet example uses `to_string()` to satisfy `'static` bound — verify this is clear enough as a pattern
-  - The async fn in traits section notes `dyn Trait` limitation — verify `async_trait` crate is still the standard workaround
-  - The unsafe 2024 section covers 4 changes; `unsafe_attr` (unsafe attributes like `#[no_mangle]`) was omitted for brevity
-  - The `map!` macro example is the only compilable example — all others are `rust,ignore` since they require external dependencies (tokio, etc.)
-  - Ecosystem tables may become dated — consider adding a "verified as of March 2026" note in review pass
-  - No mention of `rayon` beyond a one-line reference in "when to use async" — acceptable for a compass chapter
-  - The "Your Next Steps" section suggests three paths — consider whether a fourth (embedded) should be added
-  - No capstone example — deliberate choice for a closing chapter that points outward rather than teaching new concepts
+  - ~~The JoinSet example uses `to_string()` to satisfy `'static` bound — verify this is clear enough as a pattern~~ — ACCEPTED: `to_string()` is the standard idiom for converting `&str` to owned `String` for `'static` task spawning; well-established pattern in tokio documentation
+  - ~~The async fn in traits section notes `dyn Trait` limitation — verify `async_trait` crate is still the standard workaround~~ — VERIFIED (March 2026): native `dyn Trait` with async methods is NOT yet stabilized; `async_trait` crate (0.1.88+) remains the standard workaround; `trait_variant` solves a different problem (Send-bounded variants for static dispatch); `dynosaur` is experimental
+  - ~~The unsafe 2024 section covers 4 changes; `unsafe_attr` (unsafe attributes like `#[no_mangle]`) was omitted for brevity~~ — ACCEPTED: the four covered changes (unsafe_op_in_unsafe_fn, unsafe extern, static mut, newly unsafe fns) are the most impactful; `unsafe_attr` is less commonly encountered and can be discovered via the Edition Guide link
+  - ~~The `map!` macro example is the only compilable example — all others are `rust,ignore` since they require external dependencies (tokio, etc.)~~ — ACCEPTED: verified `map!` macro compiles with expected output `3 colors defined` (Rust 1.93+, edition 2024); `rust,ignore` for tokio examples is the correct approach
+  - ~~Ecosystem tables may become dated — consider adding a "verified as of March 2026" note in review pass~~ — RESOLVED: added "Versions and recommendations were verified as of early 2026; check crates.io and lib.rs for the latest" note at the start of the ecosystem section
+  - ~~No mention of `rayon` beyond a one-line reference in "when to use async"~~ — ACCEPTED: rayon is mentioned in the right context (CPU-bound alternative to async); a dedicated entry would duplicate the concurrency chapter
+  - ~~The "Your Next Steps" section suggests three paths — consider whether a fourth (embedded) should be added~~ — RESOLVED: added embedded path with Embedded Rust Book link, `rustup target add`, embedded-hal traits, and embassy reference
+  - ~~No capstone example~~ — ACCEPTED: deliberate choice for a closing chapter that points outward rather than teaching new concepts
+  - **Heading style fix**: all 15 B-heads changed from sentence case to title case per O'Reilly style guide
+  - **Crate name styling fix**: removed monospace from crate names used in prose context (embedded-hal, wasm-bindgen, anyhow, mio) per style guide rule "Do not use monospace for crate names in prose"
 
 ### Part 7 — ALL CHAPTERS COMPLETE (7.1, 7.2, 7.3)
 
