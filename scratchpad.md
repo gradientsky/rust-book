@@ -126,26 +126,29 @@ Working notes and action items for the next iteration.
   - **Fixed dead_code warnings** in ownership move example: replaced `#[derive(Debug)]` with direct field access in `apply_config`; more instructive for ownership section
   - **Updated E0277 error output** to match Rust 1.93.1 format (added `---- required by this formatting parameter` annotation)
 
-### 3.2 Enums and Pattern Matching — DRAFT COMPLETE
-- Covers: enum definition (simple variants, data-carrying variants, named-field variants), exhaustive `match` with E0004 error, match as expression, wildcard `_` catch-all, or patterns (`|`), `if let` / `if let else`, **`let`-`else` (guard clauses, divergent else block, happy-path-flat idiom, when-to-use-each guide: if let vs let-else vs match)**, let chains (Rust 2024 with `&&`), destructuring (enums, structs, tuples, nested), match guards (`if condition`), `..` ignore pattern for structs, `Box<Expr>` for recursive types (brief), `matches!` macro, capstone `Ticket` system example with nested pattern matching and Display impl
+### 3.2 Enums and Pattern Matching — ITERATED
+- Covers: enum definition (simple variants, data-carrying variants, named-field variants), exhaustive `match` with E0004 error, match as expression, wildcard `_` catch-all, or patterns (`|`), **`matches!` macro** (introduced with or-patterns as idiomatic boolean pattern check), `if let`, **"When to Prefer Match Over If Let"** (Discount example with exhaustiveness note), `let`-`else` (guard clauses, divergent else block, happy-path-flat idiom, when-to-use-each guide), let chains (Rust 2024 with `&&`), destructuring (enums, structs, tuples, nested), match guards (`if condition`), `..` ignore pattern for structs, `Box<Expr>` for recursive types (brief), capstone `Ticket` system example with nested pattern matching and Display impl
 - Philosophy: enums model alternatives where strings/integers/booleans fail; exhaustive matching turns runtime bugs into compile-time errors; the type system guarantees every case is handled
-- All 18 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0004) verified with exact error message; 2 `rust,ignore` comparison snippets
+- All 20 compilable code examples verified zero-warning (Rust 1.93.1, edition 2024); 1 does_not_compile example (E0004) verified with exact error message; 2 `rust,ignore` comparison snippets
+- **Fixed dead_code/unused warnings** in 10 examples: Direction (iterate all), Coin (use all variants), Season (iterate all), HttpStatus (iterate all), Command catch-all (handle all data-bearing variants, `_` for unit variants), Day/or-patterns (iterate full week), Notification/if-let (unit variant for non-extracted data), Config/`..` pattern (read remaining fields in separate function), Role/Request (use Admin variant), capstone Ticket (use Medium/High Priority variants)
+- **Updated E0004 error output** to Rust 1.93.1: added `note: Coin defined here` section showing enum definition with `------- not covered` annotation, `= note: the matched value is of type &Coin`, and `help: ensure that all possible cases are being handled` suggestion with `&Coin::Quarter => todo!()` fix; updated prose to reference `todo!()` suggestion
+- **Replaced `std::mem::discriminant` example** with simpler catch-all pattern: Command enum with data-bearing variants handled explicitly, `_` catching unit variants; removes confusing `Discriminant(1)` output
+- **Added `matches!` macro** as dedicated subsection after or-patterns (was only in capstone before); explains `matches!` as idiomatic boolean pattern check; Day weekend example with full week iteration
+- **Added exhaustiveness note** to If Let with Else section: renamed to "When to Prefer Match Over If Let"; added explicit note that `match` catches new variants at compile time while `if let` chains silently fall through
 - `let`-`else` stabilized in Rust 1.65.0 — not 2024-specific but essential production pattern; introduced between `if let` and let chains as the natural progression (if let → let-else → let chains)
 - Builds on 3.1: struct destructuring in match, `Display` impl on enums, `use std::fmt`
 - Builds on 2.1: let chains revisited with enum patterns (first introduced in 2.1 with `Result`)
 - Introduced `Box<T>` minimally for recursive `Expr` type — explained as "heap-allocated pointer" with forward reference to Part 5
-- Introduced `vec![]` for capstone example — used without deep explanation (appeared in 1.2, 2.4)
-- Introduced `matches!` macro briefly — explained as "returns true/false for pattern check"
-- Introduced `std::mem::discriminant` for catch-all variable binding example
+- Introduced `vec![]` for capstone example — used without deep explanation (appeared in 2.1, 2.4)
 - Rust 2024 features used: let chains (`if let ... && condition`); match ergonomics 2024 changes exist but too advanced for this chapter
-- Deliberately omitted: `@` bindings (too advanced, better for Part 7), `ref`/`ref mut` patterns (match ergonomics handles this), range patterns in match (not enum-specific), `#[non_exhaustive]` (library design concept for Part 5), slice patterns (covered in Part 5 with collections)
+- Deliberately omitted: `@` bindings (too advanced, better for Part 7), `ref`/`ref mut` patterns (match ergonomics handles this), range patterns in match (not enum-specific), `#[non_exhaustive]` (library design concept for Part 5), slice patterns (covered in Part 5 with collections), `std::mem::discriminant` (too obscure for beginners)
 - **Review items:**
-  - The `std::mem::discriminant` example output shows `Discriminant(1)` — verify this is stable output format or consider simplifying to just a debug print
-  - The `Box<Expr>` example may be too advanced — it introduces heap allocation before Part 5; current approach: minimal explanation, forward reference
-  - Verify the `matches!` macro intro is sufficient — it appears in the capstone without prior dedicated explanation
-  - The capstone example uses `vec![]` which hasn't been formally introduced — acceptable given prior appearances
-  - Consider whether the `if let else` chain example (Discount) should note that `match` is preferred for exhaustiveness
-  - The or-pattern example (`Day::Saturday | Day::Sunday`) could note that `matches!` is even more concise for boolean returns
+  - ~~The `std::mem::discriminant` example output shows `Discriminant(1)` — verify this is stable output format or consider simplifying~~ — RESOLVED: replaced with simpler catch-all using `_`; removed `std::mem::discriminant` entirely
+  - The `Box<Expr>` example may be too advanced — it introduces heap allocation before Part 5; current approach: minimal explanation, forward reference — ACCEPTED: `Box` is explained as "heap-allocated pointer" with forward reference; the recursive type example is a natural fit for nested destructuring
+  - ~~Verify the `matches!` macro intro is sufficient — it appears in the capstone without prior dedicated explanation~~ — RESOLVED: added dedicated `matches!` subsection after or-patterns with Day weekend example; capstone now has prior explanation
+  - The capstone example uses `vec![]` which hasn't been formally introduced — ACCEPTED: `vec![]` was introduced in 2.1; context is clear
+  - ~~Consider whether the `if let else` chain example (Discount) should note that `match` is preferred for exhaustiveness~~ — RESOLVED: renamed section to "When to Prefer Match Over If Let"; added explicit note about exhaustiveness checking vs silent fall-through
+  - ~~The or-pattern example (`Day::Saturday | Day::Sunday`) could note that `matches!` is even more concise for boolean returns~~ — RESOLVED: added `matches!` subsection immediately following or-patterns
 
 ### 3.3 Null, Errors, and the Type System — DRAFT COMPLETE
 - Covers: `Option<T>` (Some/None, unwrap_or, unwrap_or_else, map, and_then, is_some_and, is_none_or), `Result<T, E>` (Ok/Err, unwrap_or, map, map_err), `?` operator (with Result and Option), Option↔Result conversion (ok_or, ok), unwrap/expect guidance, making illegal states unrepresentable (enum replacing boolean flags, newtype wrappers for type safety, validated construction with Result, **module privacy for invariant enforcement**), capstone Score/grade example combining all concepts
