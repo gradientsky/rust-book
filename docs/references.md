@@ -289,6 +289,8 @@ Resources used to build book materials, organized by topic.
 - [Peekable - Rust std docs](https://doc.rust-lang.org/std/iter/struct.Peekable.html)
 - [Peekable::next_if - Rust std docs](https://doc.rust-lang.org/std/iter/struct.Peekable.html#method.next_if)
 - [Stabilize peekable_next_if - PR #80011](https://github.com/rust-lang/rust/pull/80011)
+- [Peekable::next_if_map - Rust std docs](https://doc.rust-lang.org/std/iter/struct.Peekable.html#method.next_if_map)
+- [Tracking Issue for peekable_next_if_map - Issue #143702](https://github.com/rust-lang/rust/issues/143702)
 - [Tracking Issue for slice::array_windows - Issue #75027](https://github.com/rust-lang/rust/issues/75027)
 
 ## Error Handling in Practice
