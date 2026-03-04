@@ -353,13 +353,38 @@ Working notes and action items for the next iteration.
   - Consider whether the "when cloning is correct" section needs a code example
   - No mention of `Cow<str>` as an alternative to cloning — too advanced for this chapter
 
-### Part 7 — REMAINING
-- 7.3 Where to Go from Here: async in depth, unsafe, macros, ecosystem, resources
+### 7.3 Where to Go from Here — DRAFT COMPLETE
+- Covers: async in depth (tokio runtime, JoinSet structured concurrency, async fn in traits (1.75), async closures (2024), when to use async), unsafe Rust (5 capabilities, 2024 safety improvements: unsafe_op_in_unsafe_fn warn-by-default, unsafe extern blocks with safe annotations, static mut references hard error, newly unsafe env::set_var/remove_var), macros (declarative macro_rules! with `map!` example, procedural derive/attribute/function-like, syn/quote/proc-macro2 ecosystem), ecosystem map (web: axum/actix-web/reqwest/hyper/tonic/tower, CLI: clap/ratatui/colored, serialization: serde/serde_json/toml, databases: sqlx/diesel/sea-orm, observability: tracing/log, embedded: embedded-hal 1.0/embassy/esp-hal 1.0, WebAssembly: wasm-bindgen/wasm-pack/leptos/dioxus), recommended reading (official: Book/RBE/Reference/Cargo Book/Edition Guide/Rustonomicon; community: Design Patterns/Effective Rust/API Guidelines/Performance Book; interactive: Rustlings/Exercism; staying current: This Week in Rust/Rust Blog/Users Forum), three concrete next-steps paths (web services, CLI tools, systems programming)
+- Philosophy: compass not destination; fundamentals don't change; ownership/borrowing/traits/type system are the foundation of every Rust program
+- 1 compilable code example verified (macro_rules! `map!` macro, Rust 1.93+, edition 2024); 5 `rust,ignore` examples (tokio runtime, JoinSet, async trait, unsafe 2024 features)
+- Builds on 7.2: closing bridge "In the next chapter, we will look forward"
+- Builds on 6.1: async taste expanded into depth; tokio, JoinSet, async closures
+- Builds on 5.1: thiserror/anyhow referenced in ecosystem context
+- Builds on all prior chapters: references specific concepts taught earlier
+- Ecosystem versions verified via web research (March 2026): tokio 1.50.0, axum 0.8.x, reqwest 0.13.2, clap 4.5.x, serde 1.0.228, sqlx 0.8.6, diesel 2.3.x, sea-orm 2.0, embedded-hal 1.0, esp-hal 1.0, tracing 0.1.x, tower 0.5.3, leptos 0.8.x, dioxus 0.7.x
+- async-std noted as discontinued (March 2025); not recommended in the chapter
+- **Review items:**
+  - The JoinSet example uses `to_string()` to satisfy `'static` bound — verify this is clear enough as a pattern
+  - The async fn in traits section notes `dyn Trait` limitation — verify `async_trait` crate is still the standard workaround
+  - The unsafe 2024 section covers 4 changes; `unsafe_attr` (unsafe attributes like `#[no_mangle]`) was omitted for brevity
+  - The `map!` macro example is the only compilable example — all others are `rust,ignore` since they require external dependencies (tokio, etc.)
+  - Ecosystem tables may become dated — consider adding a "verified as of March 2026" note in review pass
+  - No mention of `rayon` beyond a one-line reference in "when to use async" — acceptable for a compass chapter
+  - The "Your Next Steps" section suggests three paths — consider whether a fourth (embedded) should be added
+  - No capstone example — deliberate choice for a closing chapter that points outward rather than teaching new concepts
 
-## Rust 2024 Features Tracker (for future chapters)
+### Part 7 — ALL CHAPTERS COMPLETE (7.1, 7.2, 7.3)
 
-- `use<>` precise capturing syntax — stabilized Rust 1.82.0 (bare fns), Rust 1.88.0 (trait return position) — advanced usage, cover in Part 7 or appendix if needed
-- Async closures covered in 6.1 (taste); deeper treatment in 7.3 (Where to Go from Here)
+## Rust 2024 Features Tracker
+
+- `use<>` precise capturing syntax — stabilized Rust 1.82.0 (bare fns), Rust 1.88.0 (trait return position) — covered implicitly via 2024 default behavior in 4.2
+- Async closures — covered in 6.1 (taste) and referenced in 7.3 (Where to Go from Here)
+- unsafe_op_in_unsafe_fn — covered in 7.2 (anti-patterns) and 7.3 (2024 safety improvements)
+- unsafe extern blocks — covered in 7.3
+- static mut references disallowed — covered in 7.3
+- Newly unsafe functions (env::set_var, etc.) — covered in 6.1 and 7.3
+
+## Book Status: ALL CHAPTERS DRAFTED (Parts 1-7)
 
 ## General Notes
 
