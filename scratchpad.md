@@ -13,7 +13,7 @@ Working notes and action items for the next iteration.
 - **Review items:**
   - Verify tone is accessible to true beginners (no assumed systems programming background)
   - Consider adding a "what you'll need" prereqs note (terminal, text editor)
-  - The `version = 1.85` float example is slightly misleading (Rust versions aren't floats) — consider changing to a more natural float example
+  - ~~The `version = 1.85` float example is slightly misleading~~ — RESOLVED: replaced with `mass_kg = 72.5`, a naturally floating-point value
 
 ### 1.2 The Compiler Is Your Ally — DRAFT COMPLETE
 - Covers: error anatomy (E0382, E0308, unused variable warning), `cargo check` as fast feedback, `cargo clippy` with needless_range_loop and bool_comparison examples, `cargo fmt` with before/after, quality baseline workflow
@@ -22,7 +22,7 @@ Working notes and action items for the next iteration.
 - Clippy and rustfmt are bundled in the default rustup profile — no extra install needed
 - **Review items:**
   - Verify E0382 error output matches current compiler (Rust 1.93+) — minor formatting may differ
-  - The "version = 1.85" example from 1.1 is referenced indirectly via minimum Rust version — keep consistent
+  - ~~The "version = 1.85" example from 1.1~~ — RESOLVED: 1.1 float example changed to `mass_kg = 72.5`; no cross-reference needed
   - Consider whether the clippy `needless_range_loop` example is too advanced for Ch 1 (uses `vec!` macro not yet explained) — current approach: show it, trust the reader to follow the intent
   - The chapter intentionally teases ownership ("you do not need to understand ownership yet") — verify this forward reference feels natural, not frustrating
 
