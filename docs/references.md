@@ -402,6 +402,12 @@ Resources used to build book materials, organized by topic.
 - [PipeReader - Rust std docs](https://doc.rust-lang.org/std/io/struct.PipeReader.html)
 - [PipeWriter - Rust std docs](https://doc.rust-lang.org/std/io/struct.PipeWriter.html)
 - [Announcing Rust 1.87.0 - Rust Blog](https://blog.rust-lang.org/2025/05/15/Rust-1.87.0/)
+- [File::lock - Rust std docs](https://doc.rust-lang.org/std/fs/struct.File.html#method.lock)
+- [File::try_lock - Rust std docs](https://doc.rust-lang.org/std/fs/struct.File.html#method.try_lock)
+- [File::lock_shared - Rust std docs](https://doc.rust-lang.org/std/fs/struct.File.html#method.lock_shared)
+- [TryLockError - Rust std docs](https://doc.rust-lang.org/std/fs/enum.TryLockError.html)
+- [Tracking Issue for File lock API - #130994](https://github.com/rust-lang/rust/issues/130994)
+- [Announcing Rust 1.89.0 (File::lock stabilization) - Rust Blog](https://blog.rust-lang.org/2025/08/07/Rust-1.89.0/)
 
 ## Async, Futures, and Runtimes
 
