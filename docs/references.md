@@ -202,6 +202,9 @@ Resources used to build book materials, organized by topic.
 - [Add trait (std::ops) - Rust std docs](https://doc.rust-lang.org/std/ops/trait.Add.html)
 - [Operator Overloading - Rust By Example](https://doc.rust-lang.org/rust-by-example/trait/ops.html)
 - [Orphan Rule / Coherence - The Rust Reference](https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence)
+- [fmt::from_fn - Rust std docs](https://doc.rust-lang.org/std/fmt/fn.from_fn.html)
+- [fmt::FromFn - Rust std docs](https://doc.rust-lang.org/std/fmt/struct.FromFn.html)
+- [Announcing Rust 1.93.0 (fmt::from_fn stabilization) - Rust Blog](https://blog.rust-lang.org/2026/01/22/Rust-1.93.0/)
 - [Announcing Rust 1.86.0 (trait upcasting) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
 - [RFC 3324: dyn Upcasting Coercion - The Rust RFC Book](https://rust-lang.github.io/rfcs/3324-dyn-upcasting.html)
 
