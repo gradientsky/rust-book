@@ -131,9 +131,9 @@ Working notes and action items for the next iteration.
   - The or-pattern example (`Day::Saturday | Day::Sunday`) could note that `matches!` is even more concise for boolean returns
 
 ### 3.3 Null, Errors, and the Type System — DRAFT COMPLETE
-- Covers: `Option<T>` (Some/None, unwrap_or, unwrap_or_else, map, and_then, is_some_and, is_none_or), `Result<T, E>` (Ok/Err, unwrap_or, map, map_err), `?` operator (with Result and Option), Option↔Result conversion (ok_or, ok), unwrap/expect guidance, making illegal states unrepresentable (enum replacing boolean flags, newtype wrappers for type safety, validated construction with Result), capstone Score/grade example combining all concepts
+- Covers: `Option<T>` (Some/None, unwrap_or, unwrap_or_else, map, and_then, is_some_and, is_none_or), `Result<T, E>` (Ok/Err, unwrap_or, map, map_err), `?` operator (with Result and Option), Option↔Result conversion (ok_or, ok), unwrap/expect guidance, making illegal states unrepresentable (enum replacing boolean flags, newtype wrappers for type safety, validated construction with Result, **module privacy for invariant enforcement**), capstone Score/grade example combining all concepts
 - Philosophy: invisible trapdoors (null, exceptions) vs explicit types; if a function can fail its signature must say so; billion-dollar mistake; type system as map of where things can go wrong
-- All 19 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0369) verified with exact error message
+- All 20 compilable code examples verified (Rust 1.93+, edition 2024); 1 does_not_compile example (E0369) verified with exact error message
 - No Rust 2024-specific changes to Option/Result/`?` operator semantics; `is_none_or` stabilized 1.82, `is_some_and`/`is_ok_and` stabilized 1.70 — all pre-2024 but modern idioms
 - Builds on 3.2: bridges from "two enums built into the standard library" closing; uses pattern matching, exhaustive match, if let
 - Builds on 3.1: uses struct definition, impl blocks, Display trait, use std::fmt
@@ -147,7 +147,7 @@ Working notes and action items for the next iteration.
   - The `filter_map` in capstone uses iterator chain (`.iter().filter_map(...).collect()`) — verify this is approachable before iterators are formally covered in Part 4
   - Generics `<T>` are mentioned in Option/Result definitions but explained only as "placeholder for any type" — verify this is sufficient pre-Part 4
   - The newtype section is brief — fuller treatment with `Deref` and trait implementations deferred to Part 7
-  - Consider whether the "making illegal states unrepresentable" section needs a note about module privacy for enforcing validated construction (modules covered in 5.3)
+  - ~~Consider whether the "making illegal states unrepresentable" section needs a note about module privacy for enforcing validated construction (modules covered in 5.3)~~ — RESOLVED: added "Why the field is not public" C-head subsection after Percentage example; explains module-boundary privacy, shows `mod percentage` wrapper with pub struct + private field + validating constructor, verified output; forward-references Part 5 for full module system
 
 ### 4.1 Traits — DRAFT COMPLETE
 - Covers: trait definition (required methods), implementing traits (`impl Trait for Type`), default methods, traits as parameters (`&impl Trait`), derive macros (Debug, Clone, Copy, PartialEq, Eq, Hash, Default, PartialOrd, Ord), Default trait with struct update syntax, Debug vs Display, From/Into (infallible conversions, `impl Into<String>` parameter pattern), TryFrom/TryInto (fallible conversions with associated Error type), AsRef (cheap reference conversions), implementing multiple traits, operator overloading (Add trait, associated Output type), orphan rule, capstone Celsius/Fahrenheit temperature example

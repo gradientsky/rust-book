@@ -170,6 +170,8 @@ Resources used to build book materials, organized by topic.
 - [Option::is_none_or - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.is_none_or)
 - [Make Illegal States Unrepresentable - corrode.dev](https://corrode.dev/blog/illegal-state/)
 - [The Typestate Pattern in Rust - Cliffle](https://cliffle.com/blog/rust-typestate/)
+- [E0451 Error Code Reference (private field access)](https://doc.rust-lang.org/error_codes/E0451.html)
+- [Visibility and Privacy - The Rust Reference](https://doc.rust-lang.org/reference/visibility-and-privacy.html)
 
 ## Traits, Derive, and Conversion Traits
 
