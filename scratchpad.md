@@ -144,9 +144,28 @@ Working notes and action items for the next iteration.
   - The newtype section is brief — fuller treatment with `Deref` and trait implementations deferred to Part 7
   - Consider whether the "making illegal states unrepresentable" section needs a note about module privacy for enforcing validated construction (modules covered in 5.3)
 
+### 4.1 Traits — DRAFT COMPLETE
+- Covers: trait definition (required methods), implementing traits (`impl Trait for Type`), default methods, traits as parameters (`&impl Trait`), derive macros (Debug, Clone, Copy, PartialEq, Eq, Hash, Default, PartialOrd, Ord), Default trait with struct update syntax, Debug vs Display, From/Into (infallible conversions, `impl Into<String>` parameter pattern), TryFrom/TryInto (fallible conversions with associated Error type), AsRef (cheap reference conversions), implementing multiple traits, operator overloading (Add trait, associated Output type), orphan rule, capstone Celsius/Fahrenheit temperature example
+- Philosophy: shared behavior without inheritance — "can-do" relationships instead of "is-a"; traits are flat, composable, and independent
+- All 14 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- No Rust 2024-specific changes to core trait syntax; "dyn compatible" replaces "object safe" terminology (1.85+); trait upcasting stable in 1.86 — both deferred to 4.2 (Generics) since dyn Trait is covered there
+- Builds on 3.3: closing paragraph bridges to traits; validated construction pattern from 3.3 revisited as TryFrom
+- Builds on 3.1: impl blocks, Display trait, use std::fmt — now generalized
+- Builds on 2.3: move/copy semantics relevant to derived Copy/Clone
+- Introduced associated types minimally (`type Output`, `type Error`) — fuller treatment in 4.2 (Generics)
+- Introduced `std::ops::Add` for operator overloading — other operator traits mentioned but not demonstrated
+- `AsMut` deliberately omitted — `AsRef` is more common and sufficient for intro; `AsMut` can be covered in Part 5 or Part 7
+- **Review items:**
+  - Verify the `impl Trait` in parameter position is sufficient intro before full generics in 4.2
+  - The associated type explanation ("a type that is part of the trait's contract") is minimal — verify it bridges cleanly to 4.2 where generics vs associated types are contrasted
+  - The orphan rule explanation is brief — verify it's sufficient; newtype workaround mentioned but not demonstrated (covered in 3.3 and Part 7)
+  - The `content` field warning in example 1 (unused field) is acceptable for snippet
+  - Consider whether the `AsRef` example using byte values is too low-level — it demonstrates the concept well but byte arrays may be unfamiliar to beginners
+  - The capstone uses `Copy` derive on newtypes — verify readers understand this from 2.3
+
 ### Part 4 — NEXT UP
-- 4.1 Traits: trait definition/impl, derive, std conversion traits (From/Into, TryFrom/TryInto, AsRef/AsMut)
-- Bridge from 3.3: "What if you want a function that works with _any_ type that can be displayed?"
+- 4.2 Generics: generic functions/structs, trait bounds (`T: Display`), `impl Trait` (argument + return position), `where` clauses, associated types vs generics, trait objects (`dyn Trait`), "dyn compatible" concept, zero-cost abstraction (monomorphization)
+- Bridge from 4.1: "What if you want a data structure that holds _any_ type?"
 
 ## Rust 2024 Features Tracker (for future chapters)
 

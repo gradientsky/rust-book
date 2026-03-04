@@ -149,6 +149,33 @@ Resources used to build book materials, organized by topic.
 - [Make Illegal States Unrepresentable - corrode.dev](https://corrode.dev/blog/illegal-state/)
 - [The Typestate Pattern in Rust - Cliffle](https://cliffle.com/blog/rust-typestate/)
 
+## Traits, Derive, and Conversion Traits
+
+- [Traits: Defining Shared Behavior - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-02-traits.html)
+- [Trait Syntax - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-02-traits.html#trait-bound-syntax)
+- [Default Implementations - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-02-traits.html#default-implementations)
+- [Derive - Rust By Example](https://doc.rust-lang.org/rust-by-example/trait/derive.html)
+- [Debug trait - Rust std docs](https://doc.rust-lang.org/std/fmt/trait.Debug.html)
+- [Display trait - Rust std docs](https://doc.rust-lang.org/std/fmt/trait.Display.html)
+- [Clone trait - Rust std docs](https://doc.rust-lang.org/std/clone/trait.Clone.html)
+- [Copy trait - Rust std docs](https://doc.rust-lang.org/std/marker/trait.Copy.html)
+- [PartialEq trait - Rust std docs](https://doc.rust-lang.org/std/cmp/trait.PartialEq.html)
+- [Eq trait - Rust std docs](https://doc.rust-lang.org/std/cmp/trait.Eq.html)
+- [Hash trait - Rust std docs](https://doc.rust-lang.org/std/hash/trait.Hash.html)
+- [Default trait - Rust std docs](https://doc.rust-lang.org/std/default/trait.Default.html)
+- [PartialOrd trait - Rust std docs](https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html)
+- [Ord trait - Rust std docs](https://doc.rust-lang.org/std/cmp/trait.Ord.html)
+- [From trait - Rust std docs](https://doc.rust-lang.org/std/convert/trait.From.html)
+- [Into trait - Rust std docs](https://doc.rust-lang.org/std/convert/trait.Into.html)
+- [TryFrom trait - Rust std docs](https://doc.rust-lang.org/std/convert/trait.TryFrom.html)
+- [TryInto trait - Rust std docs](https://doc.rust-lang.org/std/convert/trait.TryInto.html)
+- [AsRef trait - Rust std docs](https://doc.rust-lang.org/std/convert/trait.AsRef.html)
+- [Add trait (std::ops) - Rust std docs](https://doc.rust-lang.org/std/ops/trait.Add.html)
+- [Operator Overloading - Rust By Example](https://doc.rust-lang.org/rust-by-example/trait/ops.html)
+- [Orphan Rule / Coherence - The Rust Reference](https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence)
+- [Announcing Rust 1.86.0 (trait upcasting) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
+- [RFC 3324: dyn Upcasting Coercion - The Rust RFC Book](https://rust-lang.github.io/rfcs/3324-dyn-upcasting.html)
+
 ## Community and Analysis
 
 - [Rust 2024 Edition Reaches Stability - Rust Bytes](https://weeklyrust.substack.com/p/rust-2024-edition-reaches-stability)
