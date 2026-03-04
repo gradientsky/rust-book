@@ -365,6 +365,8 @@ Resources used to build book materials, organized by topic.
 - [Cargo Cache Cleaning | Rust Blog](https://blog.rust-lang.org/2023/12/11/cargo-cache-cleaning/) — design overview
 - [Stabilize automatic garbage collection - cargo PR #14287](https://github.com/rust-lang/cargo/pull/14287)
 - [Configuration - The Cargo Book](https://doc.rust-lang.org/cargo/reference/config.html) — `[cache]` section
+- [RFC 2383: Lint Reasons - The Rust RFC Book](https://rust-lang.github.io/rfcs/2383-lint-reasons.html) — `#[expect]` attribute
+- [Lint levels - The rustc book](https://doc.rust-lang.org/rustc/lints/levels.html#expecting-lints) — expect vs allow
 
 ## Testing
 
