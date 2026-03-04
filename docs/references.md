@@ -72,6 +72,10 @@ Resources used to build book materials, organized by topic.
 - [Stabilize strict_overflow_ops (PR #144682)](https://github.com/rust-lang/rust/pull/144682)
 - [Announcing Rust 1.91.0 (strict_overflow_ops) - Rust Blog](https://releases.rs/docs/1.91.0/)
 - [Cargo Profiles: overflow-checks - The Cargo Book](https://doc.rust-lang.org/cargo/reference/profiles.html)
+- [u8::cast_signed - Rust Standard Library](https://doc.rust-lang.org/std/primitive.u8.html#method.cast_signed) — stabilized Rust 1.87.0
+- [i32::cast_unsigned - Rust Standard Library](https://doc.rust-lang.org/std/primitive.i32.html#method.cast_unsigned) — stabilized Rust 1.87.0
+- [Tracking Issue #125882 - integer_sign_cast](https://github.com/rust-lang/rust/issues/125882)
+- [Announcing Rust 1.87.0 (cast_signed/cast_unsigned)](https://blog.rust-lang.org/2025/05/15/Rust-1.87.0/)
 
 ## Variables, Types, and Expressions
 
