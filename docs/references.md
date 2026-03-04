@@ -289,6 +289,10 @@ Resources used to build book materials, organized by topic.
 - [IntoIterator for Box slice - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/intoiterator-box-slice.html)
 - [slice::get_disjoint_mut - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.get_disjoint_mut)
 - [Announcing Rust 1.86.0 (get_disjoint_mut) - Rust Blog](https://blog.rust-lang.org/2025/04/03/Rust-1.86.0/)
+- [Vec::extract_if - Rust std docs](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.extract_if)
+- [HashMap::extract_if - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashMap.html#method.extract_if)
+- [Announcing Rust 1.87.0 (Vec::extract_if) - Rust Blog](https://blog.rust-lang.org/2025/05/15/Rust-1.87.0/)
+- [Announcing Rust 1.88.0 (HashMap::extract_if) - Rust Blog](https://blog.rust-lang.org/2025/06/26/Rust-1.88.0/)
 
 ## Modules, Visibility, and Project Structure
 
