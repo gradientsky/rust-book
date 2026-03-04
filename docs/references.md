@@ -343,6 +343,12 @@ Resources used to build book materials, organized by topic.
 - [Async in depth - Tokio Tutorial](https://tokio.rs/tokio/tutorial/async)
 - [Spawning - Tokio Tutorial](https://tokio.rs/tokio/tutorial/spawning)
 - [RFC 3668 - Async Closures](https://rust-lang.github.io/rfcs/3668-async-closures.html)
+- [Stabilize async closures (PR #132706)](https://github.com/rust-lang/rust/pull/132706)
+- [AsyncFn trait - Rust std docs](https://doc.rust-lang.org/stable/std/ops/trait.AsyncFn.html)
+- [AsyncFnMut trait - Rust std docs](https://doc.rust-lang.org/stable/std/ops/trait.AsyncFnMut.html)
+- [AsyncFnOnce trait - Rust std docs](https://doc.rust-lang.org/stable/std/ops/trait.AsyncFnOnce.html)
+- [Gate async Fn() bound modifier on async_trait_bounds (PR #132612)](https://github.com/rust-lang/rust/pull/132612)
+- [Async Closures MVP: Call for Testing - Inside Rust Blog](https://blog.rust-lang.org/inside-rust/2024/08/09/async-closures-call-for-testing/)
 - [Newly Unsafe Functions - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/newly-unsafe-functions.html)
 - [Unsafe extern blocks - Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/unsafe-extern.html)
 
