@@ -67,19 +67,20 @@ Working notes and action items for the next iteration.
   - The Fn trait hierarchy section is conceptual and short — appropriate level of abstraction for pre-generics introduction
   - Clippy flags `first_positive` as `manual_find` — intentional: the example teaches early returns, iterators not introduced until Part 4
 
-### 2.3 Ownership — DRAFT COMPLETE
-- Covers: three rules of ownership, stack vs heap mental model (with ASCII diagram), move semantics (assignment, function calls, return values, **closures with `move`**), E0382 error example, Copy types (full list), Clone (explicit deep copy), Drop trait and RAII, drop order (reverse declaration order with Noisy struct demo), early drop with `std::mem::drop` (including its trivial implementation), comprehensive "ownership in action" capstone example
+### 2.3 Ownership — ITERATED
+- Covers: three rules of ownership, stack vs heap mental model (with ASCII diagram), **`String::from` vs string literal explanation** (D-head: `&str` as baked-in reference, `String` as owned heap text, why String demonstrates ownership), move semantics (assignment, function calls, return values, **closures with `move`**), E0382 error example, Copy types (full list), Clone (explicit deep copy), Drop trait and RAII, drop order (reverse declaration order with Noisy struct demo), early drop with `std::mem::drop` (including its trivial implementation), comprehensive "ownership in action" capstone example
 - Philosophy: ownership as the third path between GC and manual memory — compiler checks, zero runtime cost; ownership is not a restriction but a system that eliminates bugs
-- All 14 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
+- All 14 code examples verified zero-warning (Rust 1.93.1, edition 2024)
 - No Rust 2024-specific changes to ownership model itself; tail expression temporary scope change (RFC 3606) is relevant to Drop order but too advanced for this chapter — covered implicitly by teaching correct patterns
 - Builds on 2.2: functions transfer/return ownership, `move` keyword from 2.2 gets context here
 - Introduced `struct` and `impl Drop` minimally for the drop order example — self-contained, no forward reference needed
+- **Updated E0382 error output** to Rust 1.93.1: column 5:22→5:21, added `help: consider cloning the value if the performance cost is acceptable` suggestion, added inline note connecting suggestion to Clone section
 - **Review items:**
   - ~~The `move` keyword from 2.2 is not explicitly re-explained here~~ — RESOLVED: added "Moves into closures" C-head subsection after "Moves and Return Values"; shows `move` closure taking ownership of `String` (greet example), `make_greeter(String) -> impl Fn()` function factory (closure outliving scope); 2 verified code examples; fulfills the promise made in 2.2 ("you will see why in the next chapter on ownership")
   - The ASCII diagrams (stack/heap, double-pointer) are important for understanding — verify they render well in target format
   - The `Noisy` struct example introduces `struct`, `impl`, and trait implementation before Part 3 — minimal and self-contained, but verify it doesn't confuse readers
-  - Consider adding a note about `String::from` vs string literals — currently shown but not explicitly contrasted (`&str` vs `String` distinction)
-  - The "Why This Matters" section lists data races as prevented by ownership — technically ownership + borrowing together; verify this claim is precise enough
+  - ~~Consider adding a note about `String::from` vs string literals — currently shown but not explicitly contrasted (`&str` vs `String` distinction)~~ — RESOLVED: added D-head "Why we keep writing String::from" after stack/heap section; explains `"hello"` as `&str` baked into binary (reference, not owned), `String::from` as owned heap-allocated text; explains why `String` demonstrates ownership while literals are `Copy`; forward-references 2.4 for full `String` vs `&str` treatment
+  - ~~The "Why This Matters" section lists data races as prevented by ownership — technically ownership + borrowing together; verify this claim is precise enough~~ — RESOLVED: refined bullet to "Ownership ensures that a value has exactly one owner at a time. Combined with the borrowing rules you will learn next, this guarantee extends to concurrent programs — the same system that prevents use-after-free also prevents data races"
   - No mention of partial moves — deliberately omitted for simplicity; will be relevant in Part 3 (structs)
 
 ### 2.4 Borrowing and References — DRAFT COMPLETE
