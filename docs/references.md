@@ -356,6 +356,8 @@ Resources used to build book materials, organized by topic.
 - [Shared-State Concurrency - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-03-shared-state.html)
 - [Extensible Concurrency with Send and Sync - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html)
 - [RwLock - Rust std docs](https://doc.rust-lang.org/std/sync/struct.RwLock.html)
+- [RwLockWriteGuard::downgrade - Rust std docs](https://doc.rust-lang.org/std/sync/struct.RwLockWriteGuard.html#method.downgrade)
+- [Announcing Rust 1.92.0 - Rust Blog](https://blog.rust-lang.org/2025/12/11/Rust-1.92.0/)
 - [Why Rust mutexes look like they do - Cliffle](https://cliffle.com/blog/rust-mutexes/)
 
 ## Async, Futures, and Runtimes
