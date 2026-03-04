@@ -267,9 +267,29 @@ Working notes and action items for the next iteration.
   - The `mod.rs` vs named-file convention is explained — old convention mentioned briefly for codebase literacy
   - The capstone sorts HashMap keys for deterministic output — same pattern as 5.2
 
-### Part 5 — NEXT UP
-- 5.4 Testing as a First-Class Citizen: unit/integration/doc tests, cargo test
-- Bridge from 5.3: "you can organize code with modules; next, how Rust builds testing into the language"
+### 5.4 Testing as a First-Class Citizen — DRAFT COMPLETE
+- Covers: `#[test]` and `#[cfg(test)]`, assert family (`assert!`/`assert_eq!`/`assert_ne!` with custom messages, `PartialEq + Debug` requirement), `#[should_panic(expected = "...")]` with substring matching, `Result`-returning tests (`?` operator, `Box<dyn std::error::Error>`), `#[ignore = "reason"]`, integration tests (_tests/_ directory structure, separate crates, `use` imports, shared helpers in subdirectories), binary crate testing limitations (lib+bin pattern), doc tests (`///` comments as tests, hidden `#` lines, annotations: default/`no_run`/`compile_fail`/`should_panic`/`ignore`/`text`), combined doctests (Rust 2024 edition, `standalone_crate` annotation), `cargo test` workflows (name filtering, `--show-output`, `--test-threads=1`, `--ignored`, `--include-ignored`, `--doc`, `--lib`, `--test`, `--no-fail-fast`, `-p`), capstone stack-based Calculator example with unit tests, Result tests, should_panic tests, ignore tests, and doc tests
+- Philosophy: testing is built into the language, not bolted on; if something matters it should be easy; tests live with the code they test
+- All 12 compilable code examples verified (Rust 1.93+, edition 2024); multi-file integration test examples use `rust,ignore`
+- No Rust 2024-specific changes to core test primitives (`#[test]`, `assert!`, etc.); combined doctests are the main 2024 testing improvement; cross-compiled doctests stable in 1.89 but not demonstrated (out of scope)
+- Builds on 5.3: bridge from "organize code with modules" to "verify correctness with tests"; integration tests reference lib+bin pattern
+- Builds on 3.3/5.1: `Result` and `?` operator in test functions; `Box<dyn Error>` for multiple error types
+- Builds on 4.1: `PartialEq + Debug` requirement for `assert_eq!`/`assert_ne!` connects to derive macros
+- Introduced `#[cfg(test)]` conditional compilation — explained as "only compile when testing"
+- Introduced `use super::*` — explained as importing from parent module
+- Deliberately omitted: custom test frameworks (nightly-only), `cargo nextest` (third-party tooling, not built-in), `pretty_assertions` crate (third-party), `#[bench]` (nightly-only), `proptest`/`quickcheck` (third-party), `assert_matches!` macro (nightly), JSON test output (unstable), `debug_assert!` variants (not testing-specific), test fixtures/setup patterns beyond helpers (too advanced)
+- **Review items:**
+  - The `fibonacci(40)` ignored test is slow (~1s on modern hardware) but deterministic — verify this is acceptable as a "slow test" example
+  - The `factorial(21)` should_panic doc test relies on debug-mode overflow check — in release mode this would wrap silently; acceptable since doc tests run in debug mode
+  - The capstone uses builder-style `self`-consuming methods — verify this pattern is approachable before Part 7 (Patterns the Pros Use) covers the builder pattern formally
+  - Integration test file examples use `rust,ignore` since they require multi-file project structure — file layout descriptions substitute for compilation proof
+  - The `Box<dyn std::error::Error>` pattern in Result-returning tests was introduced in 5.1 — verify the callback is sufficient
+  - Consider whether `#[cfg(test)]` conditional compilation deserves more explanation (currently brief)
+  - No mention of test organization best practices (naming conventions, test module structure) — kept simple for intro chapter
+
+### Part 6 — NEXT UP
+- 6.1 Concurrency Without Data Races: threads, Send/Sync, Arc/Mutex, channels, async taste
+- Bridge from 5.4: "you have everything to build reliable software; next, how ownership extends to concurrent programming"
 
 ## Rust 2024 Features Tracker (for future chapters)
 
