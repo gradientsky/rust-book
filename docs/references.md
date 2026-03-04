@@ -28,6 +28,12 @@ Resources used to build book materials, organized by topic.
 - [Rust 1.94.0 Release Notes](https://github.com/rust-lang/rust/issues/151650)
 - [The Rust Release Announcements](https://blog.rust-lang.org/releases/)
 
+## Printing and Formatting
+
+- [std::fmt module - Rust std docs](https://doc.rust-lang.org/std/fmt/index.html)
+- [format! macro - Rust std docs](https://doc.rust-lang.org/std/macro.format.html)
+- [Formatting syntax - The Rust Reference](https://doc.rust-lang.org/std/fmt/index.html#syntax)
+
 ## Compiler Errors and Diagnostics
 
 - [E0382 Error Code Reference](https://doc.rust-lang.org/error_codes/E0382.html)
