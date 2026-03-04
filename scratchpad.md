@@ -464,7 +464,7 @@ Working notes and action items for the next iteration.
   - The `unsafe` section's `process_raw` example is contrived — raw pointer iteration when slice already works; acceptable as it demonstrates the 2024 edition change
   - The smart pointers section is brief — could expand with `Rc` cycle example using `Weak`, but that's covered in 5.2
   - ~~The capstone uses `partial_cmp(&b).unwrap()` for f64~~ — RESOLVED: replaced with `a.0.total_cmp(&b.0)` using newtype inner field; consistent with 4.3 `total_cmp` teaching
-  - Consider whether the "when cloning is correct" section needs a code example
+  - ~~Consider whether the "when cloning is correct" section needs a code example~~ — RESOLVED: added status-tracker snapshot example demonstrating legitimate clone use (independent copies for history log); final push uses move instead of clone to show ownership awareness; 1 new example verified zero-warning zero-clippy Rust 1.94
   - ~~No mention of `Cow<str>` as an alternative to cloning — too advanced for this chapter~~ — RESOLVED: `Cow<str>` now covered in 5.2 with dedicated A-head section; cross-reference not needed in 7.2 since the anti-pattern focus is different (cloning to silence borrow checker vs performance optimization)
   - **B-head capitalization fix**: all 17 B-heads changed from sentence case to title case per O'Reilly style guide
   - **A-head capitalization fix**: "Over" → "over" in "Preferring Indices over Iterators" (preposition ≤4 letters)
