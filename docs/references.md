@@ -336,6 +336,9 @@ Resources used to build book materials, organized by topic.
 - [Cow<T> - Rust std docs](https://doc.rust-lang.org/std/borrow/enum.Cow.html)
 - [String::from_utf8_lossy - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy)
 - [Clone on write (Cow) - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/cow.html)
+- [Slice Patterns - The Rust Reference](https://doc.rust-lang.org/reference/patterns.html#slice-patterns)
+- [RFC 2359: Subslice Pattern Syntax](https://rust-lang.github.io/rfcs/2359-subslice-pattern-syntax.html)
+- [Destructuring Slices/Arrays - Rust by Example](https://doc.rust-lang.org/rust-by-example/flow_control/match/destructuring/destructure_slice.html)
 
 ## Modules, Visibility, and Project Structure
 
