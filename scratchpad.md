@@ -237,7 +237,7 @@ Working notes and action items for the next iteration.
   - Error message convention (lowercase, no trailing punctuation) is stated but not heavily enforced in all examples — consistent enough for teaching purposes
   - The `HOME` env var in expect example is platform-specific (macOS/Linux) — same caveat as 3.3 and other chapters
 
-### 5.2 Collections, Strings, and Smart Pointers — DRAFT COMPLETE
+### 5.2 Collections, Strings, and Smart Pointers — ITERATED
 - Covers: Vec (creation with vec!/Vec::new/with_capacity/collect, access with []/get/last, modify with push/pop/insert/remove/retain, slices &[T], three iteration modes), HashMap (new/from/collect, get/indexing/contains_key, entry API with or_insert/or_insert_with), HashSet (insert/contains, intersection/union/difference), String vs &str (owned vs borrowed, deref coercion, when to use each, creation/conversion/concatenation/format!, common operations, UTF-8 guarantees), Box (recursive types Expr tree, trait objects Vec<Box<dyn Shape>>), Rc (reference counting, Rc::clone convention, shared ownership in graph-like structures, limitations: not thread-safe, immutable), Arc (thread-safe shared ownership, thread::spawn example), choosing the right pointer (decision table), capstone Library/Document tag system with Vec/HashMap/HashSet/Rc/String/Display
 - Philosophy: ownership extends into data structures; collections own their elements; smart pointers extend the ownership model when simple ownership doesn't fit
 - All 20 code examples verified to compile and produce documented output (Rust 1.93+, edition 2024)
@@ -250,7 +250,7 @@ Working notes and action items for the next iteration.
 - Deliberately omitted: BTreeMap/BTreeSet (mentioned as alternative), VecDeque/LinkedList (too niche), Cow<str> (advanced), RefCell/Cell (interior mutability pattern, too advanced for intro), Weak<T> (Rc cycles, advanced), LazyCell/LazyLock (better for Part 6/7), slice patterns, Extend trait, drain/retain_mut, Vec::from_raw_parts
 - **Review items:**
   - HashMap/HashSet output order is non-deterministic; documented with "(key order may vary)" and sorted outputs where needed
-  - The `&&str` type in `indexed: HashMap<usize, &&str>` may confuse beginners — acceptable for showing collect patterns but could use more explanation
+  - ~~The `&&str` type in `indexed: HashMap<usize, &&str>` may confuse beginners~~ — RESOLVED: changed `words.iter().enumerate().collect()` to `words.into_iter().enumerate().collect()` on an array literal; type is now `HashMap<usize, &str>` (no double reference); `into_iter()` on arrays yields owned elements directly
   - The capstone uses `Rc` for shared document references in a tag index — verify this feels motivated rather than contrived
   - The `+` operator on strings (moves left, borrows right) asymmetry is mentioned — verify explanation is clear enough
   - UTF-8 byte slicing panic behavior is warned about but no does_not_compile example is shown — deliberate choice to avoid panic output
