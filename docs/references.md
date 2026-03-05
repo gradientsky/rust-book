@@ -109,6 +109,8 @@ Resources used to build book materials, organized by topic.
 ## Functions and Closures
 
 - [Functions - The Rust Programming Language](https://doc.rust-lang.org/book/ch03-03-how-functions-work.html)
+- [Constant evaluation - The Rust Reference](https://doc.rust-lang.org/reference/const_eval.html)
+- [const keyword - Rust std docs](https://doc.rust-lang.org/std/keyword.const.html)
 - [Closures - The Rust Programming Language](https://doc.rust-lang.org/book/ch13-01-closures.html)
 - [Advanced Functions and Closures - The Rust Programming Language](https://doc.rust-lang.org/book/ch20-04-advanced-functions-and-closures.html)
 - [Closure types - The Rust Reference](https://doc.rust-lang.org/reference/types/closure.html)
