@@ -196,6 +196,8 @@ Resources used to build book materials, organized by topic.
 - [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
 - [Option::is_some_and - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.is_some_and)
 - [Option::is_none_or - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.is_none_or)
+- [Option::or - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.or)
+- [Option::or_else - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.or_else)
 - [Option::flatten - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.flatten)
 - [Result::flatten - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html#method.flatten)
 - [Make Illegal States Unrepresentable - corrode.dev](https://corrode.dev/blog/illegal-state/)
