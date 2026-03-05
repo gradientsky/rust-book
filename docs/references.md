@@ -275,6 +275,8 @@ Resources used to build book materials, organized by topic.
 - [f64::is_nan - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.is_nan)
 - [f64::is_infinite - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.is_infinite)
 - [f64::is_finite - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.is_finite)
+- [f64::round_ties_even - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.round_ties_even)
+- [Announcing Rust 1.77.0 (round_ties_even stabilization) - Rust Blog](https://blog.rust-lang.org/2024/03/21/Rust-1.77.0/)
 - [IEEE 754 - Wikipedia](https://en.wikipedia.org/wiki/IEEE_754)
 - [f64::total_cmp - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.total_cmp)
 - [Announcing Rust 1.62.0 (total_cmp stabilization) - Rust Blog](https://blog.rust-lang.org/2022/06/30/Rust-1.62.0/)
