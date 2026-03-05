@@ -330,6 +330,9 @@ Resources used to build book materials, organized by topic.
 ## Collections, Strings, and Smart Pointers
 
 - [Vec<T> - Rust std docs](https://doc.rust-lang.org/std/vec/struct.Vec.html)
+- [VecDeque<T> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.VecDeque.html)
+- [VecDeque::pop_front_if - Rust std docs](https://doc.rust-lang.org/std/collections/struct.VecDeque.html#method.pop_front_if)
+- [std::collections module - when to use each collection](https://doc.rust-lang.org/std/collections/index.html)
 - [HashMap<K, V> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashMap.html)
 - [HashSet<T> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashSet.html)
 - [Entry API - Rust std docs](https://doc.rust-lang.org/std/collections/hash_map/enum.Entry.html)
