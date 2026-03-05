@@ -426,6 +426,13 @@ Resources used to build book materials, organized by topic.
 - [assert_ne! macro - Rust std docs](https://doc.rust-lang.org/std/macro.assert_ne.html)
 - [Announcing Rust 1.89.0 (doctest cross-compilation) - Rust Blog](https://blog.rust-lang.org/2025/08/07/Rust-1.89.0/)
 
+## Documentation Generation
+
+- [cargo doc - The Cargo Book](https://doc.rust-lang.org/cargo/commands/cargo-doc.html)
+- [How to Write Documentation - The rustdoc book](https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html)
+- [The #[doc] attribute - The rustdoc book](https://doc.rust-lang.org/rustdoc/write-documentation/the-doc-attribute.html)
+- [What to include (and exclude) - The rustdoc book](https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html)
+
 ## Concurrency, Threads, and Synchronization
 
 - [std::thread module - Rust std docs](https://doc.rust-lang.org/std/thread/)
