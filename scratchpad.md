@@ -568,6 +568,10 @@ Features stabilized in recent Rust releases that could strengthen the book:
 - **7.3**: ~~`LazyLock::get()`/`force_mut()` (1.94) — inspect/mutate lazy values~~ SKIPPED (not stable on 1.93.1)
 - **5.1**: ~~type aliases (`type Result<T> = ...`) — crate-level Result pattern never introduced despite io::Result usage in 6.1~~ DONE
 
+## Cross-Chapter Fixes
+
+- **Numbered chapter/part references replaced with descriptive references** — 18 instances across 8 files (3.2, 4.1, 4.2, 5.1, 5.2, 6.1, 7.1, 7.3) changed from "Chapter 1", "Part 2", "Part 3", "Part 4", "Part 5", "Chapter 2", "Chapter 5", "Chapter 6" to descriptive forms like "the variables chapter", "the ownership chapter", "the iterators chapter", "the generics chapter", "the collections chapter", "the concurrency chapter", "the error handling chapter", "your first program"; avoids numbered cross-references that would break if chapters are reordered and reads more naturally
+
 ## General Notes
 
 - All code must target `edition = "2024"` (Rust 1.85+)
@@ -575,6 +579,7 @@ Features stabilized in recent Rust releases that could strengthen the book:
 - Philosophy first, then syntax — every chapter opens with WHY
 - Show behavior first, name it second
 - No "we'll cover this later" — if it appears, explain enough to use NOW
+- No numbered chapter/part cross-references — use descriptive references like "the ownership chapter" instead of "Chapter 2" or "Part 2"
 - Reserved keyword `gen` in 2024 — warn readers if relevant
 - Let chains stabilized in Rust 1.88.0 (June 2025), edition-gated to 2024
 - ~~Range types gained `Copy` in Rust 2024 edition (via `IntoIterator` instead of `Iterator`) — note when relevant~~ INCORRECT: RFC 3550 was accepted but the edition-gated language change did NOT ship in Rust 2024; ranges still implement `Iterator` directly and are `!Copy` in all stable editions; new `std::range` types are nightly-only behind `#![feature(new_range_api)]`; target is likely Rust 2027 edition
