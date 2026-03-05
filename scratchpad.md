@@ -23,11 +23,11 @@ Working notes and action items for the next iteration.
   - ~~"You will learn these rules naturally over the next few chapters" forward reference~~ — RESOLVED: replaced with self-contained description of ownership and borrowing principles ("every value has exactly one owner, and you can either look at a value or change it, but not both at the same time"); gives readers the core mental model immediately without deferral
 
 ### 1.2 The Compiler Is Your Ally — ITERATED
-- Covers: error anatomy (E0382, E0308, unused variable warning), `cargo check` as fast feedback, `cargo clippy` with needless_range_loop and bool_comparison examples, **`dbg!` macro** (runtime value tracing, expression+value+location output, stderr separation, pass-through return, debugging workflow), `cargo fmt` with before/after, quality baseline workflow
+- Covers: error anatomy (E0382, E0308, unused variable warning), `cargo check` as fast feedback, `cargo clippy` with needless_range_loop and bool_comparison examples, **`dbg!` macro** (runtime value tracing, expression+value+location output, stderr separation, pass-through return, debugging workflow), **`eprintln!` macro** (production error/warning output to stderr, stdout vs stderr separation in piped contexts, `println!`/`eprintln!`/`dbg!` three-way usage guidance), `cargo fmt` with before/after, quality baseline workflow
 - Philosophy: compiler as code reviewer, not gatekeeper; trust it instead of fighting it; `dbg!` completes the toolchain story — static tools catch bugs before running, `dbg!` traces values when code runs but produces unexpected results
 - Rust 2024 note: `cargo fmt` auto-applies 2024 style edition (17 formatting fixes) when edition = "2024"
 - Clippy and rustfmt are bundled in the default rustup profile — no extra install needed
-- All 8 code examples verified (Rust 1.93.1, edition 2024); 2 does_not_compile examples (E0382, E0308) verified with exact error output
+- All 9 code examples verified (Rust 1.93.1, edition 2024); 1 does_not_compile example (E0382) verified with exact error output
 - **Review items:**
   - ~~Verify E0382 error output matches current compiler (Rust 1.93+)~~ — RESOLVED: updated E0382 output (column 4:15→4:16, 10→8 carets, added `help: consider cloning` suggestion); added point 6 to error anatomy list explaining compiler fix suggestions; replaced vague forward-reference with inline explanation of move semantics ("ownership transfers from greeting to other, and greeting becomes invalid")
   - ~~The "version = 1.85" example from 1.1~~ — RESOLVED: 1.1 float example changed to `mass_kg = 72.5`; no cross-reference needed
@@ -38,6 +38,7 @@ Working notes and action items for the next iteration.
   - Updated unused variable warning: note now shows `(part of #[warn(unused)])` matching Rust 1.93.1
   - Updated clippy bool_comparison output: added `= note: #[warn(clippy::bool_comparison)]` line matching Rust 1.93.1
   - **Added `dbg!` macro A-head section** ("Debugging with dbg") between Cargo Clippy and Cargo Fmt: philosophy-first explanation of runtime vs compile-time tooling gap; arithmetic example with `width * height` showing expression text, file/line, and pass-through return; three advantages over `println!` (expression display, location tracking, value pass-through); stderr vs stdout separation explained; `dbg!` as development tool vs `println!` for user-facing output; updated Quality Baseline to include step 6 (`dbg!` for unexpected results); updated closing paragraph; 1 new example verified zero-warning Rust 1.93.1
+  - **Added `eprintln!` macro D-head** ("Printing to standard error") after `dbg!` guidance paragraph: introduces `eprintln!` as the production counterpart to `dbg!` for stderr output; simple code example showing `eprintln!("warning: ...")` alongside `println!("using default settings")` with separated stderr/stdout output; explains piping behavior (stdout captured, stderr visible on terminal); three-way guidance (`println!` for normal output, `eprintln!` for errors/warnings, `dbg!` for temporary debugging); closes gap where `eprintln!` was used in 5+ later examples (4.3, 5.1, 7.3) without formal introduction; completes the printing macro family introduced in Part 1 (`println!` in 1.1, `format!` in 1.1, `dbg!` in 1.2, `eprintln!` in 1.2); 1 new example verified zero-warning Rust 1.93.1
 
 ## Part 2: Thinking in Values
 

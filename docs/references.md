@@ -32,6 +32,7 @@ Resources used to build book materials, organized by topic.
 
 - [std::fmt module - Rust std docs](https://doc.rust-lang.org/std/fmt/index.html)
 - [format! macro - Rust std docs](https://doc.rust-lang.org/std/macro.format.html)
+- [eprintln! macro - Rust std docs](https://doc.rust-lang.org/std/macro.eprintln.html)
 - [Formatting syntax - The Rust Reference](https://doc.rust-lang.org/std/fmt/index.html#syntax)
 
 ## Compiler Errors and Diagnostics
