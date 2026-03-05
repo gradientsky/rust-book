@@ -369,6 +369,9 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.93.0 (as_array stabilization) - Rust Blog](https://blog.rust-lang.org/2026/01/22/Rust-1.93.0/)
 - [slice::as_chunks - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.as_chunks)
 - [Announcing Rust 1.88.0 (as_chunks stabilization) - Rust Blog](https://blog.rust-lang.org/2025/06/26/Rust-1.88.0/)
+- [Cell<T> - Rust std docs](https://doc.rust-lang.org/std/cell/struct.Cell.html)
+- [Cell::update - Rust std docs](https://doc.rust-lang.org/std/cell/struct.Cell.html#method.update) — stabilized Rust 1.88.0
+- [RefCell<T> - Rust std docs](https://doc.rust-lang.org/std/cell/struct.RefCell.html)
 - [Cow<T> - Rust std docs](https://doc.rust-lang.org/std/borrow/enum.Cow.html)
 - [String::from_utf8_lossy - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy)
 - [Clone on write (Cow) - Rust Design Patterns](https://rust-unofficial.github.io/patterns/idioms/cow.html)
