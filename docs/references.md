@@ -127,6 +127,8 @@ Resources used to build book materials, organized by topic.
 - [Understanding Ownership - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html)
 - [What is Ownership? - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)
 - [The Stack and the Heap - The Rust Programming Language](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-stack-and-the-heap)
+- [Ownership and Moves - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/move.html)
+- [RAII - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/raii.html)
 - [Copy trait - Rust std docs](https://doc.rust-lang.org/std/marker/trait.Copy.html)
 - [Clone trait - Rust std docs](https://doc.rust-lang.org/std/clone/trait.Clone.html)
 - [Drop trait - Rust std docs](https://doc.rust-lang.org/std/ops/trait.Drop.html)
