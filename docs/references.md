@@ -25,7 +25,7 @@ Resources used to build book materials, organized by topic.
 ## Rust Release History
 
 - [Announcing Rust 1.93.1](https://blog.rust-lang.org/2026/02/12/Rust-1.93.1/)
-- [Rust 1.94.0 Release Notes](https://github.com/rust-lang/rust/issues/151650)
+- [Rust 1.94.0 Release Notes](https://doc.rust-lang.org/stable/releases.html#version-1940-2026-03-05)
 - [The Rust Release Announcements](https://blog.rust-lang.org/releases/)
 
 ## Printing and Formatting
@@ -423,6 +423,8 @@ Resources used to build book materials, organized by topic.
 - [Cargo Cache Cleaning | Rust Blog](https://blog.rust-lang.org/2023/12/11/cargo-cache-cleaning/) — design overview
 - [Stabilize automatic garbage collection - cargo PR #14287](https://github.com/rust-lang/cargo/pull/14287)
 - [Configuration - The Cargo Book](https://doc.rust-lang.org/cargo/reference/config.html) — `[cache]` section
+- [Including Extra Configuration Files - The Cargo Book](https://doc.rust-lang.org/cargo/reference/config.html#including-extra-configuration-files)
+- [Cargo 1.94 Changelog](https://doc.rust-lang.org/cargo/CHANGELOG.html#cargo-194-2026-03-05) — config `include` key and TOML 1.1 support
 - [RFC 2383: Lint Reasons - The Rust RFC Book](https://rust-lang.github.io/rfcs/2383-lint-reasons.html) — `#[expect]` attribute
 - [Lint levels - The rustc book](https://doc.rust-lang.org/rustc/lints/levels.html#expecting-lints) — expect vs allow
 
