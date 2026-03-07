@@ -349,6 +349,8 @@ Resources used to build book materials, organized by topic.
 - [BTreeSet<T> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.BTreeSet.html)
 - [BTreeMap::range - Rust std docs](https://doc.rust-lang.org/std/collections/struct.BTreeMap.html#method.range)
 - [String - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html)
+- [String::push_str - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html#method.push_str)
+- [String::push - Rust std docs](https://doc.rust-lang.org/std/string/struct.String.html#method.push)
 - [str (primitive) - Rust std docs](https://doc.rust-lang.org/std/primitive.str.html)
 - [Storing UTF-8 Encoded Text with Strings - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-02-strings.html)
 - [Storing Keys with Associated Values in Hash Maps - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-03-hash-maps.html)
