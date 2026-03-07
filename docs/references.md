@@ -191,7 +191,9 @@ Resources used to build book materials, organized by topic.
 ## Option, Result, and Error Handling
 
 - [Option enum - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html)
+- [Option::expect - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.expect)
 - [Result enum - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html)
+- [Result::expect - Rust std docs](https://doc.rust-lang.org/std/result/enum.Result.html#method.expect)
 - [The ? operator - The Rust Reference](https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator)
 - [Error Handling - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
 - [Recoverable Errors with Result - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
@@ -352,6 +354,7 @@ Resources used to build book materials, organized by topic.
 - [std::collections module - when to use each collection](https://doc.rust-lang.org/std/collections/index.html)
 - [HashMap<K, V> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashMap.html)
 - [HashSet<T> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashSet.html)
+- [HashSet::contains - Rust std docs](https://doc.rust-lang.org/std/collections/struct.HashSet.html#method.contains)
 - [Entry API - Rust std docs](https://doc.rust-lang.org/std/collections/hash_map/enum.Entry.html)
 - [BTreeMap<K, V> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.BTreeMap.html)
 - [BTreeSet<T> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.BTreeSet.html)
