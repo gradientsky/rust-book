@@ -193,7 +193,7 @@ Working notes and action items for the next iteration.
 - No Rust 2024-specific changes to Option/Result/`?` operator semantics; `is_none_or` stabilized 1.82, `is_some_and`/`is_ok_and` stabilized 1.70 — all pre-2024 but modern idioms
 - Builds on 3.2: bridges from "two enums built into the standard library" closing; uses pattern matching, exhaustive match, if let
 - Builds on 3.1: uses struct definition, impl blocks, Display trait, use std::fmt
-- Introduced `filter_map` minimally in capstone — explained by context (filter + map on iterators)
+- **Capstone clarity pass**: replaced the pre-iterator `inputs.iter().filter_map(...).collect()` pipeline with an explicit `Vec::push` collection loop inside `process_scores`; keeps the "print the error or keep the validated score" rule visible in Chapter 3.3; output verified unchanged on Rust 1.93.1
 - Introduced `.parse::<T>()` turbofish syntax — used throughout, explained as "parse into type T"
 - Introduced range patterns in match (`90..=100`) — used in Score::grade, natural extension of match
 - **Added `Option::filter`** section: "Keeping or Discarding with Filter" B-head between "Chaining with And Then" and "Flattening Nested Options"; philosophy-first explanation (map transforms, and_then chains, filter keeps or discards); port validation example with non-privileged range check (>= 1024); three cases (passes, rejected, None); gate analogy; bridges to iterator `filter` in 4.3; 1 new example verified zero-warning Rust 1.93.1; completes core combinator trio (map/and_then/filter) in 3.3; updated 7.1 "Filtering" section to reference 3.3 introduction (removed standalone example, kept combinator chain context)
@@ -207,7 +207,7 @@ Working notes and action items for the next iteration.
 - **Review items:**
   - The `HOME` env var example in expect section is platform-specific — works on macOS/Linux, not Windows; acceptable for pocket book target audience
   - The `ParseIntError { kind: InvalidDigit }` debug output format may change in future Rust versions — consider whether to use Display format instead
-  - The `filter_map` in capstone uses iterator chain (`.iter().filter_map(...).collect()`) — verify this is approachable before iterators are formally covered in Part 4
+  - ~~The `filter_map` in capstone uses iterator chain (`.iter().filter_map(...).collect()`) — verify this is approachable before iterators are formally covered in Part 4~~ — RESOLVED: replaced the capstone's valid-score collection step with an explicit loop in `process_scores`; readers now see the control flow directly before the iterators chapter formalizes the shorter pipeline style
   - ~~Generics `<T>` are mentioned in Option/Result definitions but explained only as "placeholder for any type" — verify this is sufficient pre-Part 4~~ — RESOLVED: removed "You will learn about generics in detail in Part 4" forward reference; replaced with self-contained "a placeholder that lets Option work with any type"; the inline explanation is sufficient for reading Option/Result type signatures
   - The newtype section is brief — fuller treatment with `Deref` and trait implementations deferred to Part 7
   - ~~Consider whether the "making illegal states unrepresentable" section needs a note about module privacy for enforcing validated construction (modules covered in 5.3)~~ — RESOLVED: added "Why the field is not public" C-head subsection after Percentage example; explains module-boundary privacy, shows `mod percentage` wrapper with pub struct + private field + validating constructor, verified output; ~~forward-references Part 5 for full module system~~ forward reference removed, replaced with self-contained "private fields plus a validating constructor" insight
@@ -283,7 +283,7 @@ Working notes and action items for the next iteration.
 - **Added `map_while` B-head** between Filter Map and Enumerate: philosophy-first explanation contrasting `filter_map` (skip failures, keep going) with `map_while` (stop at first failure); token parsing example with `parse().ok()`; explains `"stop"` halts immediately while `filter_map` would skip it; use-case guidance (prefix parsing, reading until delimiter, sorted runs); 1 new example verified zero-warning zero-clippy Rust 1.93.1; `map_while` stable since Rust 1.57
 - Builds on 4.2: closing paragraph bridges from generics to iterators; `impl Iterator` return type pattern from 4.2 revisited
 - Builds on 4.1: `Iterator` is the key trait; `IntoIterator` and `FromIterator` are standard library traits
-- Builds on 3.3: `Option` and `Result` used in `next()`, `find()`, `collect::<Result<Vec<_>,_>>()`; `filter_map` with `.ok()`
+- Builds on 3.3: `Option` and `Result` used in `next()`, `find()`, `collect::<Result<Vec<_>,_>>()`; formalizes the "keep successes, discard failures" pattern that 3.3 now shows with an explicit loop
 - Builds on 2.3/2.4: three iteration modes mirror ownership model (borrow, mutable borrow, owned)
 - Introduced `HashMap` minimally for collect examples — used without deep explanation (covered in Part 5)
 - Introduced `HashSet` minimally for collect examples — same

@@ -339,6 +339,7 @@ Resources used to build book materials, organized by topic.
 ## Collections, Strings, and Smart Pointers
 
 - [Vec<T> - Rust std docs](https://doc.rust-lang.org/std/vec/struct.Vec.html)
+- [Storing Lists of Values with Vectors - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-01-vectors.html)
 - [VecDeque<T> - Rust std docs](https://doc.rust-lang.org/std/collections/struct.VecDeque.html)
 - [VecDeque::pop_front_if - Rust std docs](https://doc.rust-lang.org/std/collections/struct.VecDeque.html#method.pop_front_if)
 - [std::collections module - when to use each collection](https://doc.rust-lang.org/std/collections/index.html)
