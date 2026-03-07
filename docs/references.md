@@ -282,12 +282,9 @@ Resources used to build book materials, organized by topic.
 - [Announcing Rust 1.77.0 (round_ties_even stabilization) - Rust Blog](https://blog.rust-lang.org/2024/03/21/Rust-1.77.0/)
 - [IEEE 754 - Wikipedia](https://en.wikipedia.org/wiki/IEEE_754)
 - [f64::total_cmp - Rust std docs](https://doc.rust-lang.org/std/primitive.f64.html#method.total_cmp)
+- [slice::sort_by - Rust std docs](https://doc.rust-lang.org/std/primitive.slice.html#method.sort_by)
 - [Announcing Rust 1.62.0 (total_cmp stabilization) - Rust Blog](https://blog.rust-lang.org/2022/06/30/Rust-1.62.0/)
 - [std::f64::consts module - Rust std docs](https://doc.rust-lang.org/std/f64/consts/index.html)
-- [f64::consts::GOLDEN_RATIO - Rust std docs](https://doc.rust-lang.org/std/f64/consts/constant.GOLDEN_RATIO.html)
-- [f64::consts::EULER_GAMMA - Rust std docs](https://doc.rust-lang.org/std/f64/consts/constant.EULER_GAMMA.html)
-- [Golden ratio - Wikipedia](https://en.wikipedia.org/wiki/Golden_ratio)
-- [Euler-Mascheroni constant - Wikipedia](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant)
 - [Tracking Issue #72599: total_cmp for f32 and f64](https://github.com/rust-lang/rust/issues/72599)
 
 ## Iterators and Functional Patterns
