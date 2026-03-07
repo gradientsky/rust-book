@@ -253,6 +253,7 @@ Resources used to build book materials, organized by topic.
 - [Advanced Traits (associated types, operator overloading) - The Rust Programming Language](https://doc.rust-lang.org/book/ch20-02-advanced-traits.html)
 - [Impl Trait Type - The Rust Reference](https://doc.rust-lang.org/reference/types/impl-trait.html)
 - [Trait Objects - The Rust Reference](https://doc.rust-lang.org/reference/types/trait-object.html)
+- [Dyn compatibility - The Rust Reference](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)
 - [Where clauses - Rust By Example](https://doc.rust-lang.org/rust-by-example/generics/where.html)
 - [Monomorphization - Rust Compiler Development Guide](https://rustc-dev-guide.rust-lang.org/backend/monomorph.html)
 - [RPIT Lifetime Capture Rules 2024 - The Rust Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/rpit-lifetime-capture.html)
@@ -518,6 +519,8 @@ Resources used to build book materials, organized by topic.
 - [Rust API Guidelines: Future Proofing (C-SEALED)](https://rust-lang.github.io/api-guidelines/future-proofing.html)
 - [Newtype Pattern - Rust Design Patterns](https://rust-unofficial.github.io/patterns/patterns/behavioural/newtype.html)
 - [std::process::Command (borrowing builder example) - Rust std docs](https://doc.rust-lang.org/std/process/struct.Command.html)
+- [std::mem::take - Rust std docs](https://doc.rust-lang.org/std/mem/fn.take.html)
+- [std::mem::replace - Rust std docs](https://doc.rust-lang.org/std/mem/fn.replace.html)
 - [Itertools trait - docs.rs](https://docs.rs/itertools/latest/itertools/trait.Itertools.html)
 
 ## Anti-Patterns and Common Mistakes
