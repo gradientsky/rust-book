@@ -146,6 +146,7 @@ Resources used to build book materials, organized by topic.
 - [Validating References with Lifetimes - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)
 - [Borrowing - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/borrow.html)
 - [Lifetimes - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/lifetime.html)
+- [Static - Rust By Example](https://doc.rust-lang.org/rust-by-example/scope/lifetime/static_lifetime.html)
 - [E0596 Error Code Reference](https://doc.rust-lang.org/error_codes/E0596.html)
 - [E0499 Error Code Reference](https://doc.rust-lang.org/error_codes/E0499.html)
 - [E0502 Error Code Reference](https://doc.rust-lang.org/error_codes/E0502.html)
