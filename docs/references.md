@@ -196,6 +196,8 @@ Resources used to build book materials, organized by topic.
 - [Recoverable Errors with Result - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
 - [To panic! or Not to panic! - The Rust Programming Language](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html)
 - [E0369 Error Code Reference](https://doc.rust-lang.org/error_codes/E0369.html)
+- [ParseIntError - Rust std docs](https://doc.rust-lang.org/std/num/struct.ParseIntError.html)
+- [FromStr trait - Rust std docs](https://doc.rust-lang.org/std/str/trait.FromStr.html)
 - [Option::is_some_and - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.is_some_and)
 - [Option::is_none_or - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.is_none_or)
 - [Option::or - Rust std docs](https://doc.rust-lang.org/std/option/enum.Option.html#method.or)
