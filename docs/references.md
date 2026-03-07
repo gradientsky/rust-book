@@ -295,6 +295,7 @@ Resources used to build book materials, organized by topic.
 ## Iterators and Functional Patterns
 
 - [Iterator trait - Rust std docs](https://doc.rust-lang.org/std/iter/trait.Iterator.html)
+- [Iterator::inspect - Rust std docs](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.inspect)
 - [IntoIterator trait - Rust std docs](https://doc.rust-lang.org/std/iter/trait.IntoIterator.html)
 - [std::iter module - Rust std docs](https://doc.rust-lang.org/std/iter/index.html)
 - [Iterators - The Rust Programming Language](https://doc.rust-lang.org/book/ch13-02-iterators.html)
@@ -461,6 +462,7 @@ Resources used to build book materials, organized by topic.
 - [Mutex - Rust std docs](https://doc.rust-lang.org/std/sync/struct.Mutex.html)
 - [Arc - Rust std docs](https://doc.rust-lang.org/std/sync/struct.Arc.html)
 - [std::sync::mpsc - Rust std docs](https://doc.rust-lang.org/std/sync/mpsc/index.html)
+- [crossbeam-channel crate - docs.rs](https://docs.rs/crossbeam-channel/latest/crossbeam_channel/)
 - [Fearless Concurrency - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
 - [Using Threads to Run Code Simultaneously - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-01-threads.html)
 - [Using Message Passing to Transfer Data Between Threads - The Rust Programming Language](https://doc.rust-lang.org/book/ch16-02-message-passing.html)
