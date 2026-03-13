@@ -4,6 +4,17 @@ Working notes and action items for the next iteration.
 
 ---
 
+### 4.1 Traits — ITERATED
+- **Added Exercises section** (3 micro-projects with collapsible solutions):
+  - Exercise 4-1: Weight Converter — custom `Describable` trait with `Display` supertrait, `From` bidirectional conversions between `Kilograms` and `Pounds` newtypes, `impl Trait` parameter, round-trip conversion, `.to_string()` from `Display`
+  - Exercise 4-2: Shape Parser — `FromStr` for parsing `"circle:5"`, `"rect:4,6"`, `"tri:3,8"` formats, `Display` for shapes, `Add` operator overloading on `Area` newtype, `total_area` accumulator using `+`, error cases
+  - Exercise 4-3: Task Tracker — manual `Ord`/`PartialOrd` via `rank()` helper, `Default` for `Priority` enum, `Display` for `Task`, `AsRef<str>` for title access, `impl Into<String>` constructor, generic `longest_title` function, `sort_by` with custom ordering
+  - All 3 exercise solutions verified zero-warning Rust 1.94.0
+- **Action items:**
+  - ~~Add micro-project exercises~~ — DONE
+
+---
+
 ### 4.2 Generics — ITERATED
 - Covers: generic functions (single/multiple params), trait bounds (`T: Trait`, `T: Trait1 + Trait2`), `impl Trait` (argument position as sugar, return position for unnameable types, **same-type vs different-type code example**: `show_any`/`show_pair`), `where` clauses (readability + advanced bounds), generic structs (Pair, KeyValue), generic enums (Tree with Box), **const generics (`<const N: usize>`, compile-time value parameters, `average` array-size-generic function, `filled` type+const composition, foundation for `as_array`/`as_chunks` in later chapters)**, `impl Trait` in return position, Rust 2024 RPIT lifetime capture rule, **`impl Trait` in trait methods (RPITIT)** (Rust 1.75: `-> impl Trait` in trait method signatures, different concrete return types per implementor, monomorphized dispatch, dyn-compatibility note), associated types vs type parameters (one-to-one vs one-to-many), trait objects (`dyn Trait`), dyn compatibility rules (with `where Self: Sized` escape hatch, **added `impl Trait` return rule**), monomorphization and zero-cost abstraction, capstone Measurable example with static + dynamic dispatch
 - Philosophy: generics answer "how do you write reusable code without giving up performance and safety?"; Rust answers at compile time via monomorphization; zero-cost = abstraction vanishes in compiled binary
