@@ -245,6 +245,13 @@ Working notes and action items for the next iteration.
 - **Heading style fix**: `#### The AsyncFn traits` → `#### The async closure traits` (removed code element from heading per O'Reilly style)
 - **Redesigned the capstone worker pool**: replaced `Arc<Mutex<Receiver>>` with a standard-library-friendly design that matches `mpsc` directly — one inbox per worker, round-robin task distribution, result collection on a second channel, and an `Arc<AtomicUsize>` completion counter; output is now deterministic after sorting, and the chapter states the `mpsc` topology explicitly; updated example verified Rust 1.94.0
 - **Added production guidance for channel shape**: new Tip under the capstone explains that `std::sync::mpsc` is single-consumer by design and points readers toward crossbeam-channel (sync) or runtime channels (async) when they need a true shared work queue
+- **Added Exercises section** (3 micro-projects with collapsible solutions):
+  - Exercise 6-1: Parallel Document Analyzer — `thread::scope`, scoped thread borrowing from parent scope, `Display`, `max_by_key`, parallel result collection, iterator `sum`
+  - Exercise 6-2: Concurrent Ballot Box — `Arc<Mutex<T>>`, `thread::spawn` with `move`, `MutexGuard` scoping, `HashMap` entry API with `or_default`, `Display`, sorted results with percentages
+  - Exercise 6-3: Score Pipeline — `mpsc::channel` multi-stage pipeline (cleaner→parser→collector), ownership transfer through channels, let chains (Rust 2024), `split_once`, `thread::spawn`, channel closure on sender drop
+  - All 3 exercise solutions verified zero-warning zero-clippy Rust 1.94.0
+- **Action items:**
+  - ~~Add micro-project exercises~~ — DONE
 - **Review items:**
   - ~~Thread output ordering is non-deterministic — documented with "(order may vary)" notes~~ — VERIFIED: all 10 compilable examples produce correct output; non-deterministic thread order documented with "(order may vary)" or "(thread order may vary)" notes; deterministic results section (sorted) always matches exactly
   - ~~The `thread::scope` example is brief — could demonstrate mutable borrowing across threads~~ — RESOLVED (prior iteration)
@@ -252,8 +259,8 @@ Working notes and action items for the next iteration.
   - ~~The async section is deliberately shallow ("a taste")~~ — ACCEPTED: provides enough to recognize and understand async code; links to Tokio tutorial and Async Book for depth
   - ~~`AsyncFn` trait bound syntax shown as `async Fn()`~~ — RESOLVED (prior iteration)
   - ~~No mention of `RwLock`~~ — RESOLVED (prior iteration)
-  - ~~No mention of `Atomic*` types~~ — RESOLVED: added "Atomic Types: Lock-Free Shared State" A-head section with `AtomicUsize` counter example, `AtomicBool` cancellation flag pattern, memory ordering explanation (`Relaxed`/`SeqCst`), atomic methods table, and atomics-vs-Mutex decision guide; 2 new examples verified zero-warning zero-clippy Rust 1.93.1; bridges back to `AtomicU32` from 2.1; updated chapter recap bullet
-  - ~~The capstone wraps `Receiver` in `Arc<Mutex<Receiver>>` — this is a known anti-pattern (better to use crossbeam-channel MPMC), but acceptable for teaching since only std library is used~~ — RESOLVED: rewrote the capstone to use per-worker inboxes plus a result channel, and added a Tip about crossbeam-channel or runtime channels when a real shared queue is required
+  - ~~No mention of `Atomic*` types~~ — RESOLVED
+  - ~~The capstone wraps `Receiver` in `Arc<Mutex<Receiver>>` — this is a known anti-pattern~~ — RESOLVED
   - `sync_channel` (bounded channel) deliberately omitted — simpler to teach unbounded first
   - `thread::Builder` (named threads, stack size) deliberately omitted — too niche for pocket book intro
   - **Added `RwLockWriteGuard::downgrade`** (Rust 1.92): atomic write-to-read lock conversion, cache population pattern, consumes write guard and returns read guard, no gap for other writers; updated chapter recap bullet
