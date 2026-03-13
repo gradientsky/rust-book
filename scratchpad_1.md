@@ -15,6 +15,13 @@ Working notes and action items for the next iteration.
 - **Added `format!` macro introduction**: brief code example showing `format!("${price:.2}")` returning a `String`; explains the relationship between `println!` (prints) and `format!` (builds string); 1 new code example verified zero-warning Rust 1.93.1; closes the gap where `format!` was used in dozens of later examples without formal introduction
 - **Updated "Anatomy" closing bullet** to mention format specifiers and `format!`
 - **Gap addressed**: `{:.2}` precision syntax was used in 40+ examples across 10+ chapters (starting from 2.2) but never explained; format specifiers now introduced in the chapter where `println!` is first taught
+- **Added Exercises section** (3 micro-projects with collapsible solutions):
+  - Exercise 1-1: Profile Card — left-alignment `{:<16}`, precision `{:.2}`, combined `{:<16.2}`, tuple debug `{:?}`, box-drawing border alignment
+  - Exercise 1-2: Receipt Formatter — fill characters (`{:=<42}`, `{:-<42}`), centering `{:^42}`, right-aligned decimals `{:>7.2}`, `as f64` integer-to-float conversion, multi-column tabular layout
+  - Exercise 1-3: Color Mixer — hex `{:02x}`, binary `{:08b}`, right-aligned decimal `{:>3}`, `format!` to build label string, debug tuple `{:?}`, same value in four representations
+  - All 3 exercise solutions verified zero-warning Rust 1.94.0
+- **Action items:**
+  - ~~Add micro-project exercises~~ — DONE
 - **Review items:**
   - ~~Verify tone is accessible to true beginners (no assumed systems programming background)~~ — RESOLVED: rewrote opening three paragraphs to eliminate systems programming jargon; replaced "garbage collector" with "the language sometimes pauses to reclaim memory you are no longer using"; replaced "dangling pointers, data races, use-after-free, buffer overflows" with accessible descriptions ("crashes from accessing freed memory, data corruption from unsynchronized access, resource leaks from forgotten cleanup"); framed the trade-off through concrete language comparisons (Python/JS vs C/C++)
   - ~~Consider adding a "what you'll need" prereqs note (terminal, text editor)~~ — DEFERRED: the chapter already instructs "Open a terminal and run" which implicitly requires a terminal; adding a formal prereqs box risks making the opening feel bureaucratic for a pocket book
