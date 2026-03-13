@@ -46,6 +46,13 @@ Working notes and action items for the next iteration.
   - Updated clippy bool_comparison output: added `= note: #[warn(clippy::bool_comparison)]` line matching Rust 1.93.1
   - **Added `dbg!` macro A-head section** ("Debugging with dbg") between Cargo Clippy and Cargo Fmt: philosophy-first explanation of runtime vs compile-time tooling gap; arithmetic example with `width * height` showing expression text, file/line, and pass-through return; three advantages over `println!` (expression display, location tracking, value pass-through); stderr vs stdout separation explained; `dbg!` as development tool vs `println!` for user-facing output; updated Quality Baseline to include step 6 (`dbg!` for unexpected results); updated closing paragraph; 1 new example verified zero-warning Rust 1.93.1
   - **Added `eprintln!` macro D-head** ("Printing to standard error") after `dbg!` guidance paragraph: introduces `eprintln!` as the production counterpart to `dbg!` for stderr output; simple code example showing `eprintln!("warning: ...")` alongside `println!("using default settings")` with separated stderr/stdout output; explains piping behavior (stdout captured, stderr visible on terminal); three-way guidance (`println!` for normal output, `eprintln!` for errors/warnings, `dbg!` for temporary debugging); closes gap where `eprintln!` was used in 5+ later examples (4.3, 5.1, 7.3) without formal introduction; completes the printing macro family introduced in Part 1 (`println!` in 1.1, `format!` in 1.1, `dbg!` in 1.2, `eprintln!` in 1.2); 1 new example verified zero-warning Rust 1.93.1
+- **Added Exercises section** (3 micro-projects with collapsible solutions):
+  - Exercise 1-4: Bug Clinic — 4 compiler errors to fix one at a time (E0425 typo, E0308 type mismatch, E0382 moved value, unused variable warning); teaches the fix-one-rerun workflow; format specifiers `{:>4}` from 1.1, `String::from` move, `if` as expression
+  - Exercise 1-5: Debug Detective — `dbg!()` pass-through on subtotal/tax/total, `eprintln!` diagnostic, formatted receipt box with `{:>9.2}` right-aligned dollar amounts, `as f64` conversion; builds on 1.1 format specifiers + 1.2 `dbg!`/`eprintln!`
+  - Exercise 1-6: Clippy Clean-Up — 3 Clippy warnings to fix (needless_range_loop, bool_comparison, manual_range_contains); code compiles and runs before and after; teaches iterating with Clippy the same way Bug Clinic teaches iterating with `cargo check`
+  - All 3 exercise solutions verified zero-warning zero-clippy Rust 1.94.0
+- **Action items:**
+  - ~~Add micro-project exercises~~ — DONE
 
 ## Part 2: Thinking in Values
 
