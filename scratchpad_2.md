@@ -118,6 +118,13 @@ Working notes and action items for the next iteration.
   - Error message convention (lowercase, no trailing punctuation) is stated but not heavily enforced in all examples — consistent enough for teaching purposes
   - ~~The `HOME` env var in expect example is platform-specific (macOS/Linux) — same caveat as 3.3 and other chapters~~ — RESOLVED: replaced with a platform-neutral `"8080".parse::<u16>()` invariant example so the Result-based `expect` guidance does not depend on host environment
   - ~~Anti-stacking: "Your First anyhow Function" B-head immediately followed by code block~~ — RESOLVED: added lead-in sentence "With anyhow in your dependencies, you can return `anyhow::Result<T>` and attach context to every error:"
+- **Added Exercises section** (3 micro-projects with collapsible solutions):
+  - Exercise 5-1: Log File Parser — thiserror typed errors (`#[source]`, `map_err`), `type Result<T>` alias, error chain walking with `source()`, `Display`, pipe-delimited parsing with `splitn`, severity validation
+  - Exercise 5-2: Recipe Scaler — anyhow `context`/`with_context`, `ensure!`/`bail!`, `chain()` error walking, `collect::<Result<Vec<_>>>()` short-circuit pattern, `fn main() -> Result<()>`, `split_once` parsing
+  - Exercise 5-3: Config Validator — thiserror library-side pattern, `#[source]` for `ParseIntError`, `require`/`require_int` helpers, range validation with `OutOfRange` variant, error chain with `source()`, `HashMap::from` initialization
+  - All 3 exercise solutions verified zero-warning zero-clippy Rust 1.94.0
+- **Action items:**
+  - ~~Add micro-project exercises~~ — DONE
 
 ### 5.2 Collections, Strings, and Smart Pointers — ITERATED
 - Covers: Vec (creation with vec!/Vec::new/with_capacity/collect, access with []/get/last, modify with push/pop/insert/remove/retain, slices &[T], three iteration modes, **sorting (sort/sort_by/sort_by_key, stable vs unstable, float total_cmp, Reverse, is_sorted)**), HashMap (new/from/collect, get/indexing/contains_key, entry API with or_insert/or_insert_with/**or_default/and_modify**), HashSet (insert/contains, intersection/union/difference), String vs &str (owned vs borrowed, deref coercion, when to use each, creation/conversion/concatenation/format!, common operations, UTF-8 guarantees), Box (recursive types Expr tree, trait objects Vec<Box<dyn Shape>>), Rc (reference counting, Rc::clone convention, shared ownership in graph-like structures, limitations: not thread-safe, immutable), Arc (thread-safe shared ownership, thread::spawn example), choosing the right pointer (decision table), capstone Library/Document tag system with Vec/HashMap/HashSet/Rc/String/Display
