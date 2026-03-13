@@ -357,6 +357,13 @@ Working notes and action items for the next iteration.
   - **Anti-stacking fix**: added lead-in sentence before code block under "Return Result and Let the Caller Decide"
   - ~~Anti-stacking: When Smart Pointers Are Correct B-head followed directly by table~~ — RESOLVED: added "Choose the simplest ownership model that satisfies your requirements:" lead-in sentence
   - ~~Anti-stacking: Common Translations B-head followed directly by table~~ — RESOLVED: added "Most index-based loops have a direct iterator equivalent:" lead-in sentence
+- **Added Exercises section** (3 micro-projects with collapsible solutions):
+  - Exercise 7-4: Refactor the Clone Away — `&[Student]`/`&str` parameters, `impl Into<String>`, iterators with `.copied()` for aggregation, `Display` impl, zero `.clone()` calls, `find_top_scorer` returns `Option<&Student>`
+  - Exercise 7-5: Type-Safe Command Dispatcher — `DryRun` enum replacing bool flag, `Command` enum with data-carrying variants replacing string matching, `ProjectName` newtype with validation in `new()`, exhaustive `match` in `execute()`, `?` for error propagation, `Display` for all types
+  - Exercise 7-6: Iterator Rewrite with Safe Conversions — `enumerate`+`map`+`collect` pipeline, `partition` for normal/abnormal split, `windows(2)` for sequential changes, `u8::try_from` instead of `as` for narrowing, `matches!` macro in partition predicate, `Category` enum with `Display`, zero `unwrap` calls
+  - All 3 exercise solutions verified zero-warning Rust 1.94.0
+- **Action items:**
+  - ~~Add micro-project exercises~~ — DONE
 
 ### 7.3 Where to Go from Here — ITERATED
 - Covers: async in depth (tokio runtime, JoinSet structured concurrency, async fn in traits (1.75), async closures (2024), when to use async), unsafe Rust (5 capabilities, 2024 safety improvements: unsafe_op_in_unsafe_fn warn-by-default, unsafe extern blocks with safe annotations, static mut references hard error, newly unsafe env::set_var/remove_var), macros (declarative macro_rules! with `map!` example, procedural derive/attribute/function-like, syn/quote/proc-macro2 ecosystem), ecosystem map (web: axum/actix-web/reqwest/hyper/tonic/tower, CLI: clap/ratatui/colored, serialization: serde/serde_json/toml, databases: sqlx/diesel/sea-orm, observability: tracing/log, embedded: embedded-hal 1.0/embassy/esp-hal 1.0, WebAssembly: wasm-bindgen/wasm-pack/leptos/dioxus), recommended reading (official: Book/RBE/Reference/Cargo Book/Edition Guide/Rustonomicon; community: Design Patterns/Effective Rust/API Guidelines/Performance Book; interactive: Rustlings/Exercism; staying current: This Week in Rust/Rust Blog/Users Forum), four concrete next-steps paths (web services, CLI tools, embedded, systems programming)
