@@ -118,6 +118,11 @@ Working notes and action items for the next iteration.
     - Exercise 2-6: The Formatter Factory — `make_formatter` returning `impl Fn(f64) -> String`, `move` keyword for ownership transfer, `format!` with runtime precision `{:.prec$}`, reusable closures
     - All 3 exercise solutions verified zero-warning zero-clippy Rust 1.94.0
   - **Renumbered 2.3 exercises** (Exercise 2-4→2-7, 2-5→2-8, 2-6→2-9 for sequential numbering across Part 2); updated Exercise 2-8 back-reference in 2.3 closing paragraph
+  - **Added "Why This Matters" A-head** after Putting It Together: key points summary covering function signatures as contracts, last-expression return convention, placeholder macros, `const fn`, closure capture modes, `Fn`/`FnMut`/`FnOnce` hierarchy, `impl Fn` in parameter/return position, `move` keyword
+  - **Added "Check Yourself" retrieval practice** (6 prompts: semicolon return type change, `FnOnce` closure acceptance from hierarchy, `move` necessity in `make_greeter`, monomorphization from `impl Fn`, `todo!` vs `unreachable!` intent distinction, `mut` closure binding requirement); consistent with 2.1/2.3/2.4/3.1/3.3/4.1/4.2/4.3/5.1/5.3/6.1/7.1 structure
+- **Action items:**
+  - ~~Add micro-project exercises~~ — DONE
+  - ~~Add Check Yourself retrieval practice~~ — DONE
 
 ### 2.3 Ownership — ITERATED
 - Covers: three rules of ownership, stack vs heap mental model (with **Mermaid memory figures**), **`String::from` vs string literal explanation** (D-head: `&str` as baked-in reference, `String` as owned heap text, why String demonstrates ownership), move semantics (assignment, function calls, return values, **closures with `move`**), E0382 error example, Copy types (full list), Clone (explicit deep copy), Drop trait and RAII, **drop on reassignment** (B-head: mutable variable reassignment drops previous value immediately, Noisy struct example showing drop timing, ownership rule two connection), drop order (reverse declaration order with Noisy struct demo), early drop with `std::mem::drop` (including its trivial implementation), comprehensive "ownership in action" capstone example
